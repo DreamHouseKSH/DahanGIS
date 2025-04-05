@@ -1,19 +1,64 @@
-/* 오방색 테마 */
-.bg-yellow {
-    background-color: #fffacd; /* 밝은 노란색 */
+/* General Styles */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    padding-top: 56px; /* Adjust for sticky navbar height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.text-blue {
-    color: #4682b4; /* 톤 다운된 파란색 */
+main {
+    flex: 1; /* Ensure main content takes up available space */
 }
 
-.text-red {
-    color: #dc143c; /* 톤 다운된 빨간색 */
+/* Navbar */
+.navbar-brand {
+    color: #0d6efd; /* Bootstrap primary blue */
 }
 
-/* 추가 스타일 */
-.jumbotron {
-    background-image: url('hero-background.jpg'); /* 배경 이미지 */
-    background-size: cover;
-    color: white;
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to bottom, rgba(13, 110, 253, 0.1), rgba(255, 255, 255, 0.1)), #f8f9fa; /* Subtle gradient on light background */
+    padding: 6rem 1rem; /* Increased padding */
+    color: #343a40; /* Darker text for better contrast */
+}
+
+.hero-section h1 {
+    color: #212529; /* Even darker for heading */
+}
+
+/* Feature Section */
+.feature-section img {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Services Section Cards */
+.card {
+    border: none; /* Remove default border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.card-img-top {
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.card-title {
+    color: #0d6efd; /* Bootstrap primary blue */
+    font-weight: bold;
+}
+
+.btn-outline-primary {
+    border-width: 2px;
+}
+
+/* Footer */
+footer {
+    background-color: #212529; /* Darker background for footer */
 }

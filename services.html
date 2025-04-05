@@ -3,47 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DahanGIS - 서비스</title>
-    <style>
-        body { font-family: sans-serif; }
-        .container { width: 80%; margin: 0 auto; }
-        h1 { text-align: center; }
-        .service { margin-bottom: 20px; }
-        img { max-width: 50%; height: auto; display: block; margin: 0 auto; }
-    </style>
+    <title>다한지리정보(주) - 제품/서비스</title>
+    <meta name="description" content="다한지리정보(주)가 제공하는 GIS 데이터 구축, 컨설팅, 소프트웨어 개발, 교육 등 다양한 공간 정보 솔루션을 확인해보세요.">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts (Optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- 사용자 정의 스타일 -->
 </head>
-<body>
-    <div class="container">
-        <h1>DahanGIS - 공간 정보 솔루션으로 혁신을 경험하세요.</h1>
-        <p>DahanGIS는 GIS 데이터 구축, 컨설팅, 소프트웨어 개발, 교육 등 공간 정보와 관련된 모든 서비스를 제공합니다. 우리는 고객의 요구에 최적화된 맞춤형 솔루션을 제공하여 비즈니스 성공을 지원합니다.</p>
-
-        <div class="service">
-            <h2>GIS 데이터 구축</h2>
-            <!-- 이미지 삽입 위치 -->
-            <img src="data_construction_image.jpg" alt="GIS 데이터 구축 이미지">
-            <p>고품질의 공간 데이터를 정확하고 효율적으로 구축합니다. 다양한 데이터 소스 활용, 최신 기술 적용, 엄격한 품질 관리를 통해 데이터 신뢰도를 향상시키고 의사 결정 지원 및 비용 절감 효과를 제공합니다. 도시 계획, 환경 관리, 재난 관리, 농업 등 다양한 분야에 적용 가능합니다.</p>
+<body class="d-flex flex-column min-vh-100">
+    <header class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">다한지리정보(주)</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">회사 소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="services.html">제품/서비스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">연락처</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </header>
 
-        <div class="service">
-            <h2>GIS 컨설팅</h2>
-            <!-- 이미지 삽입 위치 -->
-            <img src="consulting_image.jpg" alt="GIS 컨설팅 이미지">
-            <p>공간 정보 시스템 구축 및 운영에 대한 전문적인 컨설팅을 제공합니다. 고객 맞춤형 컨설팅, 풍부한 경험과 노하우, 최적의 솔루션 제시를 통해 시스템 효율성을 향상시키고 투자 효과를 극대화하며 경쟁력을 강화합니다. 정부 기관, 기업, 연구 기관 등 다양한 고객에게 서비스를 제공합니다.</p>
-        </div>
+    <main class="flex-shrink-0 py-5">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-4 text-center">제품 및 서비스</h1>
+            <p class="lead mb-5 text-center">다한지리정보(주)는 고객의 성공을 위한 최적의 GIS 솔루션을 제공합니다.</p>
 
-        <div class="service">
-            <h2>GIS 소프트웨어 개발</h2>
-            <!-- 이미지 삽입 위치 -->
-            <img src="software_development_image.jpg" alt="GIS 소프트웨어 개발 이미지">
-            <p>고객의 요구에 맞는 맞춤형 GIS 소프트웨어를 개발합니다. 최신 기술 적용, 사용자 친화적인 인터페이스, 안정적인 시스템 운영을 통해 업무 효율성을 향상시키고 새로운 가치 창출 및 경쟁 우위 확보를 지원합니다. 다양한 산업 분야에 적용 가능한 솔루션을 제공합니다.</p>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="data_construction_image.jpg" class="card-img-top" alt="GIS 데이터 구축">
+                        <div class="card-body">
+                            <h5 class="card-title">GIS 데이터 구축</h5>
+                            <p class="card-text">고품질의 공간 데이터를 정확하고 효율적으로 구축합니다. 다양한 데이터 소스 활용, 최신 기술 적용, 엄격한 품질 관리를 통해 데이터 신뢰도를 향상시키고 의사 결정 지원 및 비용 절감 효과를 제공합니다. 도시 계획, 환경 관리, 재난 관리, 농업 등 다양한 분야에 적용 가능합니다.</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                             <a href="contact.html" class="btn btn-outline-primary">문의하기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="consulting_image.jpg" class="card-img-top" alt="GIS 컨설팅">
+                        <div class="card-body">
+                            <h5 class="card-title">GIS 컨설팅</h5>
+                            <p class="card-text">공간 정보 시스템 구축 및 운영에 대한 전문적인 컨설팅을 제공합니다. 고객 맞춤형 컨설팅, 풍부한 경험과 노하우, 최적의 솔루션 제시를 통해 시스템 효율성을 향상시키고 투자 효과를 극대화하며 경쟁력을 강화합니다. 정부 기관, 기업, 연구 기관 등 다양한 고객에게 서비스를 제공합니다.</p>
+                        </div>
+                         <div class="card-footer bg-transparent border-top-0">
+                             <a href="contact.html" class="btn btn-outline-primary">문의하기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="software_development_image.jpg" class="card-img-top" alt="GIS 소프트웨어 개발">
+                        <div class="card-body">
+                            <h5 class="card-title">GIS 소프트웨어 개발</h5>
+                            <p class="card-text">고객의 요구에 맞는 맞춤형 GIS 소프트웨어를 개발합니다. 최신 기술 적용, 사용자 친화적인 인터페이스, 안정적인 시스템 운영을 통해 업무 효율성을 향상시키고 새로운 가치 창출 및 경쟁 우위 확보를 지원합니다. 다양한 산업 분야에 적용 가능한 솔루션을 제공합니다.</p>
+                        </div>
+                         <div class="card-footer bg-transparent border-top-0">
+                             <a href="contact.html" class="btn btn-outline-primary">문의하기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="education_image.jpg" class="card-img-top" alt="GIS 교육">
+                        <div class="card-body">
+                            <h5 class="card-title">GIS 교육</h5>
+                            <p class="card-text">GIS 전문가 양성을 위한 체계적인 교육 프로그램을 제공합니다. 실무 중심 교육, 전문가 강사진, 최신 교육 시설을 통해 전문 인력 양성, 기술 경쟁력 강화 및 취업 기회 확대를 지원합니다. 학생, 연구원, 기업 담당자 등 누구나 참여 가능합니다.</p>
+                        </div>
+                         <div class="card-footer bg-transparent border-top-0">
+                             <a href="contact.html" class="btn btn-outline-primary">문의하기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <div class="service">
-            <h2>GIS 교육</h2>
-            <!-- 이미지 삽입 위치 -->
-            <img src="education_image.jpg" alt="GIS 교육 이미지">
-            <p>GIS 전문가 양성을 위한 체계적인 교육 프로그램을 제공합니다. 실무 중심 교육, 전문가 강사진, 최신 교육 시설을 통해 전문 인력 양성, 기술 경쟁력 강화 및 취업 기회 확대를 지원합니다. 학생, 연구원, 기업 담당자 등 누구나 참여 가능합니다.</p>
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-1">© 2024 다한지리정보(주). All rights reserved.</p>
+            <p class="mb-0 small">경기도 고양시 일산서구 킨텍스로 240, GIFC 오피스 2211호 (대화동, 킨텍스 꿈이그린)</p>
         </div>
-    </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
