@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background: linear-gradient(to bottom, rgba(13, 110, 253, 0.2) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(13, 110, 253, 0.2) 100%); /* Stronger light blue -> white -> light blue gradient */
+    background: linear-gradient(to bottom, #ADD8E6, #E0FFFF); /* Apply pastel blue gradient top to bottom */
     /* padding-top: 56px; /* Adjust for sticky navbar height */ /* Removed top padding */
     display: flex; /* Apply sticky footer style */
     flex-direction: column; /* Apply sticky footer style */
@@ -11,8 +11,25 @@ body {
 
 main {
     flex-grow: 1; /* Ensure main takes up available space, pushing footer down */
-    /* display: flex; /* Remove flex container properties from main */
-    /* flex-direction: column; /* Remove flex container properties from main */
+    display: flex; /* Make main a flex container to manage main-content-area */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Style for the main content area to distribute space */
+.main-content-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow this area to grow and fill space in main */
+}
+
+/* Make each section within main-content-area grow equally */
+.main-content-area > .hero-section,
+.main-content-area > #image-section,
+.main-content-area > #services-section {
+    flex-grow: 1;
+    display: flex; /* Use flex to center content within sections if needed */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically within each section */
 }
 
 /* New container for the image to allow it to grow */
@@ -24,7 +41,7 @@ main {
     overflow: hidden; /* Prevent image overflow if needed */
     /* min-height: 0; /* Not needed without flex-grow */
     /* max-height: 40vh; /* Re-apply max-height constraint to container - Removed */
-    /* margin-bottom: 3rem; /* Add space below the image container - Removed */
+    margin-bottom: 0; /* Remove bottom margin to eliminate gap */
 }
 
 /* Navbar */
@@ -36,9 +53,10 @@ main {
     border-radius: 0 !important; /* Ensure no radius on logo */
 }
 
-/* Apply pastel blue background to header */
+/* Apply gradient background to header (bottom to top) and remove shadow */
 header.navbar {
-    background-color: #B0E0E6 !important; /* Pastel sky blue, use !important to override potential Bootstrap styles if needed */
+    background: linear-gradient(to top, #ADD8E6, #E0FFFF) !important; /* Re-apply pastel blue gradient bottom to top */
+    box-shadow: none !important; /* Keep shadow removed */
 }
 
 
@@ -104,7 +122,7 @@ main img:not(.navbar-brand img) { /* Target all images in main, explicitly exclu
     max-height: 35vh; /* Re-apply previous max-height */
     /* height: 100%; /* Remove height 100% */
     /* Re-apply shadow and rounded corners */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Remove shadow to eliminate divider */
     border-radius: .25rem;
 }
 
@@ -122,10 +140,16 @@ main img:not(.navbar-brand img) { /* Target all images in main, explicitly exclu
     border-width: 2px;
 }
 
-/* Ensure no bottom margin for the services section */
+/* Make specific list group items transparent to show body background */
+.list-group-flush .list-group-item {
+    background-color: transparent; /* Inherit body gradient */
+}
+
+/* Ensure no top/bottom margin for the services section */
 #services-section {
+    margin-top: 0; /* Remove top margin to eliminate gap */
     margin-bottom: 0 !important; /* Remove bottom margin */
-    /* background: linear-gradient(to bottom, #f8f9fa, #ffffff); /* Light gray to white gradient */ /* Removed background */
+    /* background-color: #ADD8E6; /* Removed background color */
     /* padding-top: 3rem; /* Add padding top */ /* Removed padding */
     /* padding-bottom: 3rem; /* Add padding bottom */ /* Removed padding */
 }

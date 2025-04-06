@@ -51,11 +51,12 @@
     </header>
 
     <main class="flex-grow-1"> <!-- flex-grow-1 추가 -->
-        <!-- 설명 섹션 (구조 변경: 배경을 위한 외부 div 추가) -->
-        <div class="hero-section"> <!-- 배경 스타일을 위한 외부 div -->
-            <section id="description-section" class="text-center pt-5 pb-4"> <!-- 내부 섹션: 패딩 및 텍스트 정렬 -->
-                <div class="container"> <!-- 콘텐츠 너비 제한 -->
-                    <h1 class="display-4 fw-bold mb-3">최첨단 GIS 기술로 미래를 그리다</h1>
+        <div class="main-content-area"> <!-- New parent container -->
+            <!-- 설명 섹션 (Hero Section) -->
+            <div class="hero-section"> <!-- 배경 스타일을 위한 외부 div -->
+                <section id="description-section" class="text-center pt-5"> <!-- 내부 섹션: 패딩 및 텍스트 정렬 (pb-4 제거) -->
+                    <div class="container"> <!-- 콘텐츠 너비 제한 -->
+                        <h1 class="display-4 fw-bold mb-3">최첨단 GIS 기술로 미래를 그리다</h1>
                     <p class="lead mb-0">최첨단 항공 및 드론 기술을 활용한 정밀 정사영상 제작, 신뢰성 높은 GIS 데이터 구축, 맞춤형 소프트웨어 개발, 전문 컨설팅 및 실무 중심 교육까지.<br>다한지리정보(주)는 공간정보 분야의 전 과정을 아우르는 통합 솔루션을 제공하여 고객의 비즈니스 가치를 극대화합니다.</p>
                 </div>
             </section>
@@ -64,11 +65,11 @@
         <!-- <hr class="my-4"> --> <!-- 구분선 삭제 -->
 
         <!-- 이미지 섹션 (기존 Image Fill Container) -->
-        <section id="image-section" class="image-fill-container mb-4"> <!-- mb-4 추가 -->
+        <section id="image-section" class="image-fill-container"> <!-- mb-4 제거 -->
             <img src="images/main_gis_concept_01.jpg" alt="GIS 개념 이미지" class="concept-image">
         </section> <!-- 이미지 섹션 끝 -->
 
-        <hr class="my-4"> <!-- 구분선 추가 -->
+        <!-- <hr class="my-4">  구분선 추가 -->
 
         <!-- 서비스 카드 섹션 (기존 Services Section) -->
         <section id="services-section"> <!-- pb-5 클래스 제거, bg-light 클래스 제거 -->
@@ -126,8 +127,9 @@
                     </div>
                 </div>
             </div>
-            </div>
-        </section> <!-- Services Section End -->
+                </div>
+            </section> <!-- Services Section End -->
+        </div> <!-- End of main-content-area -->
 
     <footer class="bg-dark text-white py-1 mt-auto">
         <div class="container text-center">
