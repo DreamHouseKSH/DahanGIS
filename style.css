@@ -106,8 +106,8 @@ header.navbar {
     border-radius: .25rem .25rem 0 0; /* Ensure top radius matches card */
 }
 
-/* Add shadow to main content images, excluding the logo */
-main img:not(.navbar-brand img) { /* Target all images in main, explicitly exclude logo */
+/* Add shadow to main content images, excluding the logo and map tiles */
+main img:not(.navbar-brand img):not(#map img) { /* Target images in main, exclude logo and map tiles */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Consistent, moderate shadow */
     border-radius: .25rem; /* Consistent rounding */
 }
