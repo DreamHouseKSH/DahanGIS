@@ -11,13 +11,15 @@ const nextConfig = {
 
   // 이미지 최적화 설정
   images: {
-    loader: 'custom',
-    loaderFile: './image-loader.js',
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    unoptimized: false,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/webp'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-
+  
   // 정적 파일 처리 최적화
   compress: true,
   poweredByHeader: false,
@@ -25,6 +27,9 @@ const nextConfig = {
   // 빌드 최적화
   reactStrictMode: true,
   swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   optimizeFonts: true,
   
   // 성능 최적화
