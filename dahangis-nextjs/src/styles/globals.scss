@@ -2,26 +2,67 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-// Custom variables
-$primary: #0066cc;
-$secondary: #6c757d;
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
-$light: #f8f9fa;
-$dark: #343a40;
-
-// Custom styles
+// Theme variables
 :root {
-  --primary: #{$primary};
-  --secondary: #{$secondary};
-  --success: #{$success};
-  --info: #{$info};
-  --warning: #{$warning};
-  --danger: #{$danger};
-  --light: #{$light};
-  --dark: #{$dark};
+  // Light theme colors
+  --primary-color: #0066cc;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #dee2e6;
+  --card-bg: #ffffff;
+  --navbar-bg: #f8f9fa;
+  --footer-bg: #f8f9fa;
+}
+
+// Dark theme
+.dark-theme {
+  --primary-color: #4d94ff;
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #404040;
+  --card-bg: #2d2d2d;
+  --navbar-bg: #2d2d2d;
+  --footer-bg: #2d2d2d;
+
+  // Override Bootstrap dark mode styles
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  .navbar {
+    background-color: var(--navbar-bg) !important;
+    .nav-link {
+      color: var(--text-color);
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  .footer {
+    background-color: var(--footer-bg) !important;
+    color: var(--text-color);
+  }
+
+  .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    &:hover {
+      background-color: darken(#4d94ff, 10%);
+      border-color: darken(#4d94ff, 10%);
+    }
+  }
+
+  a {
+    color: var(--primary-color);
+    &:hover {
+      color: lighten(#4d94ff, 10%);
+    }
+  }
 }
 
 // Global styles
@@ -31,6 +72,7 @@ body {
   margin: 0;
   font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 // Utility classes
@@ -47,4 +89,24 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+// Theme toggle button styles
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }

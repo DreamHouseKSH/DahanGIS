@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import Script from 'next/script';
 import { Noto_Sans_KR } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import ThemeToggle from "@/components/ThemeToggle";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import '@/styles/globals.scss';
@@ -38,12 +42,19 @@ export default function RootLayout({
         />
       </head>
       <body className="d-flex flex-column min-vh-100">
-        <Header /> {/* 헤더 컴포넌트 렌더링 */}
-        <main className="flex-shrink-0"> {/* 메인 콘텐츠 영역 */}
-          {children} {/* 각 페이지의 콘텐츠가 여기에 렌더링됨 */}
-        </main>
-        <Footer /> {/* 푸터 컴포넌트 렌더링 */}
-        {/* Bootstrap JS */}
+        <ThemeProvider>
+          <ErrorBoundary 
+            error={null as unknown as Error} 
+            reset={() => window.location.reload()}
+          >
+            <Header /> {/* 헤더 컴포넌트 렌더링 */}
+            <main className="flex-shrink-0"> {/* 메인 콘텐츠 영역 */}
+              {children} {/* 각 페이지의 콘텐츠가 여기에 렌더링됨 */}
+            </main>
+            <Footer /> {/* 푸터 컴포넌트 렌더링 */}
+            <ThemeToggle />
+          </ErrorBoundary>
+        </ThemeProvider>
         <Script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
