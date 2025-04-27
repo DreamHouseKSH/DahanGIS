@@ -1,28 +1,18 @@
-import Link from 'next/link';
+'use client';
+
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Header() {
-  const pathname = usePathname();
-
-  const navigation = [
-    { name: '회사소개', href: '/about' },
-    { name: '서비스', href: '/services' },
-    { name: '정사영상', href: '/service-orthophoto' },
-    { name: '데이터 구축', href: '/service-data' },
-    { name: '교육', href: '/service-education' },
-    { name: '문의하기', href: '/contact' },
-  ];
-
   return (
-    <header className="navbar navbar-expand-lg navbar-light bg-light" role="banner">
-      <nav className="container" role="navigation" aria-label="메인 네비게이션">
-        <Link href="/" className="navbar-brand" aria-label="홈으로 이동">
+    <header className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container">
+        <Link href="/" className="navbar-brand">
           <Image
             src="/images/logo.png"
             alt="다한지리정보 로고"
             width={150}
-            height={50}
+            height={40}
             priority
           />
         </Link>
@@ -36,25 +26,44 @@ export default function Header() {
           aria-expanded="false"
           aria-label="메뉴 토글"
         >
-          <span className="navbar-toggler-icon" aria-hidden="true"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <nav className="collapse navbar-collapse" id="navbarNav" role="navigation" aria-label="메인 네비게이션">
           <ul className="navbar-nav ms-auto">
-            {navigation.map((item) => (
-              <li key={item.href} className="nav-item">
-                <Link
-                  href={item.href}
-                  className={`nav-link ${pathname === item.href ? 'active' : ''}`}
-                  aria-current={pathname === item.href ? 'page' : undefined}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
+            <li className="nav-item">
+              <Link href="/about" className="nav-link">
+                회사소개
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/services" className="nav-link">
+                서비스
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/ortho" className="nav-link">
+                정사영상
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/data" className="nav-link">
+                데이터 구축
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/education" className="nav-link">
+                교육
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/contact" className="nav-link">
+                문의하기
+              </Link>
+            </li>
           </ul>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }

@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+import React from 'react'
 
 // Mock Next.js의 useRouter
 jest.mock('next/router', () => ({
@@ -31,8 +32,18 @@ jest.mock('next/navigation', () => ({
 // Mock next/image
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props) => {
-    // eslint-disable-next-line jsx-a11y/alt-text
-    return <img {...props} />
+  default: function Image(props: any) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return React.createElement('img', props)
   },
 }))
+
+// 전역 Jest 매처 타입 확장
+declare global {
+  namespace jest {
+    interface Matchers<R> {
+      toBeInTheDocument(): R;
+      toHaveAttribute(attr: string, value?: string): R;
+    }
+  }
+}
