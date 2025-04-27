@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-// Noto Sans KR 폰트는 style.css에서 로드 및 적용하므로 제거
-// import { Noto_Sans_KR } from "next/font/google";
-import Script from 'next/script'; // Script 컴포넌트 import
-import Header from "@/components/Header"; // Header 컴포넌트 import
-import Footer from "@/components/Footer"; // Footer 컴포넌트 import
-// CSS import 순서 최적화
-import "./globals.css"; // Tailwind CSS 기본 스타일 (거의 비어있음)
-import '@/styles/style.css'; // 기존 스타일을 가장 나중에 import
+import { Noto_Sans_KR } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import '@/styles/globals.scss';
 
-// const notoSansKr = Noto_Sans_KR({
-//   weight: ["400", "700"], // 사용할 폰트 두께
-//   subsets: ["latin"], // 또는 'korean' subset 지원 여부 확인
-//   variable: "--font-noto-sans-kr", // CSS 변수 이름
-// });
-
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  display: 'swap',
+  preload: true,
+  fallback: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+});
 
 export const metadata: Metadata = {
-  // 기본 타이틀 및 설명 설정 (각 페이지에서 개별 설정 가능)
   title: "다한지리정보(주)",
   description: "다한지리정보(주)는 정밀 정사영상 제작, GIS 데이터 구축 및 컨설팅을 제공하는 GIS 전문 기업입니다.",
+  keywords: ["GIS", "정사영상", "데이터 구축", "GIS 컨설팅", "공간정보"],
+  authors: [{ name: "다한지리정보" }],
+  viewport: "width=device-width, initial-scale=1",
+  robots: "index, follow",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={notoSansKr.className}>
       <head>
         {/* Bootstrap CSS */}
         <link
