@@ -118,6 +118,7 @@ main.flex-shrink-0 > .container > .row.g-5 > .col-md-6 {
 
 /* Services Section Cards */
 .card {
+<<<<<<< Updated upstream
     border: none; /* Remove default border */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -132,6 +133,48 @@ main.flex-shrink-0 > .container > .row.g-5 > .col-md-6 {
     object-fit: cover; /* Ensure image covers the area */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Moderate shadow, removed !important */
     border-radius: .25rem .25rem 0 0; /* Ensure top radius matches card */
+=======
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--card-bg, #fff);
+  color: var(--text-color, #212529);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-title {
+  color: var(--primary-color, #0d6efd);
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 0.875rem;
+  color: var(--text-color, #212529);
+  flex-grow: 1;
+  margin-bottom: 1rem;
+>>>>>>> Stashed changes
 }
 
 /* Add shadow to main content images, excluding the logo, map tiles, and concept image */
@@ -159,6 +202,7 @@ main img:not(.navbar-brand img):not(#map img):not(.concept-image) { /* .concept-
   background-color: #E6F2FF; /* 연한 파스텔 블루 적용 */
 }
 
+<<<<<<< Updated upstream
 .card-title {
     color: #0d6efd; /* Bootstrap primary blue */
     font-weight: bold;
@@ -169,6 +213,8 @@ main img:not(.navbar-brand img):not(#map img):not(.concept-image) { /* .concept-
     font-size: 0.875rem; /* Reduce card text size */
 }
 
+=======
+>>>>>>> Stashed changes
 .btn-outline-primary {
     border-width: 2px;
 }

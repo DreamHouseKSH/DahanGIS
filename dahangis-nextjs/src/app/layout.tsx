@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import type { Metadata } from "next";
 // Noto Sans KR 폰트는 style.css에서 로드 및 적용하므로 제거
 // import { Noto_Sans_KR } from "next/font/google";
@@ -13,6 +14,14 @@ import '@/styles/style.css'; // 기존 스타일을 가장 나중에 import
 //   subsets: ["latin"], // 또는 'korean' subset 지원 여부 확인
 //   variable: "--font-noto-sans-kr", // CSS 변수 이름
 // });
+=======
+import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
+import { Noto_Sans_KR } from 'next/font/google';
+import ClientLayout from './ClientLayout';
+import '@/styles/globals.scss';
+import '@/styles/style.css';
+>>>>>>> Stashed changes
 
 
 export const metadata: Metadata = {
