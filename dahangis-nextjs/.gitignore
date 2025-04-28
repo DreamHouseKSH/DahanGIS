@@ -44,3 +44,5 @@ next-env.d.ts
 .cursor/
 *.cursor
 mcp.json
+
+*storybook.log

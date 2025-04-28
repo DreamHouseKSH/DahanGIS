@@ -9,8 +9,8 @@ export default {
         'custom-properties': false,
       },
     },
-    'cssnano': {
-      preset: 'advanced',
+    cssnano: {
+      preset: 'default', // 'advanced'에서 'default'로 변경 (cssnano 7.x 이상 호환)
     },
   },
 };

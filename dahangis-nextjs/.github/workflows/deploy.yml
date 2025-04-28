@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # main 브랜치에 push가 발생하면 실행
+    branches: [main] # main 브랜치에 push가 발생하면 실행
 
 # GitHub Pages에 대한 쓰기 권한 설정
 permissions:
@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: ''  # 커스텀 도메인 사용시 빈 문자열
+          NEXT_PUBLIC_BASE_PATH: '' # 커스텀 도메인 사용시 빈 문자열
 
       - name: Add CNAME file
         run: |
@@ -37,6 +37,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: out  # 배포할 폴더
-          branch: gh-pages  # 배포될 브랜치
-          clean: true  # 배포 전 기존 파일 정리 
+          folder: out # 배포할 폴더
+          branch: gh-pages # 배포될 브랜치
+          clean: true # 배포 전 기존 파일 정리

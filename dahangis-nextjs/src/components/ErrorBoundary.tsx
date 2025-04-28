@@ -24,10 +24,7 @@ export default function ErrorBoundary({ error, reset, children }: ErrorBoundaryP
             <br />
             잠시 후 다시 시도해 주세요.
           </p>
-          <button
-            onClick={reset}
-            className="btn btn-primary"
-          >
+          <button onClick={reset} className="btn btn-primary">
             다시 시도
           </button>
         </div>

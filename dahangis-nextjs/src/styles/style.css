@@ -1,25 +1,29 @@
 /* General Styles */
 body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: linear-gradient(to bottom, #ADD8E6, #E0FFFF); /* Apply pastel blue gradient top to bottom */
-    /* padding-top: 56px; /* Adjust for sticky navbar height */ /* Removed top padding */
-    display: flex; /* Apply sticky footer style */
-    flex-direction: column; /* Apply sticky footer style */
-    min-height: 100vh; /* Apply sticky footer style */
-    padding-bottom: 70px; /* Add padding for fixed footer height */
+  font-family: 'Noto Sans KR', sans-serif;
+  background: linear-gradient(
+    to bottom,
+    #add8e6,
+    #e0ffff
+  ); /* Apply pastel blue gradient top to bottom */
+  /* padding-top: 56px; /* Adjust for sticky navbar height */ /* Removed top padding */
+  display: flex; /* Apply sticky footer style */
+  flex-direction: column; /* Apply sticky footer style */
+  min-height: 100vh; /* Apply sticky footer style */
+  padding-bottom: 70px; /* Add padding for fixed footer height */
 }
 
 main {
-    flex-grow: 1; /* Ensure main takes up available space, pushing footer down */
-    display: flex; /* Make main a flex container to manage main-content-area */
-    flex-direction: column; /* Stack children vertically */
+  flex-grow: 1; /* Ensure main takes up available space, pushing footer down */
+  display: flex; /* Make main a flex container to manage main-content-area */
+  flex-direction: column; /* Stack children vertically */
 }
 
 /* Style for the main content area */
 .main-content-area {
-    /* display: flex; */ /* flex 관련 스타일 제거 */
-    /* flex-direction: column; */
-    /* flex-grow: 1; */
+  /* display: flex; */ /* flex 관련 스타일 제거 */
+  /* flex-direction: column; */
+  /* flex-grow: 1; */
 }
 
 /* 자식 섹션 flex 관련 스타일 제거 */
@@ -35,78 +39,85 @@ main {
 */
 
 /* New container for the image */
-.image-fill-container { /* This is also #image-section */
-    /* flex-grow: 1; /* Remove flex-grow */
-    display: flex; /* Use flex to center image inside */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    overflow: hidden; /* Prevent image overflow if needed */
-    /* min-height: 0; /* Not needed without flex-grow */
-    /* max-height: 40vh; /* Re-apply max-height constraint to container - Removed */
-    margin-bottom: 0; /* Remove bottom margin to eliminate gap */
+.image-fill-container {
+  /* This is also #image-section */
+  /* flex-grow: 1; /* Remove flex-grow */
+  display: flex; /* Use flex to center image inside */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  overflow: hidden; /* Prevent image overflow if needed */
+  /* min-height: 0; /* Not needed without flex-grow */
+  /* max-height: 40vh; /* Re-apply max-height constraint to container - Removed */
+  margin-bottom: 0; /* Remove bottom margin to eliminate gap */
 }
 
 /* Navbar */
 .navbar-brand {
-    color: #0d6efd; /* Bootstrap primary blue */
+  color: #0d6efd; /* Bootstrap primary blue */
 }
-.navbar-brand img { /* Explicitly target logo image */
-    box-shadow: none !important; /* Ensure no shadow on logo */
-    border-radius: 0 !important; /* Ensure no radius on logo */
+.navbar-brand img {
+  /* Explicitly target logo image */
+  box-shadow: none !important; /* Ensure no shadow on logo */
+  border-radius: 0 !important; /* Ensure no radius on logo */
 }
 
 /* Apply gradient background to header (bottom to top) and remove shadow */
 header.navbar {
-    background: linear-gradient(to top, #ADD8E6, #E0FFFF) !important; /* Re-apply pastel blue gradient bottom to top */
-    box-shadow: none !important; /* Keep shadow removed */
+  background: linear-gradient(
+    to top,
+    #add8e6,
+    #e0ffff
+  ) !important; /* Re-apply pastel blue gradient bottom to top */
+  box-shadow: none !important; /* Keep shadow removed */
 }
-
 
 /* Hero Section */
 .hero-section {
-    /* background: linear-gradient(to bottom, rgba(13, 110, 253, 0.1), rgba(255, 255, 255, 0.1)), #f8f9fa; /* Subtle gradient on light background */ /* Removed background */
-    /* Padding will be controlled by py-* class in HTML */
-    color: #343a40; /* Darker text for better contrast */
+  /* background: linear-gradient(to bottom, rgba(13, 110, 253, 0.1), rgba(255, 255, 255, 0.1)), #f8f9fa; /* Subtle gradient on light background */ /* Removed background */
+  /* Padding will be controlled by py-* class in HTML */
+  color: #343a40; /* Darker text for better contrast */
 }
 
 .hero-section h1 {
-    color: #212529; /* Even darker for heading */
-    font-size: calc(1.375rem + 1.5vw); /* Slightly reduce h1 size (Bootstrap's default is 1.375rem + 1.5vw for display-4) */
+  color: #212529; /* Even darker for heading */
+  font-size: calc(
+    1.375rem + 1.5vw
+  ); /* Slightly reduce h1 size (Bootstrap's default is 1.375rem + 1.5vw for display-4) */
 }
 @media (min-width: 1200px) {
   .hero-section h1 {
     font-size: 2.5rem; /* Adjust xl breakpoint size if needed */
-    }
+  }
 }
 
 /* Contact Page Specific Styles for Map Height */
 /* Ensure the main container allows its children to grow */
 main.flex-shrink-0 > .container {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 /* Make the specific row containing map/form fill height */
 main.flex-shrink-0 > .container > .row.g-5 {
-    flex-grow: 1;
-    display: flex; /* Ensure row itself is flex container */
+  flex-grow: 1;
+  display: flex; /* Ensure row itself is flex container */
 }
 
 /* Make the columns within that specific row stretch vertically */
 main.flex-shrink-0 > .container > .row.g-5 > .col-md-6 {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Make the map element grow within its column */
 #map {
-    flex-grow: 1; /* Take available vertical space */
-    min-height: 300px; /* Optional: Prevent it from becoming too small */
-    width: 100%; /* Ensure it takes full width */
+  flex-grow: 1; /* Take available vertical space */
+  min-height: 300px; /* Optional: Prevent it from becoming too small */
+  width: 100%; /* Ensure it takes full width */
 }
 .hero-section .lead {
-    font-size: 1.1rem; /* Slightly reduce lead paragraph size (Bootstrap's default is 1.25rem) */
+  font-size: 1.1rem; /* Slightly reduce lead paragraph size (Bootstrap's default is 1.25rem) */
 }
 
 /* Feature Section */
@@ -118,73 +129,77 @@ main.flex-shrink-0 > .container > .row.g-5 > .col-md-6 {
 
 /* Services Section Cards */
 .card {
-    border: none; /* Remove default border */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none; /* Remove default border */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Slight lift effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 .card-img-top {
-    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure image covers the area */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Moderate shadow, removed !important */
-    border-radius: .25rem .25rem 0 0; /* Ensure top radius matches card */
+  aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure image covers the area */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Moderate shadow, removed !important */
+  border-radius: 0.25rem 0.25rem 0 0; /* Ensure top radius matches card */
 }
 
 /* Add shadow to main content images, excluding the logo, map tiles, and concept image */
-main img:not(.navbar-brand img):not(#map img):not(.concept-image) { /* .concept-image 제외 추가 */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Consistent, moderate shadow */
-    border-radius: .25rem; /* Consistent rounding */
+main img:not(.navbar-brand img):not(#map img):not(.concept-image) {
+  /* .concept-image 제외 추가 */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Consistent, moderate shadow */
+  border-radius: 0.25rem; /* Consistent rounding */
 }
 
 /* Style for the concept image itself */
 .concept-image {
-    /* height: 100%; /* Fit container height - Removed, let flexbox handle centering */
-    width: auto; /* Maintain aspect ratio */
-    /* max-width: 100%; /* Prevent horizontal overflow - Removed */
-    /* max-height: 40vh; /* Limit image height directly - Removed */
-    object-fit: contain; /* Fit image within bounds without cropping */
-    max-height: 35vh; /* Re-apply previous max-height */
-    /* height: 100%; /* Remove height 100% */
-    /* Re-apply shadow and rounded corners */
-    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Remove shadow to eliminate divider */
-    border-radius: .25rem;
+  /* height: 100%; /* Fit container height - Removed, let flexbox handle centering */
+  width: auto; /* Maintain aspect ratio */
+  /* max-width: 100%; /* Prevent horizontal overflow - Removed */
+  /* max-height: 40vh; /* Limit image height directly - Removed */
+  object-fit: contain; /* Fit image within bounds without cropping */
+  max-height: 35vh; /* Re-apply previous max-height */
+  /* height: 100%; /* Remove height 100% */
+  /* Re-apply shadow and rounded corners */
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Remove shadow to eliminate divider */
+  border-radius: 0.25rem;
 }
 
 /* 핵심 역량 패널 배경색 직접 지정 (안쪽 div 타겟) */
-#strengths-section .col-md-4 .p-4 { /* 안쪽 div 선택 */
-  background-color: #E6F2FF; /* 연한 파스텔 블루 적용 */
+#strengths-section .col-md-4 .p-4 {
+  /* 안쪽 div 선택 */
+  background-color: #e6f2ff; /* 연한 파스텔 블루 적용 */
 }
 
 .card-title {
-    color: #0d6efd; /* Bootstrap primary blue */
-    font-weight: bold;
-    font-size: 1rem; /* Reduce title size slightly */
+  color: #0d6efd; /* Bootstrap primary blue */
+  font-weight: bold;
+  font-size: 1rem; /* Reduce title size slightly */
 }
 
 .card-text {
-    font-size: 0.875rem; /* Reduce card text size */
+  font-size: 0.875rem; /* Reduce card text size */
 }
 
 .btn-outline-primary {
-    border-width: 2px;
+  border-width: 2px;
 }
 
 /* Make specific list group items transparent to show body background */
 .list-group-flush .list-group-item {
-    background-color: transparent; /* Inherit body gradient */
+  background-color: transparent; /* Inherit body gradient */
 }
 
 /* Ensure no top/bottom margin for the services section */
 #services-section {
-    margin-top: 0; /* Remove top margin to eliminate gap */
-    margin-bottom: 0 !important; /* Remove bottom margin */
-    /* background-color: #ADD8E6; /* Removed background color */
-    /* padding-top: 3rem; /* Add padding top */ /* Removed padding */
-    /* padding-bottom: 3rem; /* Add padding bottom */ /* Removed padding */
+  margin-top: 0; /* Remove top margin to eliminate gap */
+  margin-bottom: 0 !important; /* Remove bottom margin */
+  /* background-color: #ADD8E6; /* Removed background color */
+  /* padding-top: 3rem; /* Add padding top */ /* Removed padding */
+  /* padding-bottom: 3rem; /* Add padding bottom */ /* Removed padding */
 }
 
 /* Vertically center the services section within main - REMOVED */
@@ -195,40 +210,40 @@ main img:not(.navbar-brand img):not(#map img):not(.concept-image) { /* .concept-
 
 /* Footer */
 footer {
-    background-color: #212529; /* Darker background for footer */
-    position: fixed; /* Fix footer to bottom */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1030; /* Ensure footer is above most content */
-    padding: 1rem 0; /* Keep internal padding */
-    color: rgba(255, 255, 255, 0.5); /* Keep light text color */
-    /* margin-top: auto; /* Remove flexbox push */
+  background-color: #212529; /* Darker background for footer */
+  position: fixed; /* Fix footer to bottom */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030; /* Ensure footer is above most content */
+  padding: 1rem 0; /* Keep internal padding */
+  color: rgba(255, 255, 255, 0.5); /* Keep light text color */
+  /* margin-top: auto; /* Remove flexbox push */
 }
 
 /* Responsive adjustments for mobile */
 @media (max-width: 767.98px) {
-    /* Adjust hero section text size for smaller screens */
-    .hero-section h1 {
-        font-size: calc(1.3rem + 1.2vw); /* Further reduce h1 size on small screens */
-    }
+  /* Adjust hero section text size for smaller screens */
+  .hero-section h1 {
+    font-size: calc(1.3rem + 1.2vw); /* Further reduce h1 size on small screens */
+  }
 
-    .hero-section .lead {
-        font-size: 1rem; /* Further reduce lead size on small screens */
-    }
+  .hero-section .lead {
+    font-size: 1rem; /* Further reduce lead size on small screens */
+  }
 
-    /* Slightly increase card text size for readability */
-    .card-text {
-        font-size: 0.9rem;
-    }
+  /* Slightly increase card text size for readability */
+  .card-text {
+    font-size: 0.9rem;
+  }
 
-    /* Make footer static on small screens */
-    footer {
-        position: static; /* Remove fixed positioning */
-    }
+  /* Make footer static on small screens */
+  footer {
+    position: static; /* Remove fixed positioning */
+  }
 
-    /* Remove body padding-bottom needed for fixed footer */
-    body {
-        padding-bottom: 0;
-    }
+  /* Remove body padding-bottom needed for fixed footer */
+  body {
+    padding-bottom: 0;
+  }
 }

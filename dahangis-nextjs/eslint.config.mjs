@@ -1,5 +1,5 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -12,6 +12,7 @@ export default [
       'plugin:@typescript-eslint/recommended',
       'plugin:react-hooks/recommended',
       'plugin:jsx-a11y/recommended',
+      'prettier',
     ],
     rules: {
       '@typescript-eslint/no-unused-vars': 'error',
@@ -21,7 +22,7 @@ export default [
       'jsx-a11y/anchor-is-valid': 'error',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'prefer-const': 'error',
-      'eqeqeq': ['error', 'always'],
+      eqeqeq: ['error', 'always'],
     },
     settings: {
       react: {

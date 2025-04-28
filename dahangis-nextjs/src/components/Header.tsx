@@ -8,13 +8,7 @@ export default function Header() {
     <header className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <Link href="/" className="navbar-brand">
-          <Image
-            src="/images/logo.png"
-            alt="다한지리정보 로고"
-            width={150}
-            height={40}
-            priority
-          />
+          <Image src="/images/logo.png" alt="다한지리정보 로고" width={150} height={40} priority />
         </Link>
 
         <button
@@ -29,7 +23,12 @@ export default function Header() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <nav className="collapse navbar-collapse" id="navbarNav" role="navigation" aria-label="메인 네비게이션">
+        <nav
+          className="collapse navbar-collapse"
+          id="navbarNav"
+          role="navigation"
+          aria-label="메인 네비게이션"
+        >
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link href="/about" className="nav-link">

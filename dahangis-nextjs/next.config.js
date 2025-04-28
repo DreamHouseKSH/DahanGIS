@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  
+
   // 정적 자산 설정
   basePath: '',
   assetPrefix: '',
-  
+
   // GitHub Pages 배포를 위한 설정
   trailingSlash: true,
 
@@ -18,12 +18,13 @@ const nextConfig = {
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    loaderFile: undefined,
   },
-  
+
   // 정적 파일 처리 최적화
   compress: true,
   poweredByHeader: false,
-  
+
   // 빌드 최적화
   reactStrictMode: true,
   swcMinify: true,
@@ -31,7 +32,7 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   optimizeFonts: true,
-  
+
   // 성능 최적화
   experimental: {
     optimizeCss: true,
@@ -44,4 +45,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;
