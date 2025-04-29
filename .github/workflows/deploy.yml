@@ -27,13 +27,12 @@ jobs:
       - name: "Clean out folder"
         run: rm -rf out
 
-      - name: "Build (Static Export)"
-        run: npm run build
-
-      - name: "Copy .next/static to out/_next/static"
+      - name: "Build (Static Export and Export)"
         run: |
-          mkdir -p out/_next/static
-          cp -r .next/static/* out/_next/static/
+          npm run build
+          npm run export
+
+      # Manual static copy removed; `npm run export` handles asset exporting
 
       - name: "Debug: List out/_next/static/css"
         run: ls -l out/_next/static/css || true
