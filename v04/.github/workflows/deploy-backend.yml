@@ -1,0 +1,38 @@
+name: Deploy Backend to LXC
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.LXC_PORT }} ${{ secrets.LXC_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Rsync source code to LXC
+        run: |
+          rsync -avz --delete -e "ssh -p ${{ secrets.LXC_PORT }}" ./ ${{ secrets.LXC_USER }}@${{ secrets.LXC_HOST }}:/home/kimsh/backend
+
+      - name: Cache node modules and build cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies and restart backend
+        run: |
+          ssh -p ${{ secrets.LXC_PORT }} ${{ secrets.LXC_USER }}@${{ secrets.LXC_HOST }} "cd /home/kimsh/backend && npm install && pm2 restart all || pm2 start npm --name backend -- run start"

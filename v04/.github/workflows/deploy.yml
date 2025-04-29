@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+# GitHub Pages에 대한 쓰기 권한 설정
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: dahangis-nextjs/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: dahangis-nextjs
+
+      - name: Build
+        run: npm run build
+        working-directory: dahangis-nextjs
+        env:
+          NEXT_PUBLIC_BASE_PATH: ''
+
+      - name: Add CNAME file
+        run: |
+          cp dahangis-nextjs/public/CNAME dahangis-nextjs/out/CNAME
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dahangis-nextjs/out
+          branch: gh-pages
+          clean: true     

@@ -1,0 +1,4 @@
+# macOS specific files
+.DS_Store
+
+dahangis-nextjs/node_modules/
