@@ -29,8 +29,6 @@ jobs:
 
       - name: Build (Static Export)
         run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: ''
 
       - name: Copy .next/static to out/_next/static
         run: |
