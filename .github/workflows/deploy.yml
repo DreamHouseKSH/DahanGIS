@@ -39,7 +39,7 @@ jobs:
         run: ls -l out/_next/static/css || true
 
       - name: "Debug: Show stylesheet href in HTML"
-        run: grep -o '/_next/static/css/[^"\']\+.css' out/index.html || true
+        run: grep -o "/_next/static/css/[^\"'\\]+.css" out/index.html || true
 
       - name: "Add CNAME file"
         run: |
