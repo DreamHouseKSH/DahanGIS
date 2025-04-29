@@ -46,9 +46,6 @@ export default function Header() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link href="/" className="nav-link">홈</Link>
-            </li>
-            <li className="nav-item">
               <Link href="/about" className="nav-link">회사 소개</Link>
             </li>
             <li className={`nav-item dropdown${dropdownOpen ? ' show' : ''}`} ref={dropdownRef}>
