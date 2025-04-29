@@ -69,7 +69,7 @@ export default function Header() {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#contact-section">문의</a>
+              <a className="nav-link" href="/contact">문의</a>
             </li>
           </ul>
         </div>
