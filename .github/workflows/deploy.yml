@@ -29,6 +29,11 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ''
 
+      - name: Copy .next/static to out/_next/static
+        run: |
+          mkdir -p out/_next/static
+          cp -r .next/static/* out/_next/static/
+
       - name: Add CNAME file
         run: |
           cp public/CNAME out/CNAME
