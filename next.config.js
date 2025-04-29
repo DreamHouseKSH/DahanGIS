@@ -10,4 +10,5 @@ module.exports = {
   images: {
     unoptimized: true, // next export 대응 (이미지 최적화 비활성화)
   },
+  output: 'export', // 최신 next.js 정적 export 방식 대응
 };
