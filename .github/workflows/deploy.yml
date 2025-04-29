@@ -11,41 +11,41 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: "Checkout repository"
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: "Setup Node.js"
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
-      - name: Install dependencies
+      - name: "Install dependencies"
         run: npm ci
 
-      - name: Clean out folder
+      - name: "Clean out folder"
         run: rm -rf out
 
-      - name: Build (Static Export)
+      - name: "Build (Static Export)"
         run: npm run build
 
-      - name: Copy .next/static to out/_next/static
+      - name: "Copy .next/static to out/_next/static"
         run: |
           mkdir -p out/_next/static
           cp -r .next/static/* out/_next/static/
 
-      - name: Debug: List out/_next/static/css
+      - name: "Debug: List out/_next/static/css"
         run: ls -l out/_next/static/css || true
 
-      - name: Debug: Show stylesheet href in HTML
+      - name: "Debug: Show stylesheet href in HTML"
         run: grep -o '/_next/static/css/[^"\']\+.css' out/index.html || true
 
-      - name: Add CNAME file
+      - name: "Add CNAME file"
         run: |
           cp public/CNAME out/CNAME
 
-      - name: Deploy to GitHub Pages
+      - name: "Deploy to GitHub Pages"
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: out
