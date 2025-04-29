@@ -47,8 +47,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Bootstrap 드롭다운 메뉴 강제 display 보정 */
-.dropdown-menu { display: none !important; }
-.dropdown-menu.show { display: block !important; }
+/*.dropdown-menu { display: none !important; }*/
+/*.dropdown-menu.show { display: block !important; }*/
 
 /* 헤더 커스텀 스타일(배경, 그림자, 여백 등) */
 .navbar {

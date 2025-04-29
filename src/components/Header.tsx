@@ -40,7 +40,7 @@ export default function Header() {
         <Link href="/" className="navbar-brand" aria-label="다한지리정보(주) 메인으로 이동">
           <Image src="/images/DAHAN_logo_v01.png" alt="다한지리정보(주) 로고" width={139} height={30} className="d-inline-block align-text-top" priority />
         </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="메뉴 열기">
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownServices" aria-controls="navbarDropdownServices" aria-expanded="false" aria-label="메뉴 열기">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
