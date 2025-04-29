@@ -108,17 +108,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* 문의(연락처) 섹션 */}
-        <section id="contact-section" className="py-5 bg-white border-top">
-          <div className="container text-center">
-            <h2 className="mb-4">문의하기</h2>
-            <p className="lead mb-3">서비스, 견적, 협업 등 궁금하신 점은 언제든 연락 주세요.</p>
-            <div className="mb-2"><b>대표전화</b> : <a href="tel:0212345678" className="text-decoration-none">02-1234-5678</a></div>
-            <div className="mb-2"><b>이메일</b> : <a href="mailto:info@dahangis.co.kr" className="text-decoration-none">info@dahangis.co.kr</a></div>
-            <div className="mb-2"><b>주소</b> : 경기도 고양시 일산서구 킨텍스로 240, GIFC 오피스 2211호</div>
-          </div>
-        </section>
       </div>
     </>
   );
