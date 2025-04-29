@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Head from 'next/head';
+import Script from 'next/script';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -31,6 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <Footer />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
