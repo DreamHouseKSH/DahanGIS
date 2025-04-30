@@ -60,7 +60,7 @@ export default function ContactPage() {
             <ul className="list-unstyled mb-4">
               <li className="mb-3">
                 <i className="bi bi-geo-alt-fill me-2 text-primary"></i>
-                <strong>주소:</strong> 경기도 고양시 일산서구 킨텍스로 240, GIFC 오피스 2211호 (대화동, 킨텍스 꿈이그린)
+                <strong>주소:</strong> 경기도 고양시 일산서구 킨텍스로 240, GIFC 오피스 2211호 (대화동, 킨텍스 꿈에그린)
               </li>
                <li className="mb-3">
                 <i className="bi bi-globe me-2 text-primary"></i>
