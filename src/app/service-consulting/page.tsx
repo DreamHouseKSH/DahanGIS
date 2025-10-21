@@ -32,35 +32,35 @@ export default function ServiceConsultingPage() {
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-search fs-3 text-primary mb-2"></i>
-              <h6>1. 현황 분석<br />& 요구사항 정의</h6>
+              <h6>1. 현황 분석<br />&amp; 요구사항 정의</h6>
               <p className="small mb-0">고객 비즈니스 환경, 기존 시스템, 데이터 현황 분석 및 명확한 목표 설정</p>
             </div>
           </div>
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-map fs-3 text-primary mb-2"></i>
-              <h6>2. 전략 수립<br />& 로드맵 설계</h6>
+              <h6>2. 전략 수립<br />&amp; 로드맵 설계</h6>
               <p className="small mb-0">최적의 GIS 도입/활용 전략, 기술 아키텍처, 단계별 실행 계획 수립</p>
             </div>
           </div>
           <div className="col-md-2">
              <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-lightbulb fs-3 text-primary mb-2"></i>
-              <h6>3. 솔루션 설계<br />& 기술 검증</h6>
+              <h6>3. 솔루션 설계<br />&amp; 기술 검증</h6>
               <p className="small mb-0">요구 기능 정의, 시스템 설계, 필요 기술 검토 및 PoC(개념 증명) 수행</p>
             </div>
           </div>
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-gear fs-3 text-primary mb-2"></i>
-              <h6>4. 시스템 구축<br />& 통합 지원</h6>
+              <h6>4. 시스템 구축<br />&amp; 통합 지원</h6>
               <p className="small mb-0">솔루션 개발/구축 관리, 기존 시스템 연계, 데이터 마이그레이션 지원</p>
             </div>
           </div>
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-graph-up fs-3 text-primary mb-2"></i>
-              <h6>5. 성과 측정<br />& 안정화 지원</h6>
+              <h6>5. 성과 측정<br />&amp; 안정화 지원</h6>
               <p className="small mb-0">도입 효과 분석, 사용자 교육, 시스템 안정화 및 운영 최적화 지원</p>
             </div>
           </div>

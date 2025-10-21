@@ -43,7 +43,7 @@ export default function AboutPage() {
               <p>다한지리정보는 최신 GIS 기술 트렌드를 선도하며, 고객에게 혁신적인 솔루션을 제공하기 위해 끊임없이 연구 개발에 투자하고 있습니다.</p>
               <ul>
                 <li><strong>정밀 측량 및 영상 처리:</strong> 고해상도 항공/위성/드론 영상 처리, LiDAR 데이터 분석, 정밀 GNSS 측량 기술을 통해 정확한 공간 정보 기반을 마련합니다.</li>
-                <li><strong>공간 데이터베이스 및 빅데이터:</strong> 대용량 공간 데이터의 효율적인 저장, 관리, 분석을 위한 데이터베이스 설계 및 빅데이터 처리 기술을 보유하고 있습니다. (예: PostGIS, GeoServer, Hadoop/Spark 연계)</li>
+                <li><strong>공간 데이터베이스 및 빅데이터:</strong> 대용량 공간 데이터의 효율적인 저장, 관리, 분석을 위한 데이터베이스 설계 및 빅데이터 처리 기술을 보유하고 있습니다. (예시: PostGIS, GeoServer, Hadoop/Spark 연계)</li>
                 <li><strong>GIS 소프트웨어 개발:</strong> 웹/모바일/데스크톱 환경을 위한 맞춤형 GIS 애플리케이션 개발 역량을 갖추고 있으며, 오픈소스 GIS(QGIS, OpenLayers 등) 및 상용 GIS(ArcGIS 등) 플랫폼 모두에 능숙합니다.</li>
                 <li><strong>인공지능(AI) 및 머신러닝:</strong> 위성 영상 분석, 객체 탐지, 변화 탐지 등 GIS 분야에 AI 및 머신러닝 기술을 접목하여 새로운 가치를 창출합니다.</li>
               </ul>

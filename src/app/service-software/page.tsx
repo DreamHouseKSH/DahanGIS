@@ -13,7 +13,9 @@ export default function ServiceSoftwarePage() {
         </div>
         <div className="col-md-6">
           <h2 className="h4 mb-3">서비스 소개</h2>
-          <p>다한지리정보는 현업 인터뷰와 로그 분석으로 업무 목표, KPI, 연계 시스템 요건을 정리하고 명확한 요구사항 명세를 작성합니다. 이 명세를 토대로 검증된 GIS 엔진과 모듈형 아키텍처를 구현하며, 보안 진단과 코드 리뷰, 단계별 시연으로 기능과 품질을 검증합니다. 구축 이후에는 성능 모니터링과 사용자 교육, 장애 대응을 포함한 유지관리 프로그램을 운영해 안정적인 시스템을 유지합니다.</p>
+          <p>다한지리정보는 현업 인터뷰와 로그 분석으로 업무 목표, KPI, 연계 시스템 요건을 정리하고 명확한 요구사항 명세를 작성합니다.</p>
+          <p>이 명세를 토대로 검증된 GIS 엔진과 모듈형 아키텍처를 구현하며, 보안 진단과 코드 리뷰, 단계별 시연으로 기능과 품질을 검증합니다.</p>
+          <p>구축 이후에는 성능 모니터링과 사용자 교육, 장애 대응을 포함한 유지관리 프로그램을 운영해 안정적인 시스템을 유지합니다.</p>
           <h3 className="h5 mt-4 mb-2">개발 분야</h3>
           <ul>
             <li>웹 기반 GIS 시스템 개발</li>
@@ -32,35 +34,35 @@ export default function ServiceSoftwarePage() {
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-clipboard-check fs-3 text-primary mb-2"></i>
-              <h6>1. 요구사항 분석<br />& 기획</h6>
+              <h6>1. 요구사항 분석<br />&amp; 기획</h6>
               <p className="small mb-0">고객 요구사항 심층 분석, 기능 정의, 화면 설계(UI/UX)</p>
             </div>
           </div>
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-palette fs-3 text-primary mb-2"></i>
-              <h6>2. 시스템 설계<br />& 아키텍처</h6>
+              <h6>2. 시스템 설계<br />&amp; 아키텍처</h6>
               <p className="small mb-0">최적 시스템 아키텍처 설계, 데이터 모델링, 기술 스택 선정</p>
             </div>
           </div>
           <div className="col-md-2">
              <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-code-slash fs-3 text-primary mb-2"></i>
-              <h6>3. 소프트웨어 개발<br />& 구현</h6>
+              <h6>3. 소프트웨어 개발<br />&amp; 구현</h6>
               <p className="small mb-0">설계 기반 코딩, 단위 테스트, 코드 리뷰</p>
             </div>
           </div>
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-bug fs-3 text-primary mb-2"></i>
-              <h6>4. 통합 테스트<br />& 품질 보증</h6>
+              <h6>4. 통합 테스트<br />&amp; 품질 보증</h6>
               <p className="small mb-0">기능/성능/보안 테스트, 사용자 인수 테스트(UAT)</p>
             </div>
           </div>
           <div className="col-md-2">
             <div className="p-3 border rounded shadow-sm h-100">
               <i className="bi bi-server fs-3 text-primary mb-2"></i>
-              <h6>5. 배포 및 안정화<br />& 유지보수</h6>
+              <h6>5. 배포 및 안정화<br />&amp; 유지보수</h6>
               <p className="small mb-0">시스템 배포, 운영 지원, 업데이트 및 기술 지원</p>
             </div>
           </div>

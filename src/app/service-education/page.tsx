@@ -138,8 +138,7 @@ export default function ServiceEducationPage() {
                 <div className="card shadow-sm">
                   <div className="card-body text-center">
                     <i className="bi bi-quote fs-1 text-muted"></i>
-                    {/* eslint-disable-next-line react/no-unescaped-entities */}
-                    <p className="card-text mt-2">"비전공자도 쉽게 따라갈 수 있도록 기초부터 탄탄하게 알려주셔서 좋았습니다. 실습 위주의 수업 덕분에 실무 능력이 많이 향상되었어요."</p>
+                    <p className="card-text mt-2">&quot;비전공자도 쉽게 따라갈 수 있도록 기초부터 탄탄하게 알려주셔서 좋았습니다. 실습 위주의 수업 덕분에 실무 능력이 많이 향상되었어요.&quot;</p>
                     <footer className="blockquote-footer mt-3">김OO <cite title="Source Title"> (GIS 기본 과정 수료생)</cite></footer>
                   </div>
                 </div>
@@ -148,8 +147,7 @@ export default function ServiceEducationPage() {
                  <div className="card shadow-sm">
                    <div className="card-body text-center">
                     <i className="bi bi-quote fs-1 text-muted"></i>
-                    {/* eslint-disable-next-line react/no-unescaped-entities */}
-                    <p className="card-text mt-2">"ArcGIS Pro의 다양한 기능을 실무 데이터로 직접 다뤄볼 수 있어서 유익했습니다. 강사님의 꼼꼼한 피드백 덕분에 어려운 부분도 잘 해결할 수 있었습니다."</p>
+                    <p className="card-text mt-2">&quot;ArcGIS Pro의 다양한 기능을 실무 데이터로 직접 다뤄볼 수 있어서 유익했습니다. 강사님의 꼼꼼한 피드백 덕분에 어려운 부분도 잘 해결할 수 있었습니다.&quot;</p>
                     <footer className="blockquote-footer mt-3">이△△ <cite title="Source Title">(ArcGIS 활용 실무 과정 수료생)</cite></footer>
                   </div>
                 </div>
@@ -158,8 +156,7 @@ export default function ServiceEducationPage() {
                  <div className="card shadow-sm">
                    <div className="card-body text-center">
                     <i className="bi bi-quote fs-1 text-muted"></i>
-                    {/* eslint-disable-next-line react/no-unescaped-entities */}
-                    <p className="card-text mt-2">"Python으로 GIS 데이터를 다루는 방법을 체계적으로 배울 수 있었습니다. 복잡한 분석 작업을 자동화할 수 있게 되어 업무 효율이 크게 올랐습니다."</p>
+                    <p className="card-text mt-2">&quot;Python으로 GIS 데이터를 다루는 방법을 체계적으로 배울 수 있었습니다. 복잡한 분석 작업을 자동화할 수 있게 되어 업무 효율이 크게 올랐습니다.&quot;</p>
                     <footer className="blockquote-footer mt-3">박XX <cite title="Source Title">(Python 기반 공간 데이터 분석 과정 수료생)</cite></footer>
                   </div>
                 </div>
