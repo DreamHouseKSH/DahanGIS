@@ -1,13 +1,85 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css');
 
+/* ============================================
+   테마 CSS 변수 정의 (라이트/다크 모드)
+   ============================================ */
+
+:root {
+  /* 라이트 모드 (기본) */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-navbar: #ffffff;
+  --bg-footer: #212529;
+  --bg-dropdown: #ffffff;
+  --bg-dropdown-hover: #f1f3f5;
+
+  --text-primary: #222222;
+  --text-secondary: #6c757d;
+  --text-muted: #868e96;
+  --text-footer: #f8f9fa;
+
+  --border-color: #e9ecef;
+  --border-light: #dee2e6;
+
+  --accent-color: #0d6efd;
+  --accent-hover: #0b5ed7;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  --card-border: #e9ecef;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+
+  /* 트랜지션 */
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 다크 모드 */
+[data-theme="dark"] {
+  --bg-primary: #1a1d21;
+  --bg-secondary: #212529;
+  --bg-card: #2d3238;
+  --bg-navbar: #212529;
+  --bg-footer: #141619;
+  --bg-dropdown: #2d3238;
+  --bg-dropdown-hover: #3d4248;
+
+  --text-primary: #e9ecef;
+  --text-secondary: #adb5bd;
+  --text-muted: #868e96;
+  --text-footer: #e9ecef;
+
+  --border-color: #3d4248;
+  --border-light: #495057;
+
+  --accent-color: #4dabf7;
+  --accent-hover: #74c0fc;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  --card-border: #3d4248;
+  --input-bg: #2d3238;
+  --input-border: #495057;
+}
+
+/* ============================================
+   기본 스타일
+   ============================================ */
+
 body {
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', Arial, sans-serif;
-  background: #f8f9fa;
-  color: #222;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: var(--theme-transition);
 }
 
 /* 각 주요 섹션(파트)에 동일한 배경 적용 */
@@ -16,24 +88,64 @@ body {
 #image-section,
 #services-section,
 #contact-section {
-  background: #f8f9fa !important;
+  background: var(--bg-primary) !important;
+  transition: var(--theme-transition);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
+  color: var(--text-primary);
+  transition: var(--theme-transition);
 }
 
-.hero-section {
-  border-bottom: 1px solid #e9ecef;
+p, span, div {
+  transition: var(--theme-transition);
 }
+
+.lead {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================
+   Hero 섹션
+   ============================================ */
+
+.hero-section {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ============================================
+   카드 스타일
+   ============================================ */
 
 .card {
   border-radius: .75rem;
   overflow: hidden;
+  background: var(--bg-card);
+  border-color: var(--card-border);
+  box-shadow: var(--shadow-card);
+  transition: var(--theme-transition);
+}
+
+.card-body {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.card-title {
+  color: var(--text-primary);
+}
+
+.card-text {
+  color: var(--text-secondary);
 }
 
 .card-img-top {
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .concept-image {
@@ -41,56 +153,268 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: .25rem;
 }
 
-/* Bootstrap icons override for color */
+/* ============================================
+   Bootstrap 아이콘
+   ============================================ */
+
 .bi {
-  color: #0d6efd;
+  color: var(--accent-color);
 }
 
-/* Bootstrap 드롭다운 메뉴 강제 display 보정 */
-/*.dropdown-menu { display: none !important; }*/
-/*.dropdown-menu.show { display: block !important; }*/
+/* ============================================
+   네비게이션 바 (헤더)
+   ============================================ */
 
-/* 헤더 커스텀 스타일(배경, 그림자, 여백 등) */
 .navbar {
-  background: #fff !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+  background: var(--bg-navbar) !important;
+  box-shadow: var(--shadow-sm) !important;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   position: sticky;
   top: 0;
   z-index: 1030;
+  transition: var(--theme-transition);
 }
+
 .navbar .navbar-brand img {
   height: 32px;
 }
+
 .navbar-nav .nav-link {
   font-weight: 500;
-  color: #222 !important;
+  color: var(--text-primary) !important;
   margin-right: 0.5rem;
+  transition: var(--theme-transition);
 }
-.navbar-nav .nav-link.active, .navbar-nav .nav-link:focus, .navbar-nav .nav-link:hover {
-  color: #0d6efd !important;
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover {
+  color: var(--accent-color) !important;
 }
+
+/* 다크모드 토글러 아이콘 */
+[data-theme="dark"] .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ============================================
+   드롭다운 메뉴
+   ============================================ */
+
 .dropdown-menu {
   min-width: 200px;
   font-size: 1rem;
   margin-top: 0.5rem;
-}
-.dropdown-item:active, .dropdown-item:focus, .dropdown-item:hover {
-  background: #f1f3f5;
-  color: #0d6efd;
+  background: var(--bg-dropdown);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: var(--theme-transition);
 }
 
-/* 헤더 상단 고정, 푸터 하단 고정 레이아웃 */
-html, body {
-  height: 100%;
+.dropdown-item {
+  color: var(--text-primary);
+  transition: var(--theme-transition);
 }
-.main-content-area {
-  flex: 1 0 auto;
+
+.dropdown-item:active,
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background: var(--bg-dropdown-hover);
+  color: var(--accent-color);
 }
+
+/* ============================================
+   푸터
+   ============================================ */
+
 footer {
   position: sticky;
   bottom: 0;
   width: 100%;
   margin-top: auto;
+  background: var(--bg-footer);
+  color: var(--text-footer);
+  transition: var(--theme-transition);
+}
+
+/* ============================================
+   폼 요소
+   ============================================ */
+
+.form-control {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+}
+
+.form-control:focus {
+  background: var(--input-bg);
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   버튼
+   ============================================ */
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-outline-primary {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+/* ============================================
+   테마 토글 버튼
+   ============================================ */
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--theme-transition);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-dropdown-hover);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* ============================================
+   레이아웃
+   ============================================ */
+
+html, body {
+  height: 100%;
+}
+
+.main-content-area {
+  flex: 1 0 auto;
+}
+
+/* ============================================
+   컨테이너 및 섹션 배경
+   ============================================ */
+
+.container {
+  transition: var(--theme-transition);
+}
+
+.bg-light {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* ============================================
+   리스트 그룹
+   ============================================ */
+
+.list-group-item {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+}
+
+/* ============================================
+   테이블
+   ============================================ */
+
+.table {
+  color: var(--text-primary);
+}
+
+.table-bordered {
+  border-color: var(--border-color);
+}
+
+.table > :not(caption) > * > * {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+/* ============================================
+   알럿/배지
+   ============================================ */
+
+.alert {
+  transition: var(--theme-transition);
+}
+
+.badge {
+  transition: var(--theme-transition);
+}
+
+/* ============================================
+   섹션별 배경 (다크모드 대응)
+   ============================================ */
+
+.section-light {
+  background: var(--bg-primary);
+}
+
+.section-white {
+  background: var(--bg-secondary);
+}
+
+/* ============================================
+   이미지 필터 (다크모드에서 밝기 조절)
+   ============================================ */
+
+[data-theme="dark"] .concept-image {
+  filter: brightness(0.9);
+}
+
+/* ============================================
+   스크롤바 (다크모드)
+   ============================================ */
+
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }

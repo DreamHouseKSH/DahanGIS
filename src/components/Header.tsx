@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function Header() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav align-items-center">
             <li className="nav-item">
               <Link href="/about" className="nav-link">회사 소개</Link>
             </li>
@@ -70,6 +71,10 @@ export default function Header() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/contact">문의</a>
+            </li>
+            {/* 테마 토글 버튼 */}
+            <li className="nav-item ms-2">
+              <ThemeToggle />
             </li>
           </ul>
         </div>
