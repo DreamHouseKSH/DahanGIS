@@ -392,11 +392,102 @@ html, body {
    ============================================ */
 
 .section-light {
-  background: var(--bg-primary);
+  background: var(--bg-primary) !important;
 }
 
 .section-white {
-  background: var(--bg-secondary);
+  background: var(--bg-secondary) !important;
+}
+
+/* ============================================
+   Accordion (아코디언) 컴포넌트
+   ============================================ */
+
+.accordion {
+  --bs-accordion-bg: var(--bg-card);
+  --bs-accordion-border-color: var(--border-color);
+  --bs-accordion-btn-bg: var(--bg-card);
+  --bs-accordion-btn-color: var(--text-primary);
+  --bs-accordion-active-bg: var(--bg-dropdown-hover);
+  --bs-accordion-active-color: var(--text-primary);
+}
+
+.accordion-item {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.accordion-button {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--bg-dropdown-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+.accordion-button::after {
+  filter: var(--bs-accordion-btn-icon-filter, none);
+}
+
+[data-theme="dark"] .accordion-button::after {
+  filter: invert(1) grayscale(100%) brightness(2);
+}
+
+.accordion-body {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+.accordion-collapse {
+  background-color: var(--bg-card) !important;
+}
+
+/* ============================================
+   핵심 역량 카드 (홈페이지)
+   ============================================ */
+
+.shadow-sm.rounded.h-100,
+.shadow-sm.rounded {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ============================================
+   기타 Bootstrap 컴포넌트 다크모드
+   ============================================ */
+
+.border {
+  border-color: var(--border-color) !important;
+}
+
+.border-bottom {
+  border-bottom-color: var(--border-color) !important;
+}
+
+.border-top {
+  border-top-color: var(--border-color) !important;
+}
+
+.text-dark {
+  color: var(--text-primary) !important;
+}
+
+.bg-body {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-body-secondary {
+  background-color: var(--bg-secondary) !important;
+}
+
+.bg-body-tertiary {
+  background-color: var(--bg-card) !important;
 }
 
 /* ============================================
