@@ -74,8 +74,9 @@
 
 body {
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', Arial, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--bg-primary) !important;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -94,16 +95,17 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   transition: var(--theme-transition);
 }
 
-p, span, div {
+p {
+  color: var(--text-primary) !important;
   transition: var(--theme-transition);
 }
 
 .lead {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 .text-muted {
@@ -125,23 +127,25 @@ p, span, div {
 .card {
   border-radius: .75rem;
   overflow: hidden;
-  background: var(--bg-card);
-  border-color: var(--card-border);
+  background: var(--bg-card) !important;
+  background-color: var(--bg-card) !important;
+  border-color: var(--card-border) !important;
   box-shadow: var(--shadow-card);
   transition: var(--theme-transition);
 }
 
 .card-body {
-  background: var(--bg-card);
-  color: var(--text-primary);
+  background: var(--bg-card) !important;
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
 }
 
 .card-title {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .card-text {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 .card-img-top {
@@ -206,22 +210,25 @@ p, span, div {
   min-width: 200px;
   font-size: 1rem;
   margin-top: 0.5rem;
-  background: var(--bg-dropdown);
-  border-color: var(--border-color);
+  background: var(--bg-dropdown) !important;
+  background-color: var(--bg-dropdown) !important;
+  border-color: var(--border-color) !important;
   box-shadow: var(--shadow-md);
   transition: var(--theme-transition);
 }
 
 .dropdown-item {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
   transition: var(--theme-transition);
 }
 
 .dropdown-item:active,
 .dropdown-item:focus,
 .dropdown-item:hover {
-  background: var(--bg-dropdown-hover);
-  color: var(--accent-color);
+  background: var(--bg-dropdown-hover) !important;
+  background-color: var(--bg-dropdown-hover) !important;
+  color: var(--accent-color) !important;
 }
 
 /* ============================================
@@ -233,8 +240,9 @@ footer {
   bottom: 0;
   width: 100%;
   margin-top: auto;
-  background: var(--bg-footer);
-  color: var(--text-footer);
+  background: var(--bg-footer) !important;
+  background-color: var(--bg-footer) !important;
+  color: var(--text-footer) !important;
   transition: var(--theme-transition);
 }
 
@@ -243,16 +251,18 @@ footer {
    ============================================ */
 
 .form-control {
-  background: var(--input-bg);
-  border-color: var(--input-border);
-  color: var(--text-primary);
+  background: var(--input-bg) !important;
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
   transition: var(--theme-transition);
 }
 
 .form-control:focus {
-  background: var(--input-bg);
-  border-color: var(--accent-color);
-  color: var(--text-primary);
+  background: var(--input-bg) !important;
+  background-color: var(--input-bg) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--text-primary) !important;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
 }
 
@@ -342,9 +352,9 @@ html, body {
    ============================================ */
 
 .list-group-item {
-  background-color: var(--bg-card);
-  border-color: var(--border-color);
-  color: var(--text-primary);
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
   transition: var(--theme-transition);
 }
 
@@ -353,16 +363,16 @@ html, body {
    ============================================ */
 
 .table {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .table-bordered {
-  border-color: var(--border-color);
+  border-color: var(--border-color) !important;
 }
 
 .table > :not(caption) > * > * {
-  background-color: var(--bg-card);
-  border-color: var(--border-color);
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
 }
 
 /* ============================================
