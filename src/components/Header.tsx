@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+import VersionToggle from './VersionToggle';
 
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -71,6 +72,10 @@ export default function Header() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/contact">문의</a>
+            </li>
+            {/* 버전 토글 버튼 */}
+            <li className="nav-item ms-2">
+              <VersionToggle />
             </li>
             {/* 테마 토글 버튼 */}
             <li className="nav-item ms-2">

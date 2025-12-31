@@ -1,7 +1,9 @@
 import './globals.css';
+import '../styles/v2.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ThemeProvider } from '../contexts/ThemeContext';
+import { VersionProvider } from '../contexts/VersionContext';
 import Script from 'next/script';
 
 export const metadata = {
@@ -59,11 +61,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <ThemeProvider>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <VersionProvider>
+          <ThemeProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </VersionProvider>
         <Script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
           strategy="beforeInteractive"
