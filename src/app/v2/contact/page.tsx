@@ -92,6 +92,36 @@ export default function V2ContactPage() {
 
                   <div className="mb-4">
                     <h5 style={{ color: 'var(--v2-text-light)', fontSize: '1rem' }}>
+                      <i className="bi bi-telephone-fill me-2" style={{ color: 'var(--v2-accent)' }} />
+                      전화
+                    </h5>
+                    <p style={{ marginLeft: '1.75rem' }}>
+                      <a
+                        href="tel:031-994-5422"
+                        style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}
+                      >
+                        031-994-5422
+                      </a>
+                    </p>
+                  </div>
+
+                  <div className="mb-4">
+                    <h5 style={{ color: 'var(--v2-text-light)', fontSize: '1rem' }}>
+                      <i className="bi bi-envelope-fill me-2" style={{ color: 'var(--v2-accent)' }} />
+                      이메일
+                    </h5>
+                    <p style={{ marginLeft: '1.75rem' }}>
+                      <a
+                        href="mailto:info@dahangis.co.kr"
+                        style={{ color: 'var(--v2-accent)', textDecoration: 'none' }}
+                      >
+                        info@dahangis.co.kr
+                      </a>
+                    </p>
+                  </div>
+
+                  <div className="mb-4">
+                    <h5 style={{ color: 'var(--v2-text-light)', fontSize: '1rem' }}>
                       <i className="bi bi-globe me-2" style={{ color: 'var(--v2-accent)' }} />
                       웹사이트
                     </h5>
@@ -104,6 +134,53 @@ export default function V2ContactPage() {
                       >
                         www.dahangis.co.kr
                       </a>
+                    </p>
+                  </div>
+
+                  <div className="mb-0">
+                    <h5 style={{ color: 'var(--v2-text-light)', fontSize: '1rem' }}>
+                      <i className="bi bi-clock me-2" style={{ color: 'var(--v2-accent)' }} />
+                      운영 시간
+                    </h5>
+                    <p style={{ color: 'rgba(255,255,255,0.85)', marginLeft: '1.75rem', marginBottom: '0.25rem' }}>
+                      평일: 09:00 - 18:00
+                    </p>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', marginLeft: '1.75rem', fontSize: '0.9rem' }}>
+                      (점심시간: 12:00 - 13:00 / 주말 및 공휴일 휴무)
+                    </p>
+                  </div>
+                </GlassCardBody>
+              </GlassCard>
+
+              {/* 교통 안내 */}
+              <GlassCard className="mb-4">
+                <GlassCardBody>
+                  <h3 className="v2-content-title mb-4">
+                    <i className="bi bi-signpost-2 me-2" style={{ color: 'var(--v2-accent)' }} />
+                    교통 안내
+                  </h3>
+
+                  <div className="mb-4">
+                    <h5 style={{ color: 'var(--v2-text-light)', fontSize: '1rem' }}>
+                      <i className="bi bi-train-front me-2" style={{ color: 'var(--v2-accent)' }} />
+                      지하철
+                    </h5>
+                    <p style={{ color: 'rgba(255,255,255,0.85)', marginLeft: '1.75rem', lineHeight: '1.7' }}>
+                      3호선 <strong style={{ color: 'var(--v2-accent)' }}>대화역</strong> 3번 출구<br />
+                      도보 약 5분
+                    </p>
+                  </div>
+
+                  <div className="mb-0">
+                    <h5 style={{ color: 'var(--v2-text-light)', fontSize: '1rem' }}>
+                      <i className="bi bi-bus-front me-2" style={{ color: 'var(--v2-accent)' }} />
+                      버스
+                    </h5>
+                    <p style={{ color: 'rgba(255,255,255,0.85)', marginLeft: '1.75rem', lineHeight: '1.7' }}>
+                      킨텍스 정류장 하차<br />
+                      <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>
+                        광역: 1000, 1100, 200 / 일반: 33, 82, 88
+                      </span>
                     </p>
                   </div>
                 </GlassCardBody>
