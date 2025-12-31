@@ -80,6 +80,110 @@ export default function V2ServiceOrthoPage() {
             </div>
           </div>
 
+          {/* 제작 프로세스 */}
+          <div className="v2-content-card mt-4">
+            <h3 className="v2-content-title text-center mb-4">
+              <i className="bi bi-diagram-3 me-2" style={{ color: 'var(--v2-accent)' }} />
+              제작 프로세스
+            </h3>
+            <div className="row g-3 justify-content-center">
+              <div className="col-6 col-md-2">
+                <div className="text-center p-3" style={{ background: 'var(--glass-bg)', borderRadius: '12px' }}>
+                  <div className="v2-feature-icon mx-auto mb-2" style={{ width: '50px', height: '50px' }}>
+                    <i className="bi bi-clipboard-check" style={{ fontSize: '1.2rem' }} />
+                  </div>
+                  <h6 style={{ color: 'var(--v2-text-light)', fontSize: '0.85rem' }}>1. 촬영 계획</h6>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem', marginBottom: 0 }}>대상 지역 분석<br />비행 경로 설정</p>
+                </div>
+              </div>
+              <div className="col-6 col-md-2">
+                <div className="text-center p-3" style={{ background: 'var(--glass-bg)', borderRadius: '12px' }}>
+                  <div className="v2-feature-icon mx-auto mb-2" style={{ width: '50px', height: '50px' }}>
+                    <i className="bi bi-camera-reels" style={{ fontSize: '1.2rem' }} />
+                  </div>
+                  <h6 style={{ color: 'var(--v2-text-light)', fontSize: '0.85rem' }}>2. 데이터 취득</h6>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem', marginBottom: 0 }}>항공/드론 촬영<br />GCP 측량</p>
+                </div>
+              </div>
+              <div className="col-6 col-md-2">
+                <div className="text-center p-3" style={{ background: 'var(--glass-bg)', borderRadius: '12px' }}>
+                  <div className="v2-feature-icon mx-auto mb-2" style={{ width: '50px', height: '50px' }}>
+                    <i className="bi bi-cpu" style={{ fontSize: '1.2rem' }} />
+                  </div>
+                  <h6 style={{ color: 'var(--v2-text-light)', fontSize: '0.85rem' }}>3. 데이터 처리</h6>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem', marginBottom: 0 }}>항공삼각측량<br />DEM/DSM 생성</p>
+                </div>
+              </div>
+              <div className="col-6 col-md-2">
+                <div className="text-center p-3" style={{ background: 'var(--glass-bg)', borderRadius: '12px' }}>
+                  <div className="v2-feature-icon mx-auto mb-2" style={{ width: '50px', height: '50px' }}>
+                    <i className="bi bi-palette" style={{ fontSize: '1.2rem' }} />
+                  </div>
+                  <h6 style={{ color: 'var(--v2-text-light)', fontSize: '0.85rem' }}>4. 후처리</h6>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem', marginBottom: 0 }}>색상 보정<br />모자이크 편집</p>
+                </div>
+              </div>
+              <div className="col-6 col-md-2">
+                <div className="text-center p-3" style={{ background: 'var(--glass-bg)', borderRadius: '12px' }}>
+                  <div className="v2-feature-icon mx-auto mb-2" style={{ width: '50px', height: '50px' }}>
+                    <i className="bi bi-patch-check" style={{ fontSize: '1.2rem' }} />
+                  </div>
+                  <h6 style={{ color: 'var(--v2-text-light)', fontSize: '0.85rem' }}>5. 품질 검수</h6>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem', marginBottom: 0 }}>정확도 검증<br />최종 납품</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 정확도 및 품질 기준 */}
+          <div className="v2-content-card mt-4">
+            <h3 className="v2-content-title text-center mb-4">
+              <i className="bi bi-rulers me-2" style={{ color: 'var(--v2-accent)' }} />
+              정확도 및 품질 기준
+            </h3>
+            <p className="v2-content-text text-center mb-4" style={{ maxWidth: '700px', margin: '0 auto' }}>
+              국토교통부 공공측량 작업규정을 준수하여 최고 품질의 정사영상을 제공합니다.
+            </p>
+            <div className="table-responsive">
+              <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '0 8px' }}>
+                <thead>
+                  <tr>
+                    <th style={{ padding: '12px 16px', background: 'var(--v2-accent)', color: 'white', borderRadius: '8px 0 0 8px', textAlign: 'left' }}>항목</th>
+                    <th style={{ padding: '12px 16px', background: 'var(--v2-accent)', color: 'white', textAlign: 'center' }}>기준</th>
+                    <th style={{ padding: '12px 16px', background: 'var(--v2-accent)', color: 'white', borderRadius: '0 8px 8px 0', textAlign: 'left' }}>비고</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text-light)', borderRadius: '8px 0 0 8px' }}>공간 해상도 (GSD)</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text)', textAlign: 'center' }}>2cm ~ 50cm</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'rgba(255,255,255,0.7)', borderRadius: '0 8px 8px 0' }}>고객 요구에 따라 협의</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text-light)', borderRadius: '8px 0 0 8px' }}>수평 위치 정확도</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text)', textAlign: 'center' }}>1 GSD 이하</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'rgba(255,255,255,0.7)', borderRadius: '0 8px 8px 0' }}>RMSE 기준</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text-light)', borderRadius: '8px 0 0 8px' }}>수직 위치 정확도</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text)', textAlign: 'center' }}>1.5 GSD 이하</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'rgba(255,255,255,0.7)', borderRadius: '0 8px 8px 0' }}>DEM/DSM 정확도 기반</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text-light)', borderRadius: '8px 0 0 8px' }}>데이터 포맷</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text)', textAlign: 'center' }}>GeoTIFF, ECW, JPG</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'rgba(255,255,255,0.7)', borderRadius: '0 8px 8px 0' }}>고객 요구 포맷 지원</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text-light)', borderRadius: '8px 0 0 8px' }}>좌표계</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'var(--v2-text)', textAlign: 'center' }}>GRS80 / UTM-K 등</td>
+                    <td style={{ padding: '12px 16px', background: 'var(--glass-bg)', color: 'rgba(255,255,255,0.7)', borderRadius: '0 8px 8px 0' }}>국가 표준 좌표계 지원</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           {/* 적용 분야 */}
           <div className="row g-4 mt-4">
             <div className="col-lg-6">

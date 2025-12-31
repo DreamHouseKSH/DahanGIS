@@ -79,6 +79,205 @@ export default function V2ServiceDataPage() {
             </div>
           </div>
 
+          {/* 데이터 구축 방법론 */}
+          <div className="v2-content-card mt-4">
+            <h3 className="v2-content-title text-center mb-4">
+              <i className="bi bi-diagram-3 me-2" style={{ color: 'var(--v2-accent)' }} />
+              데이터 구축 방법론
+            </h3>
+            <p className="v2-content-text text-center mb-4" style={{ maxWidth: '700px', margin: '0 auto' }}>
+              체계적인 방법론과 최신 기술을 적용하여 정확하고 효율적인 GIS 데이터 구축을 수행합니다.
+            </p>
+            <div className="row g-3">
+              <div className="col-md-6 col-lg-4">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <div className="d-flex align-items-center mb-3">
+                      <span style={{
+                        background: 'var(--v2-accent)',
+                        color: 'white',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 'bold',
+                        marginRight: '12px'
+                      }}>1</span>
+                      <h5 style={{ color: 'var(--v2-text-light)', margin: 0 }}>요구사항 분석</h5>
+                    </div>
+                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: 0 }}>
+                      고객 요구 파악, 데이터 모델링, 속성 설계, 작업 지침서 작성
+                    </p>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+              <div className="col-md-6 col-lg-4">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <div className="d-flex align-items-center mb-3">
+                      <span style={{
+                        background: 'var(--v2-accent)',
+                        color: 'white',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 'bold',
+                        marginRight: '12px'
+                      }}>2</span>
+                      <h5 style={{ color: 'var(--v2-text-light)', margin: 0 }}>데이터 수집</h5>
+                    </div>
+                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: 0 }}>
+                      정사영상, 수치지도, 현장 조사 자료 등 다양한 소스 활용
+                    </p>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+              <div className="col-md-6 col-lg-4">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <div className="d-flex align-items-center mb-3">
+                      <span style={{
+                        background: 'var(--v2-accent)',
+                        color: 'white',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 'bold',
+                        marginRight: '12px'
+                      }}>3</span>
+                      <h5 style={{ color: 'var(--v2-text-light)', margin: 0 }}>편집 및 구조화</h5>
+                    </div>
+                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: 0 }}>
+                      오류 수정, 위상 관계 정립, 표준화된 레이어 구조 적용
+                    </p>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+              <div className="col-md-6 col-lg-4">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <div className="d-flex align-items-center mb-3">
+                      <span style={{
+                        background: 'var(--v2-accent)',
+                        color: 'white',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 'bold',
+                        marginRight: '12px'
+                      }}>4</span>
+                      <h5 style={{ color: 'var(--v2-text-light)', margin: 0 }}>품질 검수</h5>
+                    </div>
+                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: 0 }}>
+                      자동화 검수 도구와 전문가 검사로 정확성, 완전성, 일관성 검증
+                    </p>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+              <div className="col-md-6 col-lg-4">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <div className="d-flex align-items-center mb-3">
+                      <span style={{
+                        background: 'var(--v2-accent)',
+                        color: 'white',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 'bold',
+                        marginRight: '12px'
+                      }}>5</span>
+                      <h5 style={{ color: 'var(--v2-text-light)', margin: 0 }}>산출물 납품</h5>
+                    </div>
+                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: 0 }}>
+                      고객 요구 포맷 변환, 메타데이터 및 보고서 제공
+                    </p>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+            </div>
+          </div>
+
+          {/* 분야별 구축 사례 */}
+          <div className="v2-content-card mt-4">
+            <h3 className="v2-content-title text-center mb-4">
+              <i className="bi bi-briefcase me-2" style={{ color: 'var(--v2-accent)' }} />
+              분야별 구축 사례
+            </h3>
+            <div className="row g-4">
+              <div className="col-md-6">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <h5 style={{ color: 'var(--v2-accent)', marginBottom: '0.75rem' }}>
+                      <i className="bi bi-bank me-2" />
+                      공공 행정
+                    </h5>
+                    <p className="v2-content-text" style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                      스마트시티 통합 플랫폼, 국토/도시 계획, 재난/안전 관리, 시설물 관리 대장 전산화
+                    </p>
+                    <small style={{ color: 'rgba(255,255,255,0.5)' }}>예: OO시 스마트시티 플랫폼 데이터 구축</small>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+              <div className="col-md-6">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <h5 style={{ color: 'var(--v2-accent)', marginBottom: '0.75rem' }}>
+                      <i className="bi bi-building me-2" />
+                      민간 기업
+                    </h5>
+                    <p className="v2-content-text" style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                      물류/유통망 분석, 상권 분석, 통신망 관리, 부동산 개발 정보 시스템
+                    </p>
+                    <small style={{ color: 'rgba(255,255,255,0.5)' }}>예: XX 유통사 전국 배송망 최적화 데이터 구축</small>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+              <div className="col-md-6">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <h5 style={{ color: 'var(--v2-accent)', marginBottom: '0.75rem' }}>
+                      <i className="bi bi-tree me-2" />
+                      환경 및 에너지
+                    </h5>
+                    <p className="v2-content-text" style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                      환경 영향 평가, 신재생 에너지 입지 분석, 산림 자원 관리
+                    </p>
+                    <small style={{ color: 'rgba(255,255,255,0.5)' }}>예: OO 에너지 기업 태양광 발전 최적 입지 분석</small>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+              <div className="col-md-6">
+                <GlassCard className="h-100">
+                  <GlassCardBody>
+                    <h5 style={{ color: 'var(--v2-accent)', marginBottom: '0.75rem' }}>
+                      <i className="bi bi-truck me-2" />
+                      교통 및 국방
+                    </h5>
+                    <p className="v2-content-text" style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                      지능형 교통 시스템(ITS), 자율주행 정밀 도로 지도, 국방 지형 정보
+                    </p>
+                    <small style={{ color: 'rgba(255,255,255,0.5)' }}>예: △△ 연구기관 자율주행 테스트베드 데이터 구축</small>
+                  </GlassCardBody>
+                </GlassCard>
+              </div>
+            </div>
+          </div>
+
           {/* 지원 포맷 */}
           <div className="row g-4 mt-4">
             <div className="col-lg-6">
