@@ -53,11 +53,12 @@ export default function GlassCard({
 interface GlassCardBodyProps {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function GlassCardBody({ children, className = '' }: GlassCardBodyProps) {
+export function GlassCardBody({ children, className = '', style }: GlassCardBodyProps) {
   return (
-    <div className={`v2-glass-card-body ${className}`.trim()}>
+    <div className={`v2-glass-card-body ${className}`.trim()} style={style}>
       {children}
     </div>
   );
