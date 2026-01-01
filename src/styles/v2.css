@@ -484,6 +484,16 @@
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
+/* 다크모드에서 로고 밝기 조정 */
+.v2-navbar .navbar-brand img {
+  filter: brightness(1.1);
+}
+
+[data-theme="dark"] .navbar-brand img,
+.v2-navbar .navbar-brand img {
+  filter: brightness(0) invert(1);
+}
+
 /* ============================================
    v2 푸터
    ============================================ */
