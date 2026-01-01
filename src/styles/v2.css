@@ -484,14 +484,17 @@
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* 다크모드에서 로고 밝기 조정 */
-.v2-navbar .navbar-brand img {
-  filter: brightness(1.1);
+/* 다크모드에서 로고 배경 처리 */
+.v2-navbar .navbar-brand {
+  position: relative;
+  padding: 6px 16px 6px 12px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-[data-theme="dark"] .navbar-brand img,
 .v2-navbar .navbar-brand img {
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
 /* ============================================
