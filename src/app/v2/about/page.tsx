@@ -251,59 +251,6 @@ export default function V2AboutPage() {
             </div>
           </div>
 
-          {/* 연혁 */}
-          <div className="v2-content-card mt-4">
-            <h3 className="v2-content-title text-center mb-4">
-              <i className="bi bi-clock-history me-2" style={{ color: 'var(--v2-accent)' }} />
-              회사 연혁
-            </h3>
-            <div className="row">
-              <div className="col-md-6">
-                <ul className="v2-list">
-                  <li>
-                    <span className="v2-list-icon"><i className="bi bi-calendar3" style={{ color: 'white', fontSize: '0.7rem' }} /></span>
-                    <div>
-                      <strong>2020</strong> - 회사 설립
-                    </div>
-                  </li>
-                  <li>
-                    <span className="v2-list-icon"><i className="bi bi-calendar3" style={{ color: 'white', fontSize: '0.7rem' }} /></span>
-                    <div>
-                      <strong>2021</strong> - GIS 컨설팅 사업 확장
-                    </div>
-                  </li>
-                  <li>
-                    <span className="v2-list-icon"><i className="bi bi-calendar3" style={{ color: 'white', fontSize: '0.7rem' }} /></span>
-                    <div>
-                      <strong>2022</strong> - 드론 측량 사업 시작
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-md-6">
-                <ul className="v2-list">
-                  <li>
-                    <span className="v2-list-icon"><i className="bi bi-calendar3" style={{ color: 'white', fontSize: '0.7rem' }} /></span>
-                    <div>
-                      <strong>2023</strong> - 소프트웨어 개발팀 구성
-                    </div>
-                  </li>
-                  <li>
-                    <span className="v2-list-icon"><i className="bi bi-calendar3" style={{ color: 'white', fontSize: '0.7rem' }} /></span>
-                    <div>
-                      <strong>2024</strong> - GIS 교육 서비스 런칭
-                    </div>
-                  </li>
-                  <li>
-                    <span className="v2-list-icon"><i className="bi bi-calendar3" style={{ color: 'white', fontSize: '0.7rem' }} /></span>
-                    <div>
-                      <strong>2025</strong> - v2 서비스 플랫폼 오픈
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
