@@ -1,0 +1,846 @@
+/* ============================================
+   DahanGIS v3 - Cloud Dancer Theme (2026)
+   "차분함, 평온함, 균형감을 담은 부드러운 화이트 톤"
+   팬톤 2026 올해의 컬러: Cloud Dancer #F4EDE4
+   ============================================ */
+
+/* ============================================
+   v3 CSS 변수 정의
+   ============================================ */
+
+:root {
+  /* Cloud Dancer 컬러 팔레트 */
+  --cloud-dancer: #F4EDE4;
+  --cloud-soft: #F9F7F4;
+  --cloud-warm: #EFE8DE;
+  --cloud-mist: #E8E2D9;
+
+  /* 뉴트럴 톤 */
+  --neutral-50: #FAFAF8;
+  --neutral-100: #F5F4F0;
+  --neutral-200: #E8E6E1;
+  --neutral-300: #D4D1CA;
+  --neutral-400: #B8B4AC;
+  --neutral-500: #9A958C;
+  --neutral-600: #7A756C;
+  --neutral-700: #5A564F;
+  --neutral-800: #3A3835;
+  --neutral-900: #2A2826;
+
+  /* 액센트 컬러 - 차분한 톤 */
+  --accent-sage: #8B9A8B;       /* 세이지 그린 */
+  --accent-teal: #7B9B9B;       /* 청회색/틸 */
+  --accent-taupe: #A99F94;      /* 토프/베이지 */
+  --accent-stone: #9B8B7D;      /* 스톤/브라운 */
+  --accent-slate: #8A9199;      /* 슬레이트/청회색 */
+
+  /* Soft Glassmorphism 변수 */
+  --v3-glass-bg: rgba(255, 255, 255, 0.7);
+  --v3-glass-bg-strong: rgba(255, 255, 255, 0.85);
+  --v3-glass-border: rgba(180, 175, 168, 0.3);
+  --v3-glass-blur: 16px;
+  --v3-glass-shadow: 0 4px 24px rgba(58, 56, 53, 0.06);
+  --v3-glass-shadow-hover: 0 8px 32px rgba(58, 56, 53, 0.1);
+
+  /* 그라디언트 - 미묘하고 부드러운 */
+  --gradient-cloud: linear-gradient(135deg, #F9F7F4 0%, #F4EDE4 50%, #EFE8DE 100%);
+  --gradient-mist: linear-gradient(135deg, #F4EDE4 0%, #E8E2D9 100%);
+  --gradient-sage: linear-gradient(135deg, #8B9A8B 0%, #7B9B9B 100%);
+  --gradient-warm: linear-gradient(135deg, #A99F94 0%, #9B8B7D 100%);
+  --gradient-soft: linear-gradient(180deg, rgba(244, 237, 228, 0.8) 0%, rgba(249, 247, 244, 0.4) 100%);
+
+  /* 애니메이션 - 더 부드럽고 느린 */
+  --v3-animation-duration: 0.5s;
+  --v3-animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --v3-animation-gentle: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* v3 텍스트 컬러 */
+  --v3-text-primary: #3A3835;
+  --v3-text-secondary: #5A564F;
+  --v3-text-muted: #7A756C;
+  --v3-text-light: #9A958C;
+  --v3-accent: #8B9A8B;
+  --v3-accent-secondary: #7B9B9B;
+}
+
+/* 다크모드 v3 변수 */
+[data-theme="dark"] {
+  --cloud-dancer: #2A2826;
+  --cloud-soft: #1F1E1C;
+  --cloud-warm: #353330;
+  --cloud-mist: #3A3835;
+
+  --v3-glass-bg: rgba(42, 40, 38, 0.7);
+  --v3-glass-bg-strong: rgba(42, 40, 38, 0.85);
+  --v3-glass-border: rgba(255, 255, 255, 0.1);
+  --v3-glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  --v3-glass-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  --gradient-cloud: linear-gradient(135deg, #1F1E1C 0%, #2A2826 50%, #353330 100%);
+  --gradient-mist: linear-gradient(135deg, #2A2826 0%, #3A3835 100%);
+
+  --v3-text-primary: #E8E6E1;
+  --v3-text-secondary: #B8B4AC;
+  --v3-text-muted: #9A958C;
+  --v3-text-light: #D4D1CA;
+}
+
+/* ============================================
+   v3 페이지 기본 스타일
+   ============================================ */
+
+.v3-page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   v3 배경 - Cloud Dancer
+   ============================================ */
+
+.v3-cloud-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-cloud);
+  z-index: -2;
+}
+
+.v3-cloud-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139, 154, 139, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(123, 155, 155, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(169, 159, 148, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ============================================
+   플로팅 클라우드 (배경 장식)
+   ============================================ */
+
+.v3-floating-clouds {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.v3-cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: floatCloud 25s ease-in-out infinite;
+}
+
+.v3-cloud-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(139, 154, 139, 0.15);
+  top: -150px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.v3-cloud-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(123, 155, 155, 0.12);
+  top: 40%;
+  right: -80px;
+  animation-delay: -8s;
+}
+
+.v3-cloud-3 {
+  width: 350px;
+  height: 350px;
+  background: rgba(169, 159, 148, 0.1);
+  bottom: -80px;
+  left: 25%;
+  animation-delay: -16s;
+}
+
+@keyframes floatCloud {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(20px, -15px) scale(1.02); }
+  50% { transform: translate(-15px, 10px) scale(0.98); }
+  75% { transform: translate(15px, 20px) scale(1.01); }
+}
+
+/* ============================================
+   v3 Soft Glass Card
+   ============================================ */
+
+.v3-glass-card {
+  background: var(--v3-glass-bg);
+  backdrop-filter: blur(var(--v3-glass-blur));
+  -webkit-backdrop-filter: blur(var(--v3-glass-blur));
+  border: 1px solid var(--v3-glass-border);
+  border-radius: 24px;
+  box-shadow: var(--v3-glass-shadow);
+  transition: all var(--v3-animation-duration) var(--v3-animation-gentle);
+  overflow: hidden;
+}
+
+.v3-glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--v3-glass-shadow-hover);
+  border-color: rgba(139, 154, 139, 0.3);
+}
+
+.v3-glass-card.no-hover:hover {
+  transform: none;
+  box-shadow: var(--v3-glass-shadow);
+}
+
+.v3-glass-card-body {
+  padding: 2rem;
+  color: var(--v3-text-primary);
+}
+
+.v3-glass-card-strong {
+  background: var(--v3-glass-bg-strong);
+}
+
+/* ============================================
+   v3 Hero 섹션
+   ============================================ */
+
+.v3-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.v3-hero-content {
+  text-align: center;
+  z-index: 10;
+  max-width: 900px;
+  padding: 0 2rem;
+}
+
+.v3-hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--v3-text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  animation: v3FadeInUp 1s var(--v3-animation-gentle) forwards;
+}
+
+.v3-hero-subtitle {
+  font-size: 1.35rem;
+  color: var(--v3-text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  animation: v3FadeInUp 1s var(--v3-animation-gentle) 0.2s forwards;
+  opacity: 0;
+}
+
+.v3-hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: v3FadeInUp 1s var(--v3-animation-gentle) 0.4s forwards;
+  opacity: 0;
+}
+
+/* ============================================
+   v3 버튼 스타일
+   ============================================ */
+
+.v3-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all var(--v3-animation-duration) var(--v3-animation-gentle);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+
+.v3-btn-primary {
+  background: var(--v3-glass-bg-strong);
+  backdrop-filter: blur(10px);
+  color: var(--v3-text-primary);
+  border: 1px solid var(--v3-glass-border);
+}
+
+.v3-btn-primary:hover {
+  background: var(--cloud-mist);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 56, 53, 0.1);
+  color: var(--v3-text-primary);
+  text-decoration: none;
+}
+
+.v3-btn-sage {
+  background: var(--gradient-sage);
+  color: white;
+  border: none;
+}
+
+.v3-btn-sage:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 154, 139, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.v3-btn-outline {
+  background: transparent;
+  color: var(--v3-text-primary);
+  border: 1.5px solid var(--neutral-300);
+}
+
+.v3-btn-outline:hover {
+  background: var(--v3-glass-bg);
+  border-color: var(--accent-sage);
+  color: var(--accent-sage);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* ============================================
+   v3 섹션 스타일
+   ============================================ */
+
+.v3-section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.v3-section-title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--v3-text-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.v3-section-subtitle {
+  font-size: 1.15rem;
+  color: var(--v3-text-muted);
+  text-align: center;
+  margin-bottom: 4rem;
+  line-height: 1.6;
+}
+
+/* ============================================
+   v3 서비스 그리드
+   ============================================ */
+
+.v3-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.v3-service-card {
+  background: var(--v3-glass-bg);
+  backdrop-filter: blur(var(--v3-glass-blur));
+  border: 1px solid var(--v3-glass-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all var(--v3-animation-duration) var(--v3-animation-gentle);
+  position: relative;
+  overflow: hidden;
+}
+
+.v3-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-sage);
+  opacity: 0;
+  transition: opacity var(--v3-animation-duration) var(--v3-animation-gentle);
+}
+
+.v3-service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--v3-glass-shadow-hover);
+}
+
+.v3-service-card:hover::before {
+  opacity: 1;
+}
+
+.v3-service-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-sage);
+  border-radius: 20px;
+  padding: 1.25rem;
+}
+
+.v3-service-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+.v3-service-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--v3-text-primary);
+  margin-bottom: 1rem;
+}
+
+.v3-service-description {
+  color: var(--v3-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.v3-service-link {
+  color: var(--accent-sage);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.v3-service-link:hover {
+  color: var(--accent-teal);
+  gap: 0.75rem;
+}
+
+/* ============================================
+   v3 애니메이션
+   ============================================ */
+
+@keyframes v3FadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes v3FadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes v3SlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes v3SlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.v3-animate-fadeIn {
+  animation: v3FadeIn 0.8s var(--v3-animation-gentle) forwards;
+}
+
+.v3-animate-fadeInUp {
+  animation: v3FadeInUp 0.8s var(--v3-animation-gentle) forwards;
+}
+
+.v3-animate-slideInLeft {
+  animation: v3SlideInLeft 0.8s var(--v3-animation-gentle) forwards;
+}
+
+.v3-animate-slideInRight {
+  animation: v3SlideInRight 0.8s var(--v3-animation-gentle) forwards;
+}
+
+/* 지연 애니메이션 */
+.v3-delay-1 { animation-delay: 0.1s; }
+.v3-delay-2 { animation-delay: 0.2s; }
+.v3-delay-3 { animation-delay: 0.3s; }
+.v3-delay-4 { animation-delay: 0.4s; }
+.v3-delay-5 { animation-delay: 0.5s; }
+
+/* ============================================
+   v3 네비게이션
+   ============================================ */
+
+.v3-navbar {
+  background: var(--v3-glass-bg-strong) !important;
+  backdrop-filter: blur(var(--v3-glass-blur));
+  -webkit-backdrop-filter: blur(var(--v3-glass-blur));
+  border-bottom: 1px solid var(--v3-glass-border);
+}
+
+.v3-navbar .navbar-brand,
+.v3-navbar .nav-link {
+  color: var(--v3-text-primary) !important;
+}
+
+.v3-navbar .nav-link:hover {
+  color: var(--accent-sage) !important;
+}
+
+.v3-navbar .navbar-brand {
+  position: relative;
+  padding: 6px 16px 6px 12px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ============================================
+   v3 푸터
+   ============================================ */
+
+.v3-footer {
+  background: var(--v3-glass-bg-strong) !important;
+  backdrop-filter: blur(var(--v3-glass-blur));
+  -webkit-backdrop-filter: blur(var(--v3-glass-blur));
+  border-top: 1px solid var(--v3-glass-border);
+  color: var(--v3-text-primary);
+  padding: 3rem 0;
+}
+
+/* ============================================
+   v3 컨테이너
+   ============================================ */
+
+.v3-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ============================================
+   v3 일러스트레이션
+   ============================================ */
+
+.v3-illustration {
+  max-width: 100%;
+  height: auto;
+}
+
+.v3-illustration-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* ============================================
+   v3 특징 그리드
+   ============================================ */
+
+.v3-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.v3-feature-item {
+  background: var(--v3-glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--v3-glass-border);
+  border-radius: 20px;
+  padding: 1.75rem;
+  text-align: center;
+  transition: all 0.4s var(--v3-animation-gentle);
+}
+
+.v3-feature-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--v3-glass-shadow-hover);
+}
+
+.v3-feature-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  background: var(--gradient-sage);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v3-feature-icon i {
+  font-size: 1.4rem;
+  color: white;
+}
+
+.v3-feature-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--v3-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.v3-feature-text {
+  color: var(--v3-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ============================================
+   v3 컨텐츠 페이지 스타일
+   ============================================ */
+
+.v3-content-section {
+  padding: 4rem 0;
+}
+
+.v3-content-card {
+  background: var(--v3-glass-bg-strong);
+  backdrop-filter: blur(var(--v3-glass-blur));
+  border: 1px solid var(--v3-glass-border);
+  border-radius: 24px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+}
+
+.v3-content-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--v3-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.v3-content-text {
+  color: var(--v3-text-secondary);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.v3-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.v3-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--v3-glass-border);
+  color: var(--v3-text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.v3-list li:last-child {
+  border-bottom: none;
+}
+
+.v3-list-icon {
+  width: 22px;
+  height: 22px;
+  background: var(--gradient-sage);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   v3 폼 스타일
+   ============================================ */
+
+.v3-form-control {
+  background: var(--v3-glass-bg) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--v3-glass-border) !important;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  color: var(--v3-text-primary) !important;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.v3-form-control::placeholder {
+  color: var(--v3-text-muted) !important;
+  opacity: 1 !important;
+}
+
+.v3-form-control:focus {
+  background: var(--v3-glass-bg-strong) !important;
+  border-color: var(--accent-sage) !important;
+  box-shadow: 0 0 0 3px rgba(139, 154, 139, 0.15);
+  outline: none;
+}
+
+.v3-form-label {
+  color: var(--v3-text-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   v3 반응형 디자인
+   ============================================ */
+
+@media (max-width: 992px) {
+  .v3-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .v3-hero-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .v3-section-title {
+    font-size: 1.85rem;
+  }
+
+  .v3-services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .v3-hero {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+
+  .v3-hero-title {
+    font-size: 2rem;
+  }
+
+  .v3-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .v3-hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .v3-section {
+    padding: 4rem 0;
+  }
+
+  .v3-section-title {
+    font-size: 1.6rem;
+  }
+
+  .v3-glass-card-body {
+    padding: 1.5rem;
+  }
+
+  .v3-service-card {
+    padding: 2rem;
+  }
+
+  .v3-cloud {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 576px) {
+  .v3-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .v3-container {
+    padding: 0 1rem;
+  }
+
+  .v3-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   v3 유틸리티 클래스
+   ============================================ */
+
+.v3-text-sage {
+  color: var(--accent-sage);
+}
+
+.v3-text-teal {
+  color: var(--accent-teal);
+}
+
+.v3-text-taupe {
+  color: var(--accent-taupe);
+}
+
+.v3-bg-sage {
+  background: var(--gradient-sage);
+}
+
+.v3-bg-warm {
+  background: var(--gradient-warm);
+}
+
+.v3-bg-cloud {
+  background: var(--gradient-cloud);
+}
+
+/* ============================================
+   v3 다크모드 조정
+   ============================================ */
+
+[data-theme="dark"] .v3-cloud {
+  opacity: 0.2;
+}
+
+[data-theme="dark"] .v3-service-card,
+[data-theme="dark"] .v3-feature-item,
+[data-theme="dark"] .v3-glass-card {
+  background: var(--v3-glass-bg);
+  border-color: var(--v3-glass-border);
+}
+
+[data-theme="dark"] .v3-navbar .navbar-brand {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%);
+}
