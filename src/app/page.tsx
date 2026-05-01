@@ -1,114 +1,182 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { processSteps, services, strengths } from '../components/dahangis/data';
+
+const statItems = [
+  ['정밀', '고해상도 정사영상 · GCP 보정'],
+  ['표준', '국가 좌표계 · 공공 납품 포맷'],
+  ['통합', '수집 · 구축 · 분석 · 운영'],
+  ['공공·민간', '정부 · 지자체 · 기업'],
+];
 
 export default function Home() {
   return (
-    <>
-      <div className="main-content-area">
-        {/* 설명 섹션 (Hero Section) */}
-        <div className="hero-section">
-          <section id="description-section" className="text-center pt-5">
-            <div className="container">
-              <h1 className="display-4 fw-bold mb-3">최첨단 GIS 기술로 미래를 그리다</h1>
-              <p className="lead mb-0">최첨단 항공 및 드론 기술을 활용한 정밀 정사영상 제작, 신뢰성 높은 GIS 데이터 구축, 맞춤형 소프트웨어 개발, 전문 컨설팅 및 실무 중심 교육까지.<br />다한지리정보(주)는 공간정보 분야의 전 과정을 아우르는 통합 솔루션을 제공하여 고객의 비즈니스 가치를 극대화합니다.</p>
-            </div>
-          </section>
+    <main className="dg-shell">
+      <section className="dg-hero">
+        <div className="dg-hero-photo" />
+        <div className="dg-hero-bg" />
+        <div className="dg-hero-grid" />
+
+        <div className="dg-wrap dg-hero-top">
+          <div className="dg-hero-meta">
+            <div>Est.<b>—</b></div>
+            <div>Location<b>경기 고양 · 킨텍스</b></div>
+            <div>Services<b>5 pillars</b></div>
+            <div>Status<b style={{ color: 'var(--dg-accent-2)' }}>● Active</b></div>
+          </div>
+          <div className="dg-mono">DG / 001 / 2026</div>
         </div>
 
-        {/* 핵심 강점 섹션 */}
-        <section id="strengths-section" className="py-5">
-          <div className="container">
-            <h2 className="text-center mb-4">다한지리정보의 핵심 역량</h2>
-            <div className="row text-center g-4">
-              <div className="col-md-4">
-                <div className="shadow-sm rounded h-100 bg-light">
-                  <div className="p-4">
-                    <i className="bi bi-gem fs-2 text-primary mb-3" aria-hidden="true"></i>
-                    <h5 className="fw-bold">최첨단 기술력</h5>
-                    <p className="mb-0">최신 항공/드론 측량 기술과 자체 개발 솔루션을 통해 최고 수준의 정밀도와 효율성을 보장합니다.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="shadow-sm rounded h-100 bg-light">
-                  <div className="p-4">
-                    <i className="bi bi-people-fill fs-2 text-primary mb-3" aria-hidden="true"></i>
-                    <h5 className="fw-bold">분야별 전문가</h5>
-                    <p className="mb-0">GIS, 측량, IT 등 각 분야 최고의 전문가들이 고객 맞춤형 솔루션을 제공합니다.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="shadow-sm rounded h-100 bg-light">
-                  <div className="p-4">
-                    <i className="bi bi-graph-up-arrow fs-2 text-primary mb-3" aria-hidden="true"></i>
-                    <h5 className="fw-bold">풍부한 사업 경험</h5>
-                    <p className="mb-0">공공 및 민간 분야의 다양한 프로젝트 수행 경험을 바탕으로 신뢰성 높은 서비스를 제공합니다.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div className="dg-wrap dg-hero-title">
+          <div className="dg-eyebrow">다한지리정보(주) · DahanGIS</div>
+          <h1 className="dg-display" data-reveal>
+            최첨단 GIS<br />
+            기술로 <i>미래를</i><br />
+            그리다<span style={{ color: 'var(--dg-accent)' }}>.</span>
+          </h1>
+        </div>
 
-        {/* 이미지 섹션 */}
-        <section id="image-section" className="mb-5" style={{ position: 'relative', width: '100%', height: '35vh' }}>
-          <Image src="/images/main_gis_concept_01.jpg" alt="GIS 개념 이미지" layout="fill" objectFit="contain" className="concept-image" style={{ borderRadius: '.25rem' }} />
-        </section>
-
-        {/* 서비스 카드 섹션 */}
-        <section id="services-section" className="pb-5">
-          <div className="container">
-            <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 justify-content-center">
-              <div className="col">
-                <div className="card h-100 shadow">
-                  <Image src="/images/gis_ortho_01.jpg" width={500} height={300} className="card-img-top shadow-sm" alt="정밀 정사영상 제작" />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title"><Link href="/service-ortho" className="stretched-link text-decoration-none text-dark">정밀 정사영상 제작</Link></h5>
-                    <p className="card-text flex-grow-1">최신 항공/드론 기술과 정밀 보정 기술로 고해상도, 고정밀 정사영상을 제작하여 정확한 공간 분석 기반을 제공합니다.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="card h-100 shadow">
-                  <Image src="/images/gis_data_01.jpg" width={500} height={300} className="card-img-top shadow-sm" alt="GIS 데이터 구축" />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title"><Link href="/service-data" className="stretched-link text-decoration-none text-dark">GIS 데이터 구축</Link></h5>
-                    <p className="card-text flex-grow-1">정확하고 신뢰성 높은 GIS 데이터 구축으로 고객의 비즈니스 경쟁력을 높입니다.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="card h-100 shadow">
-                  <Image src="/images/gis_software_dev_01.jpg" width={500} height={300} className="card-img-top shadow-sm" alt="맞춤형 소프트웨어 개발" />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title"><Link href="/service-software" className="stretched-link text-decoration-none text-dark">맞춤형 소프트웨어 개발</Link></h5>
-                    <p className="card-text flex-grow-1">고객의 요구에 최적화된 GIS 소프트웨어 및 플랫폼을 설계·개발합니다.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="card h-100 shadow">
-                  <Image src="/images/gis_consulting_01.jpg" width={500} height={300} className="card-img-top shadow-sm" alt="전문 컨설팅" />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title"><Link href="/service-consulting" className="stretched-link text-decoration-none text-dark">전문 컨설팅</Link></h5>
-                    <p className="card-text flex-grow-1">공간정보 사업 기획, 데이터 분석, 시스템 구축 등 전 과정에 걸친 전문 컨설팅을 제공합니다.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="card h-100 shadow">
-                  <Image src="/images/gis_education_01.jpg" width={500} height={300} className="card-img-top shadow-sm" alt="실무 중심 교육" />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title"><Link href="/service-education" className="stretched-link text-decoration-none text-dark">실무 중심 교육</Link></h5>
-                    <p className="card-text flex-grow-1">최신 GIS 기술과 실무 노하우를 바탕으로 한 맞춤형 교육 프로그램을 제공합니다.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="dg-wrap dg-hero-bottom">
+          <p className="dg-lead" data-reveal data-reveal-delay="1">
+            정밀 정사영상 제작부터 GIS 데이터 구축, 컨설팅, 소프트웨어 개발까지. 공간정보의 전 과정을 한 팀 안에서 제공합니다.
+          </p>
+          <div className="dg-hero-ctas" data-reveal data-reveal-delay="2">
+            <Link href="/services" className="dg-button">서비스 보기</Link>
+            <Link href="/contact" className="dg-button dg-primary">프로젝트 문의 <span>↗</span></Link>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <div className="dg-stat-bar">
+        {statItems.map(([num, label]) => (
+          <div className="dg-stat-cell" key={num}>
+            <strong>{num}</strong>
+            <span>{label}</span>
+          </div>
+        ))}
       </div>
-    </>
+
+      <Marquee items={['정밀 정사영상', 'GIS 데이터 구축', 'GIS 컨설팅', '소프트웨어 개발', '교육']} />
+
+      <section className="dg-section" id="services">
+        <div className="dg-wrap">
+          <div className="dg-section-head">
+            <div>
+              <div className="dg-eyebrow">Services · 다섯 가지 역량</div>
+              <h2 className="dg-section-title" data-reveal>수집부터 운영까지,<br /><i>한 플랫폼에서.</i></h2>
+            </div>
+            <p className="dg-lead" data-reveal data-reveal-delay="1">
+              각 서비스는 독립적으로도, 통합 패키지로도 제공됩니다. 공공 발주와 민간 프로젝트 모두 대응 가능합니다.
+            </p>
+          </div>
+
+          <div className="dg-service-grid">
+            {services.map((service, index) => (
+              <Link
+                key={service.id}
+                href={`/services#${service.id}`}
+                className={`dg-service-card ${index === 0 ? 'dg-wide' : ''} ${index === 4 ? 'dg-featured' : ''}`.trim()}
+                data-reveal
+                data-reveal-delay={String(Math.min(index, 3))}
+              >
+                <div>
+                  <span className="dg-service-meta">{service.no} / {service.meta}</span>
+                  <h3 className="dg-card-title">{service.title}</h3>
+                  <p>{service.summary}</p>
+                  <div className="dg-service-image">
+                    <Image src={service.image} width={900} height={360} alt={`${service.title} 이미지`} />
+                  </div>
+                  <div className="dg-chip-row">
+                    {service.tags.map((tag) => <span className="dg-tag" key={tag}>{tag}</span>)}
+                  </div>
+                </div>
+                <span className="dg-service-link">자세히 보기 →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Marquee items={['SINCE · THE FUTURE IS SPATIAL', '공간을 데이터로', 'DRONE × AI × GIS']} />
+
+      <section className="dg-section" id="why">
+        <div className="dg-wrap">
+          <div className="dg-why-head">
+            <div>
+              <div className="dg-eyebrow">Why DahanGIS · 4대 강점</div>
+              <h2 className="dg-section-title" data-reveal>왜 다한을<br />선택할까요<i>.</i></h2>
+            </div>
+          </div>
+          <div className="dg-why-grid">
+            {strengths.map(([no, title, desc, meta], index) => (
+              <div className="dg-why-item" key={no} data-reveal data-reveal-delay={String(index)}>
+                <div>
+                  <span className="dg-why-num">{no}</span>
+                  <h3 className="dg-card-title">{title}</h3>
+                  <p className="dg-why-desc">{desc}</p>
+                </div>
+                <span className="dg-mono">{meta}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="dg-section" id="process">
+        <div className="dg-wrap">
+          <div className="dg-why-head">
+            <div>
+              <div className="dg-eyebrow">Process · 일하는 방식</div>
+              <h2 className="dg-section-title" data-reveal>수집 → 처리 → <i>배포.</i></h2>
+            </div>
+            <p className="dg-lead" data-reveal data-reveal-delay="1">모든 프로젝트는 동일한 5단계를 거칩니다. 예측 가능한 일정과 품질을 기준으로 움직입니다.</p>
+          </div>
+          <div className="dg-process-flow">
+            {processSteps.map(([meta, title, desc], index) => (
+              <div className="dg-process-step" key={meta} data-reveal data-reveal-delay={String(index)}>
+                <span className="dg-mono">{meta}</span>
+                <h3 className="dg-process-t">{title}</h3>
+                <p className="dg-process-d">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="dg-section">
+        <div className="dg-wrap dg-live-grid">
+          <div data-reveal>
+            <div className="dg-eyebrow">Engineering · 신뢰 가능한 파이프라인</div>
+            <h2 className="dg-section-title">현장에서 돌아가는,<br /><i>검증된 파이프라인.</i></h2>
+            <p className="dg-lead" style={{ marginTop: 24 }}>
+              지상기준점 보정부터 품질 검증까지 자동화된 워크플로우로 관리합니다.
+            </p>
+            <div className="dg-hero-ctas" style={{ marginTop: 28 }}>
+              <Link className="dg-button" href="/services">전체 서비스</Link>
+              <Link className="dg-button dg-primary" href="/contact">PoC 문의 <span>↗</span></Link>
+            </div>
+          </div>
+          <div className="dg-panel" data-reveal data-reveal-delay="1">
+            <div className="dg-panel-top"><span>dahan ortho pipeline · concept</span><span>개발 중</span></div>
+            <div className="dg-panel-kpi">
+              {['고해상도', '정밀', '자동', '표준 포맷'].map((item) => (
+                <div key={item}><span className="dg-mono">Pipeline</span><strong>{item}</strong><p>QA 워크플로우 적용</p></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function Marquee({ items }: { items: string[] }) {
+  const loop = [...items, ...items];
+  return (
+    <div className="dg-marquee" aria-hidden="true">
+      <div className="dg-marquee-track">
+        {loop.map((item, index) => <span key={`${item}-${index}`}>{item}</span>)}
+      </div>
+    </div>
   );
 }

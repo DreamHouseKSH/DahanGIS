@@ -12,6 +12,8 @@ declare global {
 }
 
 export default function ContactPage() {
+  const kakaoMapKey = process.env.NEXT_PUBLIC_KAKAO_MAP_KEY;
+  const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
 
   useEffect(() => {
     // 스크립트 로드 상태 확인 후 지도 로드 함수 실행
@@ -21,12 +23,13 @@ export default function ContactPage() {
 
   return (
     <>
-      <Script
-        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=d17e5ba09e7ac9feecd1d21a95e83042&autoload=false`} // autoload=false로 설정
-        strategy="afterInteractive"
-        onLoad={() => {
-          // 스크립트 로드 완료 후 지도 생성 함수 호출
-           if (window.kakao && window.kakao.maps) {
+      {kakaoMapKey ? (
+        <Script
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoMapKey}&autoload=false`} // autoload=false로 설정
+          strategy="afterInteractive"
+          onLoad={() => {
+            // 스크립트 로드 완료 후 지도 생성 함수 호출
+             if (window.kakao && window.kakao.maps) {
              window.kakao.maps.load(() => {
                const mapContainer = document.getElementById('map');
                if (!mapContainer) return; // mapContainer가 없으면 중단
@@ -44,12 +47,13 @@ export default function ContactPage() {
                const infowindow = new window.kakao.maps.InfoWindow({ position: iwPosition, content: iwContent });
                infowindow.open(map, marker);
              });
-           }
-        }}
-        onError={(e) => {
-          console.error('Kakao Maps SDK 로드 실패:', e);
-        }}
-      />
+             }
+          }}
+          onError={(e) => {
+            console.error('Kakao Maps SDK 로드 실패:', e);
+          }}
+        />
+      ) : null}
       <div className="container py-5">
         <h1 className="display-5 fw-bold mb-4 text-center">연락처</h1>
         <p className="lead mb-5 text-center">다한지리정보(주)에 궁금한 점이 있으시면 언제든지 문의해주세요.</p>
@@ -84,7 +88,7 @@ export default function ContactPage() {
           <div className="col-md-6">
             <h2 className="h4 mb-3">문의 양식</h2>
             <form action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="673dfa82-13e5-4f01-9512-e51836b9dde9" />
+              <input type="hidden" name="access_key" value={web3FormsKey} />
               <input type="hidden" name="redirect" value="https://www.dahangis.co.kr/contact" /> {/* Next.js 경로로 수정 */}
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">이름</label>

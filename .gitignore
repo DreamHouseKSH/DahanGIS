@@ -15,12 +15,17 @@ yarn-error.log*
 # Env
 .env
 .env.*
+!.env.example
 
 # VSCode
 .vscode/
 
 # Test coverage
 coverage/
+.playwright-mcp/
+.playwright-cli/
+output/playwright/
+dahangis-*.png
 
 # MacOS
 Icon?

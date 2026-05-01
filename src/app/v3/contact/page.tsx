@@ -19,6 +19,9 @@ declare global {
  * Cloud Dancer 테마 - 차분하고 평온한 디자인
  */
 export default function V3ContactPage() {
+  const kakaoMapKey = process.env.NEXT_PUBLIC_KAKAO_MAP_KEY;
+  const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
+
   useEffect(() => {
     // 카카오맵 초기화는 Script onLoad에서 처리
   }, []);
@@ -29,11 +32,12 @@ export default function V3ContactPage() {
       <FloatingClouds />
 
       {/* Kakao Maps SDK */}
-      <Script
-        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=d17e5ba09e7ac9feecd1d21a95e83042&autoload=false`}
-        strategy="afterInteractive"
-        onLoad={() => {
-          if (window.kakao && window.kakao.maps) {
+      {kakaoMapKey ? (
+        <Script
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoMapKey}&autoload=false`}
+          strategy="afterInteractive"
+          onLoad={() => {
+            if (window.kakao && window.kakao.maps) {
             window.kakao.maps.load(() => {
               const mapContainer = document.getElementById('v3-map');
               if (!mapContainer) return;
@@ -51,12 +55,13 @@ export default function V3ContactPage() {
               const infowindow = new window.kakao.maps.InfoWindow({ position: iwPosition, content: iwContent });
               infowindow.open(map, marker);
             });
-          }
-        }}
-        onError={(e) => {
-          console.error('Kakao Maps SDK 로드 실패:', e);
-        }}
-      />
+            }
+          }}
+          onError={(e) => {
+            console.error('Kakao Maps SDK 로드 실패:', e);
+          }}
+        />
+      ) : null}
 
       {/* Hero */}
       <PageHero
@@ -215,7 +220,7 @@ export default function V3ContactPage() {
                     문의 양식
                   </h3>
                   <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="673dfa82-13e5-4f01-9512-e51836b9dde9" />
+                    <input type="hidden" name="access_key" value={web3FormsKey} />
                     <input type="hidden" name="redirect" value="https://www.dahangis.co.kr/v3/contact" />
 
                     <div className="mb-3">

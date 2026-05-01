@@ -28,6 +28,9 @@ jobs:
         run: rm -rf out
 
       - name: "Build (Static Export and Export)"
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
+          NEXT_PUBLIC_KAKAO_MAP_KEY: ${{ secrets.NEXT_PUBLIC_KAKAO_MAP_KEY }}
         run: |
           npm run build
           npm run export
