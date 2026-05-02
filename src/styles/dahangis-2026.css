@@ -320,6 +320,7 @@ html.dg-cursor-ready .dg-cursor-dot {
 }
 
 .dg-hero {
+  position: relative;
   min-height: 100svh;
   padding: 112px var(--dg-pad) 72px;
   overflow: hidden;
@@ -338,8 +339,11 @@ html.dg-cursor-ready .dg-cursor-dot {
 }
 
 .dg-hero-photo {
-  background: linear-gradient(90deg, var(--dg-paper) 0 36%, transparent 70%), url("/images/dahangis-2026/01-hero-bg.jpg") center right / cover no-repeat;
-  opacity: .6;
+  background-image: linear-gradient(90deg, var(--dg-paper) 0 30%, color-mix(in oklab, var(--dg-paper) 56%, transparent) 54%, transparent 82%), url("/images/dahangis-2026/01-hero-bg.jpg");
+  background-position: center, center right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, min(1500px, 96vw) auto;
+  opacity: .64;
 }
 
 .dg-hero-bg {
@@ -1080,6 +1084,13 @@ html.dg-cursor-ready .dg-cursor-dot {
 
   .dg-display {
     font-size: clamp(54px, 18vw, 84px);
+  }
+
+  .dg-hero-photo {
+    background-image: linear-gradient(180deg, color-mix(in oklab, var(--dg-paper) 28%, transparent) 0%, var(--dg-paper) 78%), url("/images/dahangis-2026/01-hero-bg.jpg");
+    background-position: center, 58% 12%;
+    background-size: 100% 100%, 220vw auto;
+    opacity: .54;
   }
 
   .dg-page-title {
