@@ -1,4 +1,5 @@
 export const assetPath = '/images/dahangis-2026';
+export const companyLogoSrc = '/images/DAHAN_logo_v01.png';
 
 export const navItems = [
   { href: '/', label: '홈' },

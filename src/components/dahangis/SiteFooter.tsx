@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { services } from './data';
+import { companyLogoSrc, services } from './data';
 
 export default function SiteFooter() {
   return (
@@ -7,8 +7,9 @@ export default function SiteFooter() {
       <div className="dg-foot-grid">
         <div>
           <div className="dg-foot-brand">
-            <span className="dg-logo-mark" aria-hidden="true" />
-            <strong>DahanGIS</strong>
+            <span className="dg-logo-image-wrap">
+              <img className="dg-logo-image" src={companyLogoSrc} alt="DahanGIS" />
+            </span>
           </div>
           <p>다한지리정보(주) — 최첨단 GIS 기술로 미래를 그립니다.</p>
         </div>

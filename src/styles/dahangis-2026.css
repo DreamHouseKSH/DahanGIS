@@ -125,6 +125,33 @@ html.dg-cursor-ready .dg-cursor-dot {
   text-decoration: none;
 }
 
+.dg-logo-image-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 126px;
+  height: 32px;
+  padding: 4px 7px;
+  border: 1px solid color-mix(in oklab, var(--dg-text) 18%, transparent);
+  border-radius: 8px;
+  background: #f5f1e6;
+  overflow: hidden;
+}
+
+.dg-logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dg-foot-brand .dg-logo-image-wrap {
+  width: 186px;
+  height: 44px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
 .dg-logo-mark {
   width: 24px;
   height: 24px;
@@ -1096,8 +1123,10 @@ html.dg-cursor-ready .dg-cursor-dot {
     padding-block: 12px;
   }
 
-  .dg-logo span:last-child {
-    font-size: 13px;
+  .dg-logo-image-wrap {
+    width: 112px;
+    height: 30px;
+    padding: 4px 6px;
   }
 
   .dg-icon-button {

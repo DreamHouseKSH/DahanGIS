@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
-import { navItems } from './data';
+import { companyLogoSrc, navItems } from './data';
 
 function isActive(pathname: string | null, href: string) {
   if (href === '/') return pathname === '/';
@@ -19,8 +19,9 @@ export default function SiteHeader() {
   return (
     <header className="dg-header">
       <Link href="/" className="dg-logo" aria-label="DahanGIS 홈으로 이동" onClick={() => setOpen(false)}>
-        <span className="dg-logo-mark" aria-hidden="true" />
-        <span>DahanGIS</span>
+        <span className="dg-logo-image-wrap">
+          <img className="dg-logo-image" src={companyLogoSrc} alt="" />
+        </span>
       </Link>
 
       <button
