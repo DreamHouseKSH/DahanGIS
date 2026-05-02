@@ -627,9 +627,20 @@ html.dg-cursor-ready .dg-cursor-dot {
 
 .dg-page-head {
   padding-top: 160px;
+  padding-left: var(--dg-pad);
+  padding-right: var(--dg-pad);
   padding-bottom: 64px;
   border-bottom: 1px solid var(--dg-line);
   overflow: hidden;
+}
+
+.dg-services-head {
+  padding-top: 130px;
+  padding-bottom: 42px;
+}
+
+.dg-services-head .dg-page-title {
+  font-size: clamp(56px, 8vw, 132px);
 }
 
 .dg-page-title {
@@ -662,6 +673,11 @@ html.dg-cursor-ready .dg-cursor-dot {
   background: color-mix(in oklab, var(--dg-paper) 82%, transparent);
   backdrop-filter: blur(12px);
   overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dg-service-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .dg-service-nav-inner {
@@ -682,7 +698,10 @@ html.dg-cursor-ready .dg-cursor-dot {
 }
 
 .dg-service-detail {
+  scroll-margin-top: 150px;
   border-bottom: 1px solid var(--dg-line);
+  padding-top: clamp(48px, 5vw, 76px);
+  padding-bottom: clamp(70px, 8vw, 118px);
 }
 
 .dg-service-detail.dg-alt {
@@ -746,7 +765,7 @@ html.dg-cursor-ready .dg-cursor-dot {
 }
 
 .dg-detail-image {
-  min-height: 520px;
+  min-height: min(520px, 58vh);
   border: 1px solid var(--dg-line);
   border-radius: var(--dg-radius);
   overflow: hidden;
@@ -1058,6 +1077,10 @@ html.dg-cursor-ready .dg-cursor-dot {
     order: 0;
   }
 
+  .dg-detail-grid .dg-detail-image {
+    order: -1;
+  }
+
   .dg-head-aside {
     align-items: flex-start;
   }
@@ -1095,6 +1118,16 @@ html.dg-cursor-ready .dg-cursor-dot {
 
   .dg-page-title {
     font-size: clamp(58px, 18vw, 96px);
+  }
+
+  .dg-services-head {
+    padding-top: 110px;
+    padding-bottom: 34px;
+  }
+
+  .dg-services-head .dg-page-title {
+    font-size: clamp(48px, 15vw, 70px);
+    line-height: 1;
   }
 
   .dg-form-actions {

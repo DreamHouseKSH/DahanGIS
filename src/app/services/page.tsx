@@ -5,7 +5,7 @@ import { services } from '../../components/dahangis/data';
 export default function ServicesPage() {
   return (
     <main className="dg-shell">
-      <section className="dg-page-head">
+      <section className="dg-page-head dg-services-head">
         <div className="dg-wrap">
           <div>
             <div className="dg-eyebrow">Services · 다섯 가지 역량</div>
@@ -67,7 +67,13 @@ export default function ServicesPage() {
             </div>
 
             <div className="dg-detail-image" data-reveal data-reveal-delay="2">
-              <Image src={service.detailImage} width={900} height={1100} alt={`${service.title} 상세 이미지`} />
+              <Image
+                src={service.detailImage}
+                width={900}
+                height={1100}
+                alt={`${service.title} 상세 이미지`}
+                priority={index === 0}
+              />
             </div>
           </div>
         </section>
