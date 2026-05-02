@@ -1,5 +1,5 @@
 1:HL["/_next/static/css/3cf84b59585a15e8.css",{"as":"style"}]
-0:["v8UP9jV6BQ1FIBJvUK-B5",[[["",{"children":["service-software",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3cf84b59585a15e8.css","precedence":"next"}]],"$L3"]]]]
+0:["ZBsaPN7D7AQcuRrbE_Zyp",[[["",{"children":["service-software",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3cf84b59585a15e8.css","precedence":"next"}]],"$L3"]]]]
 4:I{"id":3725,"chunks":["685:static/chunks/685-bcd64cb4662d3c24.js","262:static/chunks/262-3ff531e4bdf397a3.js","185:static/chunks/app/layout-f01ce92bf1cdff5f.js"],"name":"VersionProvider","async":false}
 5:I{"id":9980,"chunks":["685:static/chunks/685-bcd64cb4662d3c24.js","262:static/chunks/262-3ff531e4bdf397a3.js","185:static/chunks/app/layout-f01ce92bf1cdff5f.js"],"name":"ThemeProvider","async":false}
 6:I{"id":8272,"chunks":["685:static/chunks/685-bcd64cb4662d3c24.js","262:static/chunks/262-3ff531e4bdf397a3.js","185:static/chunks/app/layout-f01ce92bf1cdff5f.js"],"name":"","async":false}
