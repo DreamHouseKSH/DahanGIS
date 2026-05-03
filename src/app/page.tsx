@@ -108,14 +108,18 @@ export default function Home() {
             </div>
           </div>
           <div className="dg-why-grid">
-            {strengths.map(([no, title, desc, meta], index) => (
-              <div className="dg-why-item" key={no} data-reveal data-reveal-delay={String(index)}>
+            {strengths.map((strength, index) => (
+              <div className="dg-why-item" key={strength.no} data-reveal data-reveal-delay={String(index)}>
                 <div>
-                  <span className="dg-why-num">{no}</span>
-                  <h3 className="dg-card-title">{title}</h3>
-                  <p className="dg-why-desc">{desc}</p>
+                  <span className="dg-why-num">{strength.no}</span>
+                  <h3 className="dg-card-title">{strength.title}</h3>
+                  <p className="dg-why-desc">{strength.desc}</p>
+                  <ul className="dg-why-points">
+                    {strength.points.map((point) => <li key={point}>{point}</li>)}
+                  </ul>
+                  <p className="dg-why-outcome">{strength.outcome}</p>
                 </div>
-                <span className="dg-mono">{meta}</span>
+                <span className="dg-mono">{strength.meta}</span>
               </div>
             ))}
           </div>
@@ -132,11 +136,15 @@ export default function Home() {
             <p className="dg-lead" data-reveal data-reveal-delay="1">모든 프로젝트는 동일한 5단계를 거칩니다. 예측 가능한 일정과 품질을 기준으로 움직입니다.</p>
           </div>
           <div className="dg-process-flow">
-            {processSteps.map(([meta, title, desc], index) => (
-              <div className="dg-process-step" key={meta} data-reveal data-reveal-delay={String(index)}>
-                <span className="dg-mono">{meta}</span>
-                <h3 className="dg-process-t">{title}</h3>
-                <p className="dg-process-d">{desc}</p>
+            {processSteps.map((step, index) => (
+              <div className="dg-process-step" key={step.meta} data-reveal data-reveal-delay={String(index)}>
+                <span className="dg-mono">{step.meta}</span>
+                <h3 className="dg-process-t">{step.title}</h3>
+                <p className="dg-process-d">{step.desc}</p>
+                <div className="dg-process-checks">
+                  {step.checks.map((check) => <span key={check}>{check}</span>)}
+                </div>
+                <p className="dg-process-outcome">{step.deliverable}</p>
               </div>
             ))}
           </div>
