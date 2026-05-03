@@ -9,9 +9,9 @@ declare global {
   }
 }
 
-const ADDRESS = '경기 고양시 일산서구 킨텍스로 240';
-const FALLBACK_LAT = 37.6680;
-const FALLBACK_LNG = 126.7385;
+const DAHANGIS_LAT = 37.666507660077144;
+const DAHANGIS_LNG = 126.74992290345497;
+const KAKAO_MAP_URL = `https://map.kakao.com/link/map/DahanGIS%20GIFC%202211%ED%98%B8,${DAHANGIS_LAT},${DAHANGIS_LNG}`;
 type MapStatus = 'loading' | 'missing-key' | 'error' | 'ready';
 
 export default function KakaoMap() {
@@ -28,27 +28,11 @@ export default function KakaoMap() {
       const container = document.getElementById('dg-kakao-map');
       if (!container) return;
 
-      const render = (lat: number, lng: number) => {
-        const center = new window.kakao.maps.LatLng(lat, lng);
-        const map = new window.kakao.maps.Map(container, { center, level: 4 });
-        const marker = new window.kakao.maps.Marker({ position: center });
-        marker.setMap(map);
-        setMapStatus('ready');
-      };
-
-      if (window.kakao.maps.services?.Geocoder) {
-        const geocoder = new window.kakao.maps.services.Geocoder();
-        geocoder.addressSearch(ADDRESS, (result: any[], status: string) => {
-          if (status === window.kakao.maps.services.Status.OK && result[0]) {
-            render(Number(result[0].y), Number(result[0].x));
-            return;
-          }
-          render(FALLBACK_LAT, FALLBACK_LNG);
-        });
-        return;
-      }
-
-      render(FALLBACK_LAT, FALLBACK_LNG);
+      const center = new window.kakao.maps.LatLng(DAHANGIS_LAT, DAHANGIS_LNG);
+      const map = new window.kakao.maps.Map(container, { center, level: 4 });
+      const marker = new window.kakao.maps.Marker({ position: center });
+      marker.setMap(map);
+      setMapStatus('ready');
     });
   }, []);
 
@@ -76,7 +60,7 @@ export default function KakaoMap() {
         <div className="dg-address-chip">경기 고양시 일산서구 킨텍스로 240 · GIFC 2211호</div>
         <a
           className="dg-map-open"
-          href="https://map.kakao.com/?q=%EA%B2%BD%EA%B8%B0+%EA%B3%A0%EC%96%91%EC%8B%9C+%EC%9D%BC%EC%82%B0%EC%84%9C%EA%B5%AC+%ED%82%A8%ED%85%8D%EC%8A%A4%EB%A1%9C+240"
+          href={KAKAO_MAP_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
