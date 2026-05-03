@@ -490,6 +490,10 @@ html.dg-cursor-ready .dg-cursor-dot {
   align-items: end;
 }
 
+.dg-contact-layout {
+  align-items: start;
+}
+
 .dg-service-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
