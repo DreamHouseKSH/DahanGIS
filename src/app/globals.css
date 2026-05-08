@@ -340,6 +340,66 @@ html, body {
   flex: 1 0 auto;
 }
 
+body > .container {
+  padding-top: clamp(7rem, 12vw, 8.75rem) !important;
+  padding-bottom: clamp(4.5rem, 9vw, 7rem) !important;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+body > .container h1,
+body > .container h2,
+body > .container h3,
+body > .container h4,
+body > .container .lead {
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+body > .container p,
+body > .container li {
+  text-wrap: pretty;
+}
+
+body > .container img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  body > .container {
+    padding-top: 6.5rem !important;
+  }
+
+  body > .container .display-5 {
+    font-size: clamp(2rem, 11vw, 2.65rem);
+  }
+
+  body > .container .lead {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body > .container .container {
+    max-width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  body > .container .row {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body > .container .row > * {
+    min-width: 0;
+  }
+}
+
 /* ============================================
    컨테이너 및 섹션 배경
    ============================================ */

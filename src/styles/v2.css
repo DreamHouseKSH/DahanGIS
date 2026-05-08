@@ -177,6 +177,11 @@
   background: var(--glass-bg-strong);
 }
 
+.v2-page {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 /* ============================================
    v2 Hero 섹션
    ============================================ */
@@ -205,6 +210,8 @@
   margin-bottom: 1.5rem;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 0.8s var(--animation-timing) forwards;
+  line-height: 1.22;
+  text-wrap: balance;
 }
 
 .v2-hero-subtitle {
@@ -214,6 +221,7 @@
   line-height: 1.6;
   animation: fadeInUp 0.8s var(--animation-timing) 0.2s forwards;
   opacity: 0;
+  text-wrap: pretty;
 }
 
 .v2-hero-cta {
@@ -300,6 +308,7 @@
   color: var(--v2-text-light);
   text-align: center;
   margin-bottom: 1rem;
+  text-wrap: balance;
 }
 
 .v2-section-subtitle {
@@ -376,6 +385,7 @@
   font-weight: 700;
   color: var(--v2-text-light);
   margin-bottom: 1rem;
+  text-wrap: balance;
 }
 
 .v2-service-description {
@@ -586,11 +596,21 @@
     font-size: 1.75rem;
   }
 
+  .v2-services-grid,
+  .v2-features-grid {
+    grid-template-columns: 1fr;
+    padding-inline: 0;
+  }
+
   .v2-glass-card-body {
     padding: 1.5rem;
   }
 
   .v2-service-card {
+    padding: 2rem;
+  }
+
+  .v2-content-card {
     padding: 2rem;
   }
 
@@ -610,6 +630,10 @@
 
   .v2-services-grid {
     grid-template-columns: 1fr;
+  }
+
+  .v2-content-card {
+    padding: 1.5rem;
   }
 }
 
@@ -699,6 +723,7 @@
   font-weight: 700;
   color: var(--v2-text-light);
   margin-bottom: 1.5rem;
+  text-wrap: balance;
 }
 
 .v2-content-text {

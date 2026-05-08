@@ -20,7 +20,7 @@ export default function SiteHeader() {
     <header className="dg-header">
       <Link href="/" className="dg-logo" aria-label="DahanGIS 홈으로 이동" onClick={() => setOpen(false)}>
         <span className="dg-logo-image-wrap">
-          <img className="dg-logo-image" src={companyLogoSrc} alt="" />
+          <img className="dg-logo-image" src={companyLogoSrc} width={126} height={32} alt="" />
         </span>
       </Link>
 

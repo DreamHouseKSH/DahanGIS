@@ -8,7 +8,7 @@ export default function SiteFooter() {
         <div>
           <div className="dg-foot-brand">
             <span className="dg-logo-image-wrap">
-              <img className="dg-logo-image" src={companyLogoSrc} alt="DahanGIS" />
+              <img className="dg-logo-image" src={companyLogoSrc} width={186} height={44} alt="DahanGIS" />
             </span>
           </div>
           <p>다한지리정보(주) — 최첨단 GIS 기술로 미래를 그립니다.</p>

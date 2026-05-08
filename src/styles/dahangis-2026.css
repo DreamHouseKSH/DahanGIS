@@ -120,6 +120,8 @@ html.dg-cursor-ready .dg-cursor-dot {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  flex: 0 0 auto;
+  min-width: 0;
   font-family: var(--dg-mono);
   color: var(--dg-text) !important;
   text-decoration: none;
@@ -140,9 +142,12 @@ html.dg-cursor-ready .dg-cursor-dot {
 
 .dg-logo-image {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
   object-fit: contain;
+  min-width: 0;
 }
 
 .dg-foot-brand .dg-logo-image-wrap {
@@ -260,6 +265,8 @@ html.dg-cursor-ready .dg-cursor-dot {
   min-height: 100vh;
   background: var(--dg-paper);
   color: var(--dg-text);
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .dg-section {
@@ -291,8 +298,9 @@ html.dg-cursor-ready .dg-cursor-dot {
 .dg-page-title {
   font-family: var(--dg-display);
   font-weight: 400;
-  letter-spacing: -.035em;
+  letter-spacing: 0;
   margin: 0;
+  text-wrap: balance;
 }
 
 .dg-display {
@@ -324,6 +332,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   color: var(--dg-text-2) !important;
   font-size: clamp(17px, 1.4vw, 20px);
   line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .dg-eyebrow,
@@ -553,6 +562,7 @@ html.dg-cursor-ready .dg-cursor-dot {
 .dg-process-d,
 .dg-panel p {
   color: var(--dg-text-2) !important;
+  text-wrap: pretty;
 }
 
 .dg-service-image {
@@ -575,6 +585,7 @@ html.dg-cursor-ready .dg-cursor-dot {
 .dg-chip {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 6px 10px;
   border: 1px solid var(--dg-line);
@@ -582,6 +593,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   color: var(--dg-text-2);
   font-family: var(--dg-mono);
   font-size: 11px;
+  text-align: center;
 }
 
 .dg-why-grid {
@@ -659,6 +671,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   font-family: var(--dg-display);
   font-size: clamp(28px, 3vw, 44px);
   font-weight: 400;
+  text-wrap: balance;
 }
 
 .dg-process-checks {
@@ -670,6 +683,8 @@ html.dg-cursor-ready .dg-cursor-dot {
 
 .dg-process-checks span {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 5px 8px;
   border: 1px solid var(--dg-line);
   border-radius: 999px;
@@ -678,6 +693,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   font-size: 10.5px;
   letter-spacing: .08em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .dg-panel {
@@ -776,6 +792,8 @@ html.dg-cursor-ready .dg-cursor-dot {
   margin: 0 auto;
   display: flex;
   gap: 8px;
+  width: max-content;
+  min-width: 100%;
 }
 
 .dg-service-nav a {
@@ -786,6 +804,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   color: var(--dg-text-2) !important;
   text-decoration: none;
   font-size: 13px;
+  white-space: nowrap;
 }
 
 .dg-service-detail {
@@ -821,6 +840,10 @@ html.dg-cursor-ready .dg-cursor-dot {
   line-height: .8;
 }
 
+.dg-service-detail .dg-section-title {
+  font-size: clamp(42px, 5vw, 76px);
+}
+
 .dg-spec-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -853,6 +876,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   grid-template-columns: 34px 1fr;
   gap: 12px;
   color: var(--dg-text-2);
+  align-items: start;
 }
 
 .dg-feature-list b {
@@ -993,7 +1017,8 @@ html.dg-cursor-ready .dg-cursor-dot {
   font-family: var(--dg-display);
   font-size: clamp(25px, 2.8vw, 40px);
   font-weight: 400;
-  letter-spacing: -.02em;
+  letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .dg-detail-copy {
@@ -1023,6 +1048,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   margin-bottom: 5px;
   color: var(--dg-text);
   font-weight: 600;
+  text-wrap: balance;
 }
 
 .dg-detail-item p {
@@ -1130,6 +1156,7 @@ html.dg-cursor-ready .dg-cursor-dot {
   font-family: var(--dg-display);
   font-size: clamp(36px, 5vw, 72px);
   font-weight: 400;
+  text-wrap: balance;
 }
 
 .dg-step > p,
@@ -1199,6 +1226,10 @@ html.dg-cursor-ready .dg-cursor-dot {
 
 .dg-form-actions {
   margin-top: 34px;
+}
+
+.dg-form-actions > div {
+  justify-content: flex-end;
 }
 
 .dg-side {
@@ -1335,6 +1366,21 @@ html.dg-cursor-ready .dg-cursor-dot {
   transform: none;
 }
 
+@media (min-width: 981px) and (max-width: 1200px) {
+  .dg-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dg-service-card.dg-wide,
+  .dg-service-card.dg-featured {
+    grid-column: 1 / -1;
+  }
+
+  .dg-process-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 980px) {
   .dg-menu-button {
     display: block;
@@ -1392,9 +1438,8 @@ html.dg-cursor-ready .dg-cursor-dot {
   }
 
   .dg-hero-meta,
-  .dg-spec-row,
-  .dg-panel-kpi,
-  .dg-form-grid {
+  .dg-hero-top,
+  .dg-hero-bottom {
     grid-template-columns: 1fr;
   }
 
@@ -1423,6 +1468,28 @@ html.dg-cursor-ready .dg-cursor-dot {
   }
 }
 
+@media (min-width: 641px) and (max-width: 980px) {
+  .dg-service-grid,
+  .dg-why-grid,
+  .dg-process-flow,
+  .dg-detail-block-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dg-stat-bar,
+  .dg-spec-row,
+  .dg-panel-kpi,
+  .dg-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dg-service-card.dg-wide,
+  .dg-service-card.dg-featured,
+  .dg-detail-block.dg-wide {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (max-width: 640px) {
   .dg-header {
     gap: 12px;
@@ -1441,7 +1508,16 @@ html.dg-cursor-ready .dg-cursor-dot {
   }
 
   .dg-display {
-    font-size: clamp(54px, 18vw, 84px);
+    font-size: clamp(48px, 15vw, 66px);
+    line-height: 1.06;
+  }
+
+  .dg-section-title {
+    font-size: clamp(36px, 11vw, 58px);
+  }
+
+  .dg-service-detail .dg-section-title {
+    font-size: clamp(36px, 11vw, 54px);
   }
 
   .dg-hero-photo {
@@ -1453,6 +1529,7 @@ html.dg-cursor-ready .dg-cursor-dot {
 
   .dg-page-title {
     font-size: clamp(58px, 18vw, 96px);
+    line-height: 1.04;
   }
 
   .dg-services-head {
@@ -1468,6 +1545,28 @@ html.dg-cursor-ready .dg-cursor-dot {
   .dg-form-actions {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .dg-service-grid,
+  .dg-why-grid,
+  .dg-process-flow,
+  .dg-foot-grid,
+  .dg-stat-bar,
+  .dg-detail-block-grid,
+  .dg-spec-row,
+  .dg-panel-kpi,
+  .dg-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dg-form-actions > div {
+    width: 100%;
+  }
+
+  .dg-form-actions > div .dg-button {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 14px;
   }
 }
 
