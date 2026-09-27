@@ -1,6 +1,6 @@
 :HL["/_next/static/css/169fa355949a6f60.css","style"]
 :HL["/_next/static/css/32300a44191f1a85.css","style"]
 :HL["/_next/static/css/044bdd08059f44d6.css","style"]
-:HL["/_next/static/css/179c0c22c890f8e8.css","style"]
+:HL["/_next/static/css/d65916f0ef66e39c.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"1wrQhf80uH2mqfq4mvTcA"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"m94czu0kKNaz_lc7QshyW"}
