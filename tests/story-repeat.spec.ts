@@ -96,7 +96,8 @@ for (const event of ['wheel', 'pointermove', 'keydown', 'blur', 'visibility']) {
 }
 
 test('writing an enquiry cancels repeat and preserves unsent input', async ({ page }) => {
-  await openClock(page); await waiting(page);
+  await openClock(page);
+  const boundary = await waiting(page);
   const form = page.locator('#contact form.dg-form');
   await form.getByRole('button', { name: '정밀 정사영상', exact: true }).click();
   await form.getByRole('button', { name: /다음/ }).click();
@@ -106,10 +107,9 @@ test('writing an enquiry cancels repeat and preserves unsent input', async ({ pa
   await expect(input).toBeFocused();
   await expect(controls(page)).toHaveAttribute('data-state', 'paused');
   await expect(controls(page)).toHaveAttribute('data-repeat-remaining', '0');
-  // Let native mobile focus scrolling and the form's entry transition finish
-  // before measuring. The fake clock must advance for pending animation frames.
+  // Drain scheduled callbacks. Native focus/scroll anchoring may still adjust
+  // the viewport: measure script-driven movement separately from the browser.
   await page.clock.runFor(1000);
-  const stopped = await page.evaluate(() => scrollY);
   await page.evaluate(() => {
     const observed = window as typeof window & { __repeatTestScrollCalls: number };
     observed.__repeatTestScrollCalls = 0;
@@ -122,8 +122,11 @@ test('writing an enquiry cancels repeat and preserves unsent input', async ({ pa
   });
   await page.clock.runFor(60_000);
   expect(await page.evaluate(() => (window as typeof window & { __repeatTestScrollCalls: number }).__repeatTestScrollCalls)).toBe(0);
-  expect(await page.evaluate(() => scrollY)).toBe(stopped);
+  expect(await page.evaluate(() => scrollY)).toBeGreaterThan(boundary - 3);
+  await expect(page.locator('#contact')).toBeInViewport();
   await expect(controls(page)).toHaveAttribute('data-state', 'paused');
+  await expect(controls(page)).toHaveAttribute('data-repeat-remaining', '0');
+  await expect(input).toBeFocused();
   await expect(input).toHaveValue('아직 보내지 않은 문의입니다.');
 });
 
