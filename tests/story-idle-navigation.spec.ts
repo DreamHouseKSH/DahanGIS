@@ -127,8 +127,9 @@ test('reduced motion prevents unattended start, but an explicit speed remains av
   expect(await page.evaluate(() => scrollY)).toBeGreaterThan(20);
 });
 
-test('idle playback stops at contact and does not restart there', async ({ page }) => {
+test('idle playback stops at contact when repeat is disabled', async ({ page }) => {
   await openClock(page);
+  await page.getByRole('button', { name: '자동 스크롤 반복', exact: true }).click();
   const boundary = await page.locator('#contact').evaluate((el) => el.getBoundingClientRect().top + scrollY - innerHeight * .2);
   await page.evaluate((y) => scrollTo({ top: y - 20, behavior: 'instant' }), boundary);
   await page.clock.runFor(100);
