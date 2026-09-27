@@ -32,6 +32,8 @@ export default function SiteHeader() {
     window.addEventListener('pointerdown', outside);
     return () => { window.removeEventListener('keydown', keydown); window.removeEventListener('pointerdown', outside); };
   }, [open]);
+  // The home story owns its fixed chapter/navigation and playback controls.
+  if (pathname === '/') return null;
   return <header ref={headerRef} className="dg-header">
     <Link href="/" className="dg-logo" aria-label="DahanGIS 홈으로 이동" onClick={() => setOpen(false)}><span className="dg-logo-image-wrap"><Image className="dg-logo-image" src={companyLogoSrc} width={126} height={32} alt="" /></span></Link>
     <button ref={menuRef} className="dg-menu-button" type="button" aria-label={open ? '메뉴 닫기' : '메뉴 열기'} aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen((current) => !current)}><span /><span /><span /></button>

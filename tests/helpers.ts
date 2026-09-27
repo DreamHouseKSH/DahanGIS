@@ -27,11 +27,17 @@ export async function isolateExternalServices(page: Page) {
   });
 }
 
+/** Exercise retained route links. Chapter navigation has its own story tests. */
 export async function navigate(page: Page, label: string) {
-  const menu = page.getByRole('button', { name: '메뉴 열기', exact: true });
-  if (await menu.isVisible()) await menu.click();
-  await page.getByRole('navigation', { name: '주요 메뉴', exact: true }).getByRole('link', { name: label, exact: true }).click();
-  const expectedHeading: Record<string, string> = { '홈': '최첨단 GIS', '서비스': '만드는 법.', '문의': '그려볼까요.' };
+  const route: Record<string, string> = { '서비스': '/services/', '문의': '/contact/', '회사 소개': '/about/' };
+  if (await page.locator('.story-root').count() && route[label]) {
+    await page.locator(`a[data-legacy-link][href="${route[label]}"]`).click();
+  } else {
+    const menu = page.getByRole('button', { name: '메뉴 열기', exact: true });
+    if (await menu.isVisible()) await menu.click();
+    await page.getByRole('navigation', { name: '주요 메뉴', exact: true }).getByRole('link', { name: label, exact: true }).click();
+  }
+  const expectedHeading: Record<string, string> = { '홈': '공간을 읽고,', '서비스': '만드는 법.', '문의': '그려볼까요.' };
   if (expectedHeading[label]) await expect(page.locator('h1')).toContainText(expectedHeading[label]);
 }
 
