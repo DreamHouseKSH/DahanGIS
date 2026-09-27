@@ -31,7 +31,7 @@ export default function StoryControls() {
   const activeRef = useRef<Chapter>('start');
   const subsectionRef = useRef('');
   const servicesOpen = active === 'services';
-  const { speed, idleEnabled, phase, notice } = playback;
+  const { speed, idleEnabled, repeatEnabled, repeatRemaining, phase, notice } = playback;
   const pause = () => controllerRef.current?.pause();
   const followLink = () => { pause(); setMenuOpen(false); };
 
@@ -139,15 +139,16 @@ export default function StoryControls() {
     </a>
     {chapter.id === 'services' ? <ul id={`${prefix}-services`} className="story-service-menu" aria-label="서비스 세부 항목" hidden={!servicesOpen}>{serviceLinks()}</ul> : null}
   </div>);
-  const hint = speed ? '재생 중' : phase === 'waiting' ? '30초 대기' : phase === 'off' ? '수동' : '일시정지';
+  const hint = phase === 'repeat-wait' ? `${repeatRemaining}초 후 처음` : speed ? '재생 중' : phase === 'waiting' ? '30초 대기' : phase === 'off' ? '수동' : '일시정지';
   return <>
     <header className="story-header">
       <Link href="/" className="story-brand" aria-label="DahanGIS 홈으로 이동"><Image src="/images/DAHAN_logo_v01.png" alt="다한지리정보" width={164} height={44} unoptimized /></Link>
       <nav className="story-top-nav" aria-label="원페이지 주요 메뉴">{chapters.slice(1).map((chapter) => <a key={chapter.id} href={`#${chapter.id}`} aria-current={active === chapter.id ? 'location' : undefined} onClick={followLink}>{chapter.label}</a>)}</nav>
       <button type="button" className="story-theme" onClick={toggleTheme} aria-label={`${theme === 'dark' ? '라이트' : '다크'} 모드로 전환`}><i className={`bi bi-${theme === 'dark' ? 'sun' : 'moon'}`} aria-hidden="true" /></button>
-      <div className="story-auto" data-auto-controls data-state={phase} data-idle-enabled={idleEnabled} role="group" aria-label="자동 스크롤 속도">
+      <div className="story-auto" data-auto-controls data-state={phase} data-idle-enabled={idleEnabled} data-repeat-enabled={repeatEnabled} data-repeat-remaining={repeatRemaining} role="group" aria-label="자동 스크롤 속도">
         <button type="button" className="story-auto-label" aria-label="AUTO 자동 스크롤 시작" aria-describedby="story-auto-help" title="지금 0.5배속으로 시작 · 직접 조작 후 30초 대기" onClick={() => controllerRef.current?.selectSpeed(0.5)}><span>AUTO</span><small>{hint}</small></button>
-        {([0, 0.5, 1, 2] as const).map((value) => <button key={value} type="button" aria-label={value ? `자동 스크롤 ${value}배속` : '자동 스크롤 끄기'} title={value ? `${value}배속으로 시작` : '정지하고 30초 자동 시작도 끄기'} aria-pressed={speed === value} onClick={() => controllerRef.current?.selectSpeed(value)}>{value ? `${value}x` : 'Off'}</button>)}
+        {([0, 0.5, 1, 2] as const).map((value) => <button key={value} type="button" aria-label={value ? `자동 스크롤 ${value}배속` : '자동 스크롤 끄기'} title={value ? `${value}배속으로 시작` : '정지하고 30초 자동 시작과 반복 이동도 중단하기'} aria-pressed={speed === value} onClick={() => controllerRef.current?.selectSpeed(value)}>{value ? `${value}x` : 'Off'}</button>)}
+        <button type="button" className="story-repeat" aria-label="자동 스크롤 반복" aria-pressed={repeatEnabled} aria-describedby="story-auto-help" title={repeatEnabled ? '반복 켜짐 · 종료 후 5초 대기하고 맨 위에서 0.5배속 재생' : '반복 꺼짐 · 종료 지점에서 정지'} onClick={() => controllerRef.current?.setRepeatEnabled(!repeatEnabled)}><i className="bi bi-repeat" aria-hidden="true" /><span>반복</span></button>
       </div>
       <button ref={menuRef} type="button" className="story-mobile-toggle" aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'} aria-expanded={menuOpen} aria-controls="story-mobile-menu" onClick={() => setMenuOpen((value) => !value)}><i className={`bi bi-${menuOpen ? 'x-lg' : 'list'}`} aria-hidden="true" /></button>
       <div className="story-total-progress" aria-hidden="true"><span ref={progressRef} /></div>
@@ -157,7 +158,7 @@ export default function StoryControls() {
     <nav ref={quickRef} className="story-mobile-services" aria-label="서비스 빠른 이동" hidden={!servicesOpen || menuOpen}><ul>{serviceLinks()}</ul></nav>
     <div className="story-mobile-chapter" data-services={servicesOpen} aria-hidden="true">{String(chapters.findIndex((chapter) => chapter.id === active) + 1).padStart(2, '0')} / 06 <span>{chapters.find((chapter) => chapter.id === active)?.label}</span></div>
     <svg className="story-connector" aria-hidden="true"><path ref={lineRef} /><circle ref={pointRef} r="3" /></svg>
-    <p id="story-auto-help" className="dg-sr-only">AUTO를 누르면 지금 0.5배속으로 시작합니다. 30초간 조작이 없어도 자동으로 시작합니다. Off를 누르면 자동 시작도 꺼집니다. 입력 중이거나 문의 구간에서는 자동으로 움직이지 않습니다.</p>
+    <p id="story-auto-help" className="dg-sr-only">AUTO를 누르면 지금 0.5배속으로 시작합니다. 30초간 조작이 없어도 자동으로 시작합니다. 반복은 기본 켜짐이며 자동 스크롤 종료 후 5초 대기하고 맨 위에서 0.5배속으로 다시 재생합니다. 직접 조작하거나 입력하면 복귀를 취소합니다. Off는 자동 시작과 반복 이동을 모두 중단합니다. 수동으로 문의 구간에 도착한 경우에는 자동 복귀하지 않습니다.</p>
     <p className="story-auto-status dg-sr-only" role="status">{notice}</p>
   </>;
 }
