@@ -43,7 +43,7 @@ test('SDK failure keeps an accessible external map fallback', async ({ page }) =
 test('wizard enforces required steps and announces selected chips', async ({ page }) => {
   await page.goto('/contact/', { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: /다음/ }).click();
-  await expect(page.getByRole('alert')).toContainText('서비스 유형');
+  await expect(page.locator('form.dg-form').getByRole('alert')).toContainText('서비스 유형');
   const service = page.getByRole('button', { name: '정밀 정사영상', exact: true });
   await service.click();
   await expect(service).toHaveAttribute('aria-pressed', 'true');
@@ -53,7 +53,7 @@ test('wizard enforces required steps and announces selected chips', async ({ pag
   await page.getByLabel('대상 지역 / AOI').press('Enter');
   await expect(page.getByRole('heading', { name: '세부 내용을 알려주세요.' })).toBeFocused();
   await page.getByRole('button', { name: /다음/ }).click();
-  await expect(page.getByRole('alert')).toContainText('요청 내용');
+  await expect(page.locator('form.dg-form').getByRole('alert')).toContainText('요청 내용');
   await expect(page.getByLabel('요청 내용', { exact: false })).toBeFocused();
 });
 
@@ -63,14 +63,14 @@ test('final submission checks email, phone preference and consent', async ({ pag
   await reachContactDetails(page);
   await page.getByLabel('이메일', { exact: false }).fill('not-an-email');
   await page.getByRole('button', { name: /문의 보내기/ }).click();
-  await expect(page.getByRole('alert')).toContainText('올바른 이메일');
+  await expect(page.locator('form.dg-form').getByRole('alert')).toContainText('올바른 이메일');
   await page.getByLabel('이메일', { exact: false }).fill('review@example.com');
   await page.getByRole('button', { name: '전화', exact: true }).click();
   await page.getByRole('button', { name: /문의 보내기/ }).click();
-  await expect(page.getByRole('alert')).toContainText('전화 연락');
+  await expect(page.locator('form.dg-form').getByRole('alert')).toContainText('전화 연락');
   await page.getByLabel('연락처', { exact: false }).fill('010-0000-0000');
   await page.getByRole('button', { name: /문의 보내기/ }).click();
-  await expect(page.getByRole('alert')).toContainText('동의');
+  await expect(page.locator('form.dg-form').getByRole('alert')).toContainText('동의');
   expect(posts).toBe(0);
 });
 
@@ -89,7 +89,7 @@ test('failed transmission preserves input, success stays on site and blocks dupl
   await reachContactDetails(page);
   await page.getByLabel(/문의 답변을 위해 입력 내용을/).check();
   await page.getByRole('button', { name: /문의 보내기/ }).click();
-  await expect(page.getByRole('alert')).toContainText('입력 내용은 유지됩니다.');
+  await expect(page.locator('form.dg-form').getByRole('alert')).toContainText('입력 내용은 유지됩니다.');
   await expect(page.getByLabel('이름', { exact: false })).toHaveValue('  테스트 담당자  ');
   await expect(page.getByLabel('이메일', { exact: false })).toHaveValue('review@example.com');
   await page.getByRole('button', { name: /문의 보내기/ }).click();
@@ -97,7 +97,7 @@ test('failed transmission preserves input, success stays on site and blocks dupl
   await expect(page.getByLabel('이름', { exact: false })).toBeDisabled();
   // Dispatching another submit event must not bypass the synchronous busy guard.
   await page.locator('form.dg-form').evaluate((form) => form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })));
-  expect(posts).toBe(2);
+  await expect.poll(() => posts).toBe(2);
   release?.();
   await expect(page.getByRole('heading', { name: '문의가 접수되었습니다.' })).toBeFocused();
   await expect(page).toHaveURL(/\/contact\/$/);
@@ -121,7 +121,7 @@ test('network failure and malformed provider response never report success', asy
   await page.getByLabel(/문의 답변을 위해 입력 내용을/).check();
   for (let index = 0; index < 2; index += 1) {
     await page.getByRole('button', { name: /문의 보내기/ }).click();
-    await expect(page.getByRole('alert')).toContainText('접수 결과를 확인하지 못했습니다.');
+    await expect(page.locator('form.dg-form').getByRole('alert')).toContainText('접수 결과를 확인하지 못했습니다.');
     await expect(page.getByRole('heading', { name: '문의가 접수되었습니다.' })).toHaveCount(0);
     await expect(page.getByLabel('이메일', { exact: false })).toHaveValue('review@example.com');
   }

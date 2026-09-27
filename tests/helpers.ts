@@ -31,6 +31,8 @@ export async function navigate(page: Page, label: string) {
   const menu = page.getByRole('button', { name: '메뉴 열기', exact: true });
   if (await menu.isVisible()) await menu.click();
   await page.getByRole('navigation', { name: '주요 메뉴', exact: true }).getByRole('link', { name: label, exact: true }).click();
+  const expectedHeading: Record<string, string> = { '홈': '최첨단 GIS', '서비스': '만드는 법.', '문의': '그려볼까요.' };
+  if (expectedHeading[label]) await expect(page.locator('h1')).toContainText(expectedHeading[label]);
 }
 
 export async function reachContactDetails(page: Page) {

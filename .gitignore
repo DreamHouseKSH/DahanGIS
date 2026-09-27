@@ -36,3 +36,7 @@ dahangis-*.png
 
 # Backup
 v04/.DS_Store
+
+public/vendor/
+dependency-audit.json
+source-snapshot.tar

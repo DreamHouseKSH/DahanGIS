@@ -25,7 +25,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-이미지 변형 파일이 없는 첫 개발 실행 전에는 `node scripts/optimize-images.mjs`를 실행하세요. 운영 빌드에서는 `prebuild`가 자동 실행합니다.
+`npm run dev`와 `npm run build`는 정적 이미지 변형 및 로컬 vendor 파일을 자동 준비합니다.
 
 ```bash
 npm run lint
@@ -77,7 +77,7 @@ Actions의 `browser-test-report`에서 실패 스크린샷과 추적 파일을 �
 - `src/lib/contact.ts`: 문의 항목과 순수 검증·payload 함수.
 - `src/components/dahangis/DesignEffects.tsx`: 새 DOM 노드를 등록하는 점진적 애니메이션. 기본 콘텐츠는 표시 상태입니다.
 - `src/styles/reliability.css`: 접근성·반응형·정적 이미지와 오류 처리 보강.
-- 기존 `/about/`, `/service-*/` URL은 호환성을 위해 유지합니다. Bootstrap CSS·아이콘의 로딩 위치는 `globals.css` 한 곳입니다.
+- 기존 `/about/`, `/service-*/` URL은 호환성을 위해 유지합니다. Bootstrap CSS·아이콘은 루트 레이아웃에서 로컬 번들로 한 번만 불러오며, 레거시 JavaScript도 정적 vendor 파일로 제공합니다.
 - 루트의 과거 `index.tsx`, `page.tsx` 및 `v04/`는 운영 라우트가 아니며 타입 검사에서도 제외합니다. 기존 문서는 `docs/archive/README-before-pages-review.md`에 보관했습니다.
 
 문제 발생 시 `gh-pages`를 수동 편집하지 말고 `main`의 문제 변경을 되돌리는 PR을 만들고 동일한 검증·배포 경로를 사용합니다. 라이브러리 업데이트는 lockfile을 함께 갱신하고 브라우저 테스트 후 반영하세요.
