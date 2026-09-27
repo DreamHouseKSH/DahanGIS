@@ -1,0 +1,32 @@
+name: Prepare dependency lockfile
+on:
+  push:
+    branches: [fix/pages-reliability-20260927]
+    paths: [package.json, .github/workflows/prepare-lockfile.yml]
+permissions:
+  contents: write
+concurrency:
+  group: prepare-pages-lockfile
+  cancel-in-progress: false
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/pages-reliability-20260927
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Resolve pinned dependencies without running install scripts
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Commit only the lockfile to the working branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: lock supported framework and test dependencies'
+            git push origin HEAD:fix/pages-reliability-20260927
+          fi
