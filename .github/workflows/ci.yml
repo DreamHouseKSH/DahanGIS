@@ -22,6 +22,17 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Capture dependency audit and public source snapshot for review
+        run: |
+          npm audit --json > dependency-audit.json || test "$?" -eq 1
+          git archive --format=tar --output=source-snapshot.tar HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: review-diagnostics
+          path: |
+            dependency-audit.json
+            source-snapshot.tar
+          retention-days: 3
       - run: npm run lint
       - run: npm run build
       - run: npm run typecheck
