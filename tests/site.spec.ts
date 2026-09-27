@@ -145,10 +145,11 @@ test('blocked localStorage does not break rendering or theme switching', async (
   expect(errors).toEqual([]);
 });
 
-test('reduced motion leaves all content readable without marquee animation', async ({ page }) => {
+test('reduced motion leaves all content readable without decorative tile displacement', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/', { waitUntil: 'networkidle' });
-  await expect(page.locator('.dg-marquee-track').first()).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.story-tiles')).toHaveCSS('display', 'none');
+  await expect(page.locator('.story-hero-image')).toHaveCSS('transform', 'none');
   await expect(page.locator('[data-reveal]').last()).toHaveCSS('opacity', '1');
   await navigate(page, '서비스');
   await expect(page.locator('[data-reveal]').last()).toHaveCSS('opacity', '1');
@@ -187,7 +188,7 @@ test('all public routes export distinct metadata and real static images', async 
   expect(await (await request.get('/robots.txt')).text()).toContain('sitemap.xml');
   expect(await (await request.get('/sitemap.xml')).text()).toContain(`${SITE_URL}/contact/`);
   await page.goto('/', { waitUntil: 'networkidle' });
-  const image = page.locator('.dg-service-image img').first();
+  const image = page.locator('.story-pillar-photo img').first();
   await image.scrollIntoViewIfNeeded();
   await expect.poll(() => image.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
   const src = await image.evaluate((element) => (element as HTMLImageElement).currentSrc);

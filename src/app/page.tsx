@@ -1,190 +1,108 @@
+import { Children, isValidElement, type CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { processSteps, services, strengths } from '../components/dahangis/data';
+import ServicesPage from './services/page';
+import StoryControls from '../components/story/StoryControls';
+import { pillars, standards, workflow, sceneImage } from '../components/story/content';
+import ContactWizard from '../components/dahangis/ContactWizard';
+import ContactChannels from '../components/dahangis/ContactChannels';
+import KakaoMap from '../components/dahangis/KakaoMap';
+import '../styles/story.css';
 
-const statItems = [
-  ['정밀', '고해상도 정사영상 · GCP 보정'],
-  ['표준', '국가 좌표계 · 공공 납품 포맷'],
-  ['통합', '수집 · 구축 · 분석 · 운영'],
-  ['공공·민간', '정부 · 지자체 · 기업'],
-];
-
-export default function Home() {
-  return (
-    <main className="dg-shell">
-      <section className="dg-hero">
-        <div className="dg-hero-photo" />
-        <div className="dg-hero-bg" />
-        <div className="dg-hero-grid" />
-
-        <div className="dg-wrap dg-hero-top">
-          <div className="dg-hero-meta">
-            <div>Est.<b>—</b></div>
-            <div>Location<b>경기 고양 · 킨텍스</b></div>
-            <div>Services<b>5 pillars</b></div>
-            <div>Status<b style={{ color: 'var(--dg-accent-2)' }}>● Active</b></div>
-          </div>
-          <div className="dg-mono">DG / 001 / 2026</div>
-        </div>
-
-        <div className="dg-wrap dg-hero-title">
-          <div className="dg-eyebrow">다한지리정보(주) · DahanGIS</div>
-          <h1 className="dg-display" data-reveal>
-            최첨단 GIS<br />
-            기술로 <i>미래를</i><br />
-            그리다<span style={{ color: 'var(--dg-accent)' }}>.</span>
-          </h1>
-        </div>
-
-        <div className="dg-wrap dg-hero-bottom">
-          <p className="dg-lead" data-reveal data-reveal-delay="1">
-            정밀 정사영상 제작부터 GIS 데이터 구축, 컨설팅, 소프트웨어 개발까지. 공간정보의 전 과정을 한 팀 안에서 제공합니다.
-          </p>
-          <div className="dg-hero-ctas" data-reveal data-reveal-delay="2">
-            <Link href="/services" className="dg-button">서비스 보기</Link>
-            <Link href="/contact" className="dg-button dg-primary">프로젝트 문의 <span>↗</span></Link>
-          </div>
-        </div>
-      </section>
-
-      <div className="dg-stat-bar">
-        {statItems.map(([num, label]) => (
-          <div className="dg-stat-cell" key={num}>
-            <strong>{num}</strong>
-            <span>{label}</span>
-          </div>
-        ))}
-      </div>
-
-      <Marquee items={['정밀 정사영상', 'GIS 데이터 구축', 'GIS 컨설팅', '소프트웨어 개발', '교육']} />
-
-      <section className="dg-section" id="services">
-        <div className="dg-wrap">
-          <div className="dg-section-head">
-            <div>
-              <div className="dg-eyebrow">Services · 다섯 가지 역량</div>
-              <h2 className="dg-section-title" data-reveal>수집부터 운영까지,<br /><i>한 플랫폼에서.</i></h2>
-            </div>
-            <p className="dg-lead" data-reveal data-reveal-delay="1">
-              각 서비스는 독립적으로도, 통합 패키지로도 제공됩니다. 공공 발주와 민간 프로젝트 모두 대응 가능합니다.
-            </p>
-          </div>
-
-          <div className="dg-service-grid">
-            {services.map((service, index) => (
-              <Link
-                key={service.id}
-                href={`/services#${service.id}`}
-                className={`dg-service-card ${index === 0 ? 'dg-wide' : ''} ${index === 4 ? 'dg-featured' : ''}`.trim()}
-                data-reveal
-                data-reveal-delay={String(Math.min(index, 3))}
-              >
-                <div>
-                  <span className="dg-service-meta">{service.no} / {service.meta}</span>
-                  <h3 className="dg-card-title">{service.title}</h3>
-                  <p>{service.summary}</p>
-                  <div className="dg-service-image">
-                    <Image src={service.image} width={900} height={360} alt={`${service.title} 이미지`} />
-                  </div>
-                  <div className="dg-chip-row">
-                    {service.tags.map((tag) => <span className="dg-tag" key={tag}>{tag}</span>)}
-                  </div>
-                </div>
-                <span className="dg-service-link">자세히 보기 →</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Marquee items={['SINCE · THE FUTURE IS SPATIAL', '공간을 데이터로', 'DRONE × AI × GIS']} />
-
-      <section className="dg-section" id="why">
-        <div className="dg-wrap">
-          <div className="dg-why-head">
-            <div>
-              <div className="dg-eyebrow">Why DahanGIS · 4대 강점</div>
-              <h2 className="dg-section-title" data-reveal>왜 다한을<br />선택할까요<i>.</i></h2>
-            </div>
-          </div>
-          <div className="dg-why-grid">
-            {strengths.map((strength, index) => (
-              <div className="dg-why-item" key={strength.no} data-reveal data-reveal-delay={String(index)}>
-                <div>
-                  <span className="dg-why-num">{strength.no}</span>
-                  <h3 className="dg-card-title">{strength.title}</h3>
-                  <p className="dg-why-desc">{strength.desc}</p>
-                  <ul className="dg-why-points">
-                    {strength.points.map((point) => <li key={point}>{point}</li>)}
-                  </ul>
-                  <p className="dg-why-outcome">{strength.outcome}</p>
-                </div>
-                <span className="dg-mono">{strength.meta}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="dg-section" id="process">
-        <div className="dg-wrap">
-          <div className="dg-why-head">
-            <div>
-              <div className="dg-eyebrow">Process · 일하는 방식</div>
-              <h2 className="dg-section-title" data-reveal>수집 → 처리 → <i>배포.</i></h2>
-            </div>
-            <p className="dg-lead" data-reveal data-reveal-delay="1">모든 프로젝트는 동일한 5단계를 거칩니다. 예측 가능한 일정과 품질을 기준으로 움직입니다.</p>
-          </div>
-          <div className="dg-process-flow">
-            {processSteps.map((step, index) => (
-              <div className="dg-process-step" key={step.meta} data-reveal data-reveal-delay={String(index)}>
-                <span className="dg-mono">{step.meta}</span>
-                <h3 className="dg-process-t">{step.title}</h3>
-                <p className="dg-process-d">{step.desc}</p>
-                <div className="dg-process-checks">
-                  {step.checks.map((check) => <span key={check}>{check}</span>)}
-                </div>
-                <p className="dg-process-outcome">{step.deliverable}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="dg-section">
-        <div className="dg-wrap dg-live-grid">
-          <div data-reveal>
-            <div className="dg-eyebrow">Engineering · 신뢰 가능한 파이프라인</div>
-            <h2 className="dg-section-title">현장에서 돌아가는,<br /><i>검증된 파이프라인.</i></h2>
-            <p className="dg-lead" style={{ marginTop: 24 }}>
-              지상기준점 보정부터 품질 검증까지 자동화된 워크플로우로 관리합니다.
-            </p>
-            <div className="dg-hero-ctas" style={{ marginTop: 28 }}>
-              <Link className="dg-button" href="/services">전체 서비스</Link>
-              <Link className="dg-button dg-primary" href="/contact">PoC 문의 <span>↗</span></Link>
-            </div>
-          </div>
-          <div className="dg-panel" data-reveal data-reveal-delay="1">
-            <div className="dg-panel-top"><span>dahan ortho pipeline · concept</span><span>개발 중</span></div>
-            <div className="dg-panel-kpi">
-              {['고해상도', '정밀', '자동', '표준 포맷'].map((item) => (
-                <div key={item}><span className="dg-mono">Pipeline</span><strong>{item}</strong><p>QA 워크플로우 적용</p></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+/** Reuse the existing, pure server-rendered catalogue rather than duplicate its data.
+ * Drop its page-only heading/nav and keep all service sections, specification tables,
+ * and disclosures. Unwrap its main so the one-page experience has one main landmark.
+ */
+function ServiceCatalogue() {
+  return <div className="story-catalogue">{Children.toArray(ServicesPage().props.children).filter((node) => {
+    if (!isValidElement<{ className?: string }>(node)) return true;
+    return node.type !== 'nav' && !node.props.className?.includes('dg-page-head');
+  })}</div>;
 }
 
-function Marquee({ items }: { items: string[] }) {
-  const loop = [...items, ...items];
-  return (
-    <div className="dg-marquee" aria-hidden="true">
-      <div className="dg-marquee-track">
-        {loop.map((item, index) => <span key={`${item}-${index}`}>{item}</span>)}
+function Eyebrow({ number, children }: { number: string; children: React.ReactNode }) {
+  return <div className="story-eyebrow"><span>{number}</span>{children}</div>;
+}
+function Icon({ name }: { name: string }) { return <i className={`bi bi-${name}`} aria-hidden="true" />; }
+
+export default function Home() {
+  return <main className="story-root">
+    <StoryControls />
+    <section id="start" className="story-hero" data-story-section aria-labelledby="story-title">
+      <div className="story-hero-scene" aria-hidden="true">
+        <Image src={sceneImage('01-hero-bg.jpg')} alt="" fill priority sizes="100vw" className="story-hero-image" />
+        <div className="story-tiles">{Array.from({ length: 12 }, (_, index) => <div key={index} style={{ '--tile-x': `${(index % 4) * 100 / 3}%`, '--tile-y': `${Math.floor(index / 4) * 50}%`, '--shift-x': `${((index % 3) - 1) * 26}px`, '--shift-y': `${(index % 2 ? 1 : -1) * 20}px`, '--rotation': `${(index % 3 - 1) * 2}deg` } as CSSProperties} />)}</div>
       </div>
-    </div>
-  );
+      <div className="story-hero-shade" aria-hidden="true" />
+      <div className="story-inner story-hero-copy">
+        <Eyebrow number="01">DAHANGIS · SPATIAL INTELLIGENCE</Eyebrow>
+        <h1 id="story-title" data-story-target>공간을 읽고,<br />가치를 <em>완성합니다.</em></h1>
+        <p className="story-hero-lead">모든 일에 최선을.<br />정사영상에서 공간정보까지, 다한지리정보.</p>
+        <p className="story-hero-description">영상을 잇고, 데이터를 다듬고, 필요한 쓰임을 만듭니다.<br />작은 경계 하나부터 최종 결과물까지, 다한의 기준으로 완성합니다.</p>
+        <div className="story-actions"><a className="story-button story-primary" href="#services">다한의 서비스 <Icon name="arrow-down-right" /></a><a className="story-button" href="#contact">프로젝트 문의 <Icon name="arrow-up-right" /></a></div>
+        <a href="#about" className="story-scroll-cue"><Icon name="arrow-down" /><span>SCROLL TO EXPLORE<br /><small>스크롤로 만나는 다한의 이야기</small></span></a>
+      </div>
+      <div className="story-hero-meta story-inner"><span>ORTHO / GIS / DATA</span><span>5 CAPABILITIES</span><span>고양 · 킨텍스</span><span>AI 생성 개념 이미지</span></div>
+    </section>
+
+    <section id="about" className="story-section story-about" data-story-section aria-labelledby="about-title">
+      <div className="story-inner">
+        <Eyebrow number="02">OUR PHILOSOPHY · 다한</Eyebrow>
+        <div className="story-two-column">
+          <div><h2 id="about-title" data-story-target data-reveal>다한이라는 이름,<br /><em>끝까지 다하는 마음.</em></h2><p className="story-section-lead">다한은 <strong>‘모든 일에 최선을’</strong>이라는<br />약속을 담고 있습니다.</p></div>
+          <div className="story-about-body" data-reveal><p>한 장의 영상에는 수많은 경계가 있고,<br />하나의 데이터에는 누군가의 다음 업무가 담겨 있습니다.</p><p>다한지리정보는 정사영상 후처리의 세밀함을 바탕으로, 공간정보가 필요한 곳에서 제 역할을 하도록 다듬습니다.</p><p>눈에 잘 띄지 않는 부분까지 살피는 태도.<br />우리는 그 태도가 좋은 결과를 만든다고 믿습니다.</p></div>
+        </div>
+        <div className="story-philosophy-banner" data-reveal><span>PRECISION. PURPOSE. COMMITMENT.</span><p>디지털 국토와 공간정보의 발전에,<br /><strong>다한의 최선을 더합니다.</strong></p></div>
+        <Link href="/about/" className="story-text-link" data-legacy-link>회사 소개 상세 페이지 <Icon name="arrow-up-right" /></Link>
+      </div>
+    </section>
+
+    <section id="services" className="story-section story-services" data-story-section aria-labelledby="services-title">
+      <div className="story-inner">
+        <Eyebrow number="03">CAPABILITIES · 다섯 가지 역량</Eyebrow>
+        <h2 id="services-title" data-story-target data-reveal>하나의 공간,<br /><em>다섯 가지 가능성.</em></h2>
+        <p className="story-section-lead">정사영상에서 시작해 데이터, 기술, 활용으로 이어갑니다.<br />필요한 업무부터 함께 살피고, 프로젝트에 맞는 범위를 제안합니다.</p>
+        <div className="story-pillars">{pillars.map((pillar, index) => <a href={`#${pillar.id}`} className="story-pillar" key={pillar.id}>
+          <div className="story-pillar-photo"><Image src={sceneImage(pillar.image)} alt={`${pillar.title} 설명용 AI 생성 이미지`} fill sizes="(max-width: 640px) 90vw, (max-width: 1100px) 45vw, 20vw" /><span>{String(index + 1).padStart(2, '0')} <Icon name={pillar.icon} /></span></div>
+          <div className="story-pillar-copy"><h3>{pillar.title}</h3>{'status' in pillar ? <b className="story-badge">{pillar.status}</b> : null}<h4>{pillar.heading}</h4><p>{pillar.copy}</p><span className="story-tags">{pillar.tags}</span><span className="story-pillar-link">서비스 상세 <Icon name="arrow-down-right" /></span></div>
+        </a>)}</div>
+        <p className="story-disclosure">서비스 설명용 AI 생성 개념 이미지입니다. 실제 촬영 성과나 위치를 나타내지 않습니다. 개발 화면은 개념 시각화이며, 교육은 준비 중입니다.</p>
+        <div className="story-read-on"><span>각 서비스의 상세 내용까지, 계속 스크롤하세요.</span><Icon name="arrow-down" /></div>
+        <ServiceCatalogue />
+        <Link href="/services/" className="story-text-link" data-legacy-link>서비스 상세 페이지 <Icon name="arrow-up-right" /></Link>
+      </div>
+    </section>
+
+    <section id="why" className="story-section story-standards" data-story-section aria-labelledby="why-title">
+      <div className="story-inner">
+        <Eyebrow number="04">OUR STANDARDS · 다한의 기준</Eyebrow>
+        <div className="story-two-column"><h2 id="why-title" data-story-target data-reveal>완성도의 차이는,<br /><em>작은 곳에서 시작됩니다.</em></h2><p className="story-section-lead">보이는 결과만큼,<br />그 결과에 이르는 과정도 중요합니다.</p></div>
+        <div className="story-standard-grid">{standards.map(([title, copy, icon], index) => <article key={title} data-reveal><div className="story-standard-number"><span>0{index + 1}</span><Icon name={icon} /></div><h3>{title}</h3><p>{copy}</p></article>)}</div>
+        <p className="story-promise">다한이 지키는 것은,<br /><strong>결과물에 담기는 신뢰입니다.</strong></p>
+      </div>
+    </section>
+
+    <section id="process" className="story-section story-process" data-story-section aria-labelledby="process-title">
+      <div className="story-inner">
+        <Eyebrow number="05">HOW WE WORK · 하나의 흐름</Eyebrow>
+        <h2 id="process-title" data-story-target data-reveal>시작부터 납품까지,<br /><em>하나의 기준으로.</em></h2>
+        <p className="story-section-lead">필요한 결과를 먼저 이해하고, 자료와 작업 조건을 확인합니다.<br />처리와 검수를 거쳐, 다음 업무로 이어질 수 있는 형태로 전달합니다.</p>
+        <ol className="story-workflow">{workflow.map(([title, copy, tags, image], index) => <li key={title} data-story-step data-current="false"><div className="story-workflow-number">0{index + 1}</div><div className="story-workflow-card"><Image src={sceneImage(image)} width={560} height={340} alt={`${title} 설명용 개념 이미지`} sizes="(max-width: 640px) 90vw, (max-width: 1100px) 42vw, 28vw" /><div><h3>{title}</h3><p>{copy}</p><small>{tags}</small></div></div></li>)}</ol>
+        <p className="story-disclosure">정사영상·데이터 업무의 대표 흐름입니다. 컨설팅·개발·교육은 목적에 맞춰 수행 단계를 조정합니다. 업무 범위와 산출물 형식, 품질 기준과 일정은 원천 자료와 프로젝트 조건을 확인한 뒤 협의합니다.</p>
+      </div>
+    </section>
+
+    <section id="contact" className="story-section story-contact" data-story-section aria-labelledby="contact-title">
+      <div className="story-inner">
+        <Eyebrow number="06">START A PROJECT · 함께 완성할 내일</Eyebrow>
+        <div className="story-contact-grid">
+          <div><h2 id="contact-title" data-story-target>이제,<br /><em>함께 완성할</em><br />차례입니다.</h2><p className="story-section-lead">정사영상 한 건부터 데이터 구축,<br />업무 도구 개발까지.<br />지금 필요한 일을 들려주세요.</p><p>구체적인 계획이 없어도 괜찮습니다.<br />보유 자료와 원하는 결과부터 함께 정리하겠습니다.</p><div className="story-contact-values"><span><Icon name="bounding-box" /> 정밀한 후처리</span><span><Icon name="layers" /> 목적에 맞는 데이터</span><span><Icon name="chat-square-text" /> 끝까지 소통</span></div><ContactChannels /></div>
+          <div className="story-inquiry" data-autoscroll-stop><h3>프로젝트 문의</h3><ContactWizard /></div>
+        </div>
+        <div className="story-contact-details"><div className="story-address"><span className="story-overline">다한지리정보(주)</span><h3>경기도 고양시 일산서구<br />킨텍스로 240</h3><p>GIFC 오피스 2211호</p><p>민감한 개인정보와 비공개 원본 데이터는 입력하지 마세요. 자료 전달이 필요하면 담당자와 방법을 협의해주세요.</p><Link href="/contact/" className="story-text-link" data-legacy-link>문의 전용 페이지 <Icon name="arrow-up-right" /></Link></div><KakaoMap /></div>
+        <div className="story-faq"><h3>자주 묻는 질문</h3><article><h4>작은 규모의 작업도 문의할 수 있나요?</h4><p>네. 필요한 범위와 자료를 알려주시면 작업 내용과 일정을 검토합니다.</p></article><article><h4>원본 자료를 바로 보내야 하나요?</h4><p>먼저 자료의 종류와 대략적인 구성을 알려주세요. 비공개 자료는 전달 방법과 필요 시 비밀유지 절차를 협의한 뒤 공유해주세요.</p></article><article><h4>교육은 언제 신청할 수 있나요?</h4><p>현재 준비 중입니다. 사전 문의를 남겨주시면 과정과 일정이 확정되는 대로 안내합니다.</p></article></div>
+        <div className="story-closing"><span>모든 일에 최선을.</span><a href="#start" className="story-text-link">처음으로 <Icon name="arrow-up" /></a></div>
+      </div>
+    </section>
+  </main>;
 }
