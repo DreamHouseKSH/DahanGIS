@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
-
 module.exports = {
-  // GitHub Pages 배포(gh-pages 브랜치) 및 커스텀 도메인 환경 대응
-  basePath: '', // 커스텀 도메인(dahangis.co.kr)에서는 ''
-  assetPrefix: '/', // GitHub Pages 루트 경로에 맞게 assetPrefix 설정
-  // 만약 /DahanGIS 등 서브디렉토리 배포시에는 '/DahanGIS'로 변경 필요
-  trailingSlash: true, // 정적 export 시 폴더 구조 호환성
+  output: 'export',
+  trailingSlash: true,
+  reactStrictMode: true,
+  poweredByHeader: false,
+  // All variants are generated at build time. There is no /_next/image server.
   images: {
-    unoptimized: true, // next export 대응 (이미지 최적화 비활성화)
+    loader: 'custom',
+    loaderFile: './src/lib/static-image-loader.ts',
+    deviceSizes: [640, 960, 1280, 1920],
+    imageSizes: [320],
   },
-  output: 'export', // 최신 next.js 정적 export 방식 대응
 };

@@ -1,40 +1,38 @@
-# Node
+# Node and generated static site
 node_modules/
 .next/
 out/
+*.tsbuildinfo
+public/images/optimized/
 
 # System
 .DS_Store
 Thumbs.db
+Icon?
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
-# Env
+# Local environment (public build-time values still do not belong in Git)
 .env
 .env.*
 !.env.example
 
-# VSCode
+# Editors
 .vscode/
+.idea/
 
-# Test coverage
+# Tests and reports
 coverage/
 .playwright-mcp/
 .playwright-cli/
 output/playwright/
+playwright-report/
+test-results/
 dahangis-*.png
-
-# MacOS
-Icon?
-
-# Others
-*.log
-.idea/
 
 # Backup
 v04/.DS_Store
-
-# (No actual changes, forced re-save for triggering workflow)

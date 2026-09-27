@@ -1,0 +1,53 @@
+/* Functional enhancements layered after the existing visual design. */
+.dg-content { flex: 1 0 auto; min-width: 0; }
+.dg-content > .container { padding-top: clamp(7rem, 12vw, 8.75rem) !important; padding-bottom: clamp(4.5rem, 9vw, 7rem) !important; line-height: 1.75; word-break: keep-all; overflow-wrap: break-word; }
+.dg-content > .container img { max-width: 100%; height: auto; }
+.dg-content > .container :is(h1, h2, h3, h4, .lead) { text-wrap: balance; word-break: keep-all; }
+.dg-content > .container :is(p, li) { text-wrap: pretty; }
+.dg-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.dg-skip-link { position: fixed; z-index: 10000; top: 12px; left: 12px; padding: 12px 18px; transform: translateY(-180%); background: var(--dg-paper); color: var(--dg-text); border: 2px solid var(--dg-accent-2); border-radius: 8px; }
+.dg-skip-link:focus { transform: none; }
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 3px solid var(--dg-accent-2); outline-offset: 4px; }
+#main-content:focus { outline: none; }
+.dg-nav a, .dg-menu-button, .dg-icon-button { min-width: 44px; min-height: 44px; }
+[data-reveal] { transition: opacity .6s ease, transform .6s ease; }
+[data-reveal].dg-reveal-pending:not(.dg-in) { opacity: 0; transform: translateY(18px); }
+[data-reveal].dg-in { opacity: 1; transform: none; }
+.dg-form-controls { padding: 0; margin: 0; border: 0; min-width: 0; }
+.dg-chip-field { padding: 0; border: 0; min-width: 0; }
+.dg-field label, .dg-field legend { color: var(--dg-text-2); font-size: 1rem; }
+.dg-field legend { float: none; width: auto; margin: 0 0 10px; padding: 0; }
+.dg-chip { min-height: 44px; }
+.dg-contact-notice { margin-top: 24px; font-size: 14px; line-height: 1.7; }
+.dg-contact-notice summary { cursor: pointer; padding-block: 10px; }
+.dg-consent { display: flex; align-items: flex-start; gap: 12px; margin-top: 20px; padding-block: 8px; font-size: 14px; line-height: 1.6; }
+.dg-consent input { flex: 0 0 20px; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--dg-accent); }
+.dg-contact-channels { display: grid; gap: 8px; margin-top: 24px; overflow-wrap: anywhere; }
+.dg-form-success p { margin-block: 24px; }
+.dg-map-stage { position: relative; }
+.dg-kakao-map { display: block; }
+.dg-map-status { position: absolute; inset: 0; display: grid; place-content: center; padding: 24px; text-align: center; pointer-events: none; color: var(--dg-text-2) !important; }
+.dg-form-error { color: var(--dg-text) !important; padding: 16px; border-left: 3px solid var(--dg-red); }
+.dg-hero-photo { background-image: linear-gradient(90deg, var(--dg-paper) 0 30%, color-mix(in oklab, var(--dg-paper) 56%, transparent) 54%, transparent 82%), image-set(url('/images/optimized/dahangis-2026/01-hero-bg.jpg.1280.webp') 1x, url('/images/optimized/dahangis-2026/01-hero-bg.jpg.1920.webp') 2x); }
+@media (max-width: 980px) { .dg-nav { top: 84px; } }
+@media (max-width: 767.98px) {
+  .dg-content > .container .container { max-width: 100%; padding-left: 0 !important; padding-right: 0 !important; }
+  .dg-content > .container .row { width: 100%; max-width: 100%; margin-left: 0 !important; margin-right: 0 !important; }
+  .dg-content > .container .row > * { min-width: 0; }
+}
+@media (max-width: 640px) {
+  .dg-nav { top: 72px; }
+  .dg-hero-photo { background-image: linear-gradient(180deg, color-mix(in oklab, var(--dg-paper) 28%, transparent) 0%, var(--dg-paper) 78%), image-set(url('/images/optimized/dahangis-2026/01-hero-bg.jpg.640.webp') 1x, url('/images/optimized/dahangis-2026/01-hero-bg.jpg.1280.webp') 2x); }
+}
+@media (max-width: 576px) {
+  .dg-content > .container { padding-top: 6.5rem !important; }
+  .dg-content > .container .display-5 { font-size: clamp(2rem, 11vw, 2.65rem); }
+  .dg-content > .container .lead { font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .dg-marquee-track { animation: none !important; }
+  .dg-cursor, .dg-cursor-dot { display: none !important; }
+}
