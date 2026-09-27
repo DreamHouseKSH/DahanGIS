@@ -22,19 +22,18 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - name: Capture dependency audit and public source snapshot for review
-        run: |
-          npm audit --json > dependency-audit.json || test "$?" -eq 1
-          git archive --format=tar --output=source-snapshot.tar HEAD
+      - name: Check dependency security advisories
+        run: npm audit --audit-level=high --json > dependency-audit.json
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: review-diagnostics
-          path: |
-            dependency-audit.json
-            source-snapshot.tar
-          retention-days: 3
+          name: dependency-audit
+          path: dependency-audit.json
+          retention-days: 7
       - run: npm run lint
-      - run: npm run build
+      - name: Build and validate the static export
+        id: build
+        run: npm run build
       - run: npm run typecheck
       - run: npx playwright install --with-deps chromium
       - run: npm test
@@ -49,7 +48,7 @@ jobs:
             test-results/
           retention-days: 7
       - uses: actions/upload-artifact@v4
-        if: success()
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         with:
           name: static-site-preview
           path: out/
