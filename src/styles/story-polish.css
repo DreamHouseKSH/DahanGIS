@@ -1,0 +1,18 @@
+/* Keep story icons in their section's palette instead of legacy Bootstrap blue. */
+.story-root .bi { color:inherit; }
+.story-root .story-section { position:relative; }
+.story-root .story-section > .story-inner { position:relative; z-index:1; }
+.story-root .story-services::before,
+.story-root .story-process::before,
+.story-root .story-contact::before {
+  content:''; position:absolute; top:0; right:0; width:min(68%,1000px); height:1000px;
+  pointer-events:none; opacity:.09;
+  background:url('/images/optimized/dahangis-2026/01-hero-bg.jpg.1280.webp') center right / cover no-repeat;
+  mask-image:linear-gradient(90deg,transparent,#000 60%),linear-gradient(0deg,transparent,#000 60%);
+  mask-composite:intersect;
+}
+html[data-theme="light"] .story-root .story-section::before { opacity:.045; }
+@media (max-width:640px) {
+  .story-root .story-services::before,.story-root .story-process::before,.story-root .story-contact::before { width:100%; height:700px; opacity:.055; }
+}
+@media print { .story-root .story-section::before { display:none; } }

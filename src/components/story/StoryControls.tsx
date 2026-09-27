@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { chapters, pillars, type Chapter } from './content';
+import '../../styles/story-polish.css';
 
 type Speed = 0 | 0.5 | 1 | 2;
 const scrollKeys = new Set(['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' ', 'Escape']);
@@ -69,7 +70,8 @@ export default function StoryControls() {
       root.style.setProperty('--alignment', motion.matches ? '1' : String(heroProgress));
       const nodes = root.querySelectorAll<HTMLElement>('[data-story-step]');
       for (const node of nodes) node.dataset.current = String(node.getBoundingClientRect().top < height * 0.74);
-      const marker = railRef.current?.querySelector<HTMLElement>(`[href="#${current}"] .story-rail-dot`);
+      // Start outside the complete active label, not the dot: never cross nav text.
+      const marker = railRef.current?.querySelector<HTMLElement>(`[href="#${current}"] > span:last-child`);
       const destination = document.querySelector<HTMLElement>(`#${current} [data-story-target]`);
       if (marker && destination && lineRef.current && pointRef.current) {
         const from = marker.getBoundingClientRect(), to = destination.getBoundingClientRect();
@@ -99,7 +101,7 @@ export default function StoryControls() {
       stop('직접 조작해 자동 스크롤을 멈췄습니다.');
     };
     const keyboard = (event: KeyboardEvent) => {
-      if (scrollKeys.has(event.key)) stop('직접 조작해 자동 스크롤을 멈췄습니다.');
+      if (scrollKeys.has(event.key) || event.key === 'Tab' || !(event.target instanceof Element && event.target.closest('[data-auto-controls]'))) stop('직접 조작해 자동 스크롤을 멈췄습니다.');
       if (event.key === 'Escape') { setMenuOpen(false); if (document.activeElement?.closest('.story-mobile-menu')) menuRef.current?.focus(); }
     };
     const focus = (event: FocusEvent) => {
