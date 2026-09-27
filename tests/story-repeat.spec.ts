@@ -101,11 +101,30 @@ test('writing an enquiry cancels repeat and preserves unsent input', async ({ pa
   await form.getByRole('button', { name: '정밀 정사영상', exact: true }).click();
   await form.getByRole('button', { name: /다음/ }).click();
   await form.getByRole('button', { name: /다음/ }).click();
-  await form.getByLabel('요청 내용', { exact: false }).fill('아직 보내지 않은 문의입니다.');
+  const input = form.getByLabel('요청 내용', { exact: false });
+  await input.fill('아직 보내지 않은 문의입니다.');
+  await expect(input).toBeFocused();
+  await expect(controls(page)).toHaveAttribute('data-state', 'paused');
+  await expect(controls(page)).toHaveAttribute('data-repeat-remaining', '0');
+  // Let native mobile focus scrolling and the form's entry transition finish
+  // before measuring. The fake clock must advance for pending animation frames.
+  await page.clock.runFor(1000);
   const stopped = await page.evaluate(() => scrollY);
+  await page.evaluate(() => {
+    const observed = window as typeof window & { __repeatTestScrollCalls: number };
+    observed.__repeatTestScrollCalls = 0;
+    const nativeScroll = window.scrollTo.bind(window);
+    window.scrollTo = (optionsOrX?: number | ScrollToOptions, y?: number) => {
+      observed.__repeatTestScrollCalls += 1;
+      if (typeof optionsOrX === 'number') nativeScroll(optionsOrX, y ?? 0);
+      else nativeScroll(optionsOrX);
+    };
+  });
   await page.clock.runFor(60_000);
+  expect(await page.evaluate(() => (window as typeof window & { __repeatTestScrollCalls: number }).__repeatTestScrollCalls)).toBe(0);
   expect(await page.evaluate(() => scrollY)).toBe(stopped);
-  await expect(form.getByLabel('요청 내용', { exact: false })).toHaveValue('아직 보내지 않은 문의입니다.');
+  await expect(controls(page)).toHaveAttribute('data-state', 'paused');
+  await expect(input).toHaveValue('아직 보내지 않은 문의입니다.');
 });
 
 test('manual contact arrival never starts a loop', async ({ page }) => {
