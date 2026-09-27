@@ -1,0 +1,5 @@
+:HL["/_next/static/css/169fa355949a6f60.css","style"]
+:HL["/_next/static/css/32300a44191f1a85.css","style"]
+:HL["/_next/static/css/044bdd08059f44d6.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"contact","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"1Hu5uUqEqBvV6XJfOdvEk"}
