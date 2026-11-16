@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 export const SITE_URL = 'https://dahangis.co.kr';
 export const SITE_NAME = '다한지리정보(주)';
 export const SITE_DESCRIPTION = '정밀 정사영상, GIS 데이터 구축, 맞춤형 소프트웨어, 컨설팅 및 교육을 위한 다한지리정보의 공간정보 서비스';
+/** 1200×630 card rendered from the brand logo; the logo lockup is far too wide for a social card. */
+export const SOCIAL_IMAGE = { url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: SITE_NAME };
 export const pageDefinitions = [
   { path: '/', title: '다한지리정보(주) | DahanGIS', description: SITE_DESCRIPTION },
   { path: '/services/', title: '정사영상·GIS 서비스', description: '정사영상 제작, 공간 데이터 구축, GIS 컨설팅, 소프트웨어 개발 및 교육 서비스의 범위를 확인하세요.' },
@@ -23,7 +25,7 @@ export function pageMetadata(path: string): Metadata {
   return {
     title: { absolute: title }, description: page.description,
     alternates: { canonical: url },
-    openGraph: { type: 'website', siteName: SITE_NAME, locale: 'ko_KR', url, title, description: page.description, images: [`${SITE_URL}/images/DAHAN_logo_v01.png`] },
-    twitter: { card: 'summary_large_image', title, description: page.description, images: [`${SITE_URL}/images/DAHAN_logo_v01.png`] },
+    openGraph: { type: 'website', siteName: SITE_NAME, locale: 'ko_KR', url, title, description: page.description, images: [{ ...SOCIAL_IMAGE, alt: title }] },
+    twitter: { card: 'summary_large_image', title, description: page.description, images: [{ ...SOCIAL_IMAGE, alt: title }] },
   };
 }

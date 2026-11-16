@@ -14,7 +14,7 @@ import { pageMetadata, SITE_URL } from '../lib/site-metadata';
 export const metadata: Metadata = {
   ...pageMetadata('/'),
   metadataBase: new URL(SITE_URL),
-  icons: { icon: '/images/DAHAN_logo_v01.png', apple: '/images/DAHAN_logo_v01.png' },
+  icons: { icon: [{ url: '/favicon.ico', sizes: '16x16 32x32 48x48', type: 'image/x-icon' }], apple: '/apple-touch-icon.png' },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
