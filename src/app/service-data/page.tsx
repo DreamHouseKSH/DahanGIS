@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ServiceDataPage() {
   return (
-    <div className="container py-5">
+    <main className="container py-5">
       <h1 className="display-5 fw-bold mb-4 text-center">GIS 데이터 구축</h1>
       <p className="lead mb-5 text-center">정확하고 신뢰성 있는 공간 정보의 기반을 마련합니다.</p>
 
@@ -291,6 +291,6 @@ export default function ServiceDataPage() {
            </div>
          </div>
        </section>
-    </div>
+    </main>
   );
 }

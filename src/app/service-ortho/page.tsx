@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ServiceOrthoPage() {
   return (
-    <div className="container py-5">
+    <main className="container py-5">
       <h1 className="display-5 fw-bold mb-4 text-center">정밀 정사영상 제작</h1>
       <p className="lead mb-5 text-center">최첨단 기술로 구현하는 가장 정확한 지리 정보</p>
 
@@ -218,6 +218,6 @@ export default function ServiceOrthoPage() {
            </div>
          </div>
        </section>
-    </div>
+    </main>
   );
 }

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ServiceEducationPage() {
   return (
-    <div className="container py-5">
+    <main className="container py-5">
       <h1 className="display-5 fw-bold mb-4 text-center">GIS 교육 (준비중)</h1>
       <p className="lead mb-5 text-center">실무 중심 교육으로 차세대 GIS 전문가를 양성합니다.</p>
 
@@ -242,6 +242,6 @@ export default function ServiceEducationPage() {
            </div>
          </div>
        </section>
-    </div>
+    </main>
   );
 }
