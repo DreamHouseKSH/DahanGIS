@@ -57,6 +57,21 @@ test('wizard enforces required steps and announces selected chips', async ({ pag
   await expect(page.getByLabel('요청 내용', { exact: false })).toBeFocused();
 });
 
+test('moving on from the brief step never submits the form', async ({ page }) => {
+  let posts = 0;
+  await page.route('https://api.web3forms.com/**', async (route) => { posts += 1; await route.fulfill({ json: { success: true } }); });
+  await page.goto('/contact/', { waitUntil: 'networkidle' });
+  await page.getByRole('button', { name: '정밀 정사영상', exact: true }).click();
+  await page.getByRole('button', { name: /다음/ }).click();
+  await page.getByRole('button', { name: /다음/ }).click();
+  await page.getByLabel('요청 내용', { exact: false }).fill('연락처 단계로 넘어갈 때 제출되지 않아야 하는 요청 내용입니다.');
+  await page.getByRole('button', { name: /다음/ }).click();
+  await expect(page.getByRole('heading', { name: '연락처를 남겨주세요.' })).toBeFocused();
+  await expect(page.locator('form.dg-form').getByRole('alert')).toHaveCount(0);
+  await expect(page.getByLabel('이름', { exact: false })).not.toHaveAttribute('aria-invalid', 'true');
+  expect(posts).toBe(0);
+});
+
 test('final submission checks email, phone preference and consent', async ({ page }) => {
   let posts = 0;
   await page.route('https://api.web3forms.com/**', async (route) => { posts += 1; await route.fulfill({ json: { success: true } }); });

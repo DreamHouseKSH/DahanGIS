@@ -141,7 +141,10 @@ export default function ContactWizard() {
       </div>
       <div className="dg-form-actions"><span>총 4단계</span><div>
         <button className="dg-button" type="button" disabled={step === 1} onClick={() => { setError(null); setStep((current) => (current - 1) as Step); }}>← 이전</button>
-        {step < 4 ? <button className="dg-button dg-primary" type="button" onClick={nextStep}>다음 →</button> : <button className="dg-button dg-primary" type="submit">{status === 'submitting' ? '전송 중…' : '문의 보내기 ↗'}</button>}
+        {/* The two keys keep React from reusing one DOM node: if the node that received the
+            click turns into a submit button before its default action runs, pressing '다음' at
+            step 3 submits the form and shows a validation error on arrival at step 4. */}
+        {step < 4 ? <button key="next" className="dg-button dg-primary" type="button" onClick={nextStep}>다음 →</button> : <button key="submit" className="dg-button dg-primary" type="submit">{status === 'submitting' ? '전송 중…' : '문의 보내기 ↗'}</button>}
       </div></div>
     </fieldset>
     {error ? <p id="contact-error" className="dg-form-error" role="alert"><span id="contact-form" tabIndex={-1}>{error.message}</span></p> : null}
