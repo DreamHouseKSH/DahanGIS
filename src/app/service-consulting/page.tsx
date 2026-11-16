@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ServiceConsultingPage() {
   return (
-    <div className="container py-5">
+    <main className="container py-5">
       <h1 className="display-5 fw-bold mb-4 text-center">GIS 컨설팅</h1>
       <p className="lead mb-5 text-center">전문가의 통찰력으로 최적의 GIS 활용 전략을 수립합니다.</p>
 
@@ -218,6 +218,6 @@ export default function ServiceConsultingPage() {
            </div>
          </div>
        </section>
-    </div>
+    </main>
   );
 }

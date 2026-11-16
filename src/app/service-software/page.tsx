@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ServiceSoftwarePage() {
   return (
-    <div className="container py-5">
+    <main className="container py-5">
       <h1 className="display-5 fw-bold mb-4 text-center">GIS 소프트웨어 개발</h1>
       <p className="lead mb-5 text-center">사용자 맞춤형 솔루션으로 업무 효율성을 극대화합니다.</p>
 
@@ -244,6 +244,6 @@ export default function ServiceSoftwarePage() {
            </div>
          </div>
        </section>
-    </div>
+    </main>
   );
 }

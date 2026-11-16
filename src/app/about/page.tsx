@@ -3,7 +3,7 @@ import Link from 'next/link'; // Link 컴포넌트 import 추가
 
 export default function AboutPage() {
   return (
-    <div className="container py-5"> {/* main 태그 대신 div 사용 및 패딩 조정 */}
+    <main className="container py-5">
       <h1 className="display-5 fw-bold mb-4 text-center">회사 소개</h1>
       <p className="lead mb-5 text-center">다한지리정보(주)는 공간 정보 기술로 더 나은 미래를 설계합니다.</p>
 
@@ -111,6 +111,6 @@ export default function AboutPage() {
           {/* 빈 오른쪽 컬럼 제거됨 */}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
