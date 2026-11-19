@@ -20,7 +20,7 @@
   "dependencies": {
     "bootstrap": "5.3.8",
     "bootstrap-icons": "1.13.1",
-    "next": "16.3.6",
+    "next": "16.4.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -30,8 +30,8 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "eslint": "9.39.1",
-    "eslint-config-next": "16.3.6",
-    "sharp": "0.35.4",
+    "eslint-config-next": "16.4.6",
+    "sharp": "0.35.5",
     "typescript": "5.9.3"
   }
 }
