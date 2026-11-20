@@ -833,6 +833,18 @@ html.dg-cursor-ready .dg-cursor-dot {
   order: 2;
 }
 
+/* 제목 열이 오른쪽으로 가므로 넓은 트랙도 오른쪽에 둔다(≤980px 는 1열이라 영향 없음) */
+@media (min-width: 981px) {
+  .dg-detail-grid.dg-flip {
+    grid-template-columns: minmax(340px, .9fr) minmax(0, 1fr);
+  }
+}
+
+/* 제목 열을 뒤로 보내도 전폭 상세 블록은 제목·시각물 아래(둘째 줄)에 둔다 */
+.dg-detail-grid.dg-flip > .dg-service-extended {
+  order: 3;
+}
+
 .dg-big-num {
   font-family: var(--dg-display);
   font-size: clamp(52px, 8vw, 118px);

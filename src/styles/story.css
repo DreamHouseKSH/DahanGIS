@@ -91,6 +91,7 @@ body:has(.story-root) { background:var(--s-bg,#091319) !important; }
 .story-catalogue .dg-big-num { color:var(--s-accent); opacity:.55; font-size:64px; }
 .story-catalogue .dg-detail-grid { grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:38px; }
 .story-catalogue .dg-detail-grid > * { min-width:0; }
+@media (min-width:981px) { .story-catalogue .dg-detail-grid.dg-flip { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); } }
 .story-catalogue .dg-lead { font-size:16px; line-height:1.95; }
 .story-catalogue .dg-detail-copy,.story-catalogue .dg-detail-item p { line-height:1.9; }
 .story-catalogue .dg-detail-block { background:var(--s-panel); }
