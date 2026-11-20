@@ -1,33 +1,54 @@
 1:"$Sreact.fragment"
-2:I[8500,["437","static/chunks/437-f052bc6d76e1efe1.js","500","static/chunks/500-721f8650806d0f40.js","696","static/chunks/696-b4d274e44d00e38c.js","974","static/chunks/app/page-6f3c9e2e7674a961.js"],""]
-3:I[484,[],"OutletBoundary"]
-4:"$Sreact.suspense"
-8:I[484,[],"ViewportBoundary"]
-9:I[484,[],"MetadataBoundary"]
-a:I[6869,[],"IconMark"]
-c:I[7121,[],""]
-d:I[4581,[],""]
-10:I[9270,["437","static/chunks/437-f052bc6d76e1efe1.js","500","static/chunks/500-721f8650806d0f40.js","177","static/chunks/app/layout-83bf757bef613912.js"],"ThemeProvider"]
-11:I[168,["437","static/chunks/437-f052bc6d76e1efe1.js","500","static/chunks/500-721f8650806d0f40.js","177","static/chunks/app/layout-83bf757bef613912.js"],"default"]
-12:I[934,["437","static/chunks/437-f052bc6d76e1efe1.js","500","static/chunks/500-721f8650806d0f40.js","177","static/chunks/app/layout-83bf757bef613912.js"],"default"]
+2:"static/chunks/437-0d8669c2b1a854a7.js"
+3:"static/chunks/500-8af45f63ef5e66a0.js"
+4:"static/chunks/app/layout-f757a22a3be967d9.js"
+5:I[9270,["437","$2","500","$3","177","$4"],"ThemeProvider"]
+6:I[168,["437","$2","500","$3","177","$4"],"default"]
+7:I[934,["437","$2","500","$3","177","$4"],"default"]
+8:I[7121,[],""]
+9:I[4581,[],""]
+a:"static/chunks/696-b422c0419620d10f.js"
+b:"static/chunks/app/page-d4b7176e19df775a.js"
+c:I[8500,["437","$2","500","$3","696","$a","974","$b"],""]
+d:I[8437,["437","$2","500","$3","696","$a","974","$b"],"Image"]
+e:I[2593,["437","$2","500","$3","177","$4"],""]
+15:I[484,[],"OutletBoundary"]
+16:"$Sreact.suspense"
+19:"ViewportBoundary"
+1a:I[484,[],"$19"]
+1b:"MetadataBoundary"
+1c:I[484,[],"$1b"]
 :HL["/_next/static/css/169fa355949a6f60.css","style"]
 :HL["/_next/static/css/32300a44191f1a85.css","style"]
 :HL["/_next/static/css/044bdd08059f44d6.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap","style"]
-7:X
-f:X
-f:C
-0:{"buildId":"m94czu0kKNaz_lc7QshyW","data":[{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"dg-shell","children":["$","section",null,{"className":"dg-page-head","children":["$","div",null,{"className":"dg-wrap","children":[["$","p",null,{"className":"dg-eyebrow","children":"404 · Not found"}],["$","h1",null,{"className":"dg-page-title","children":"페이지를 찾을 수 없습니다."}],["$","p",null,{"className":"dg-lead","children":"요청하신 페이지가 존재하지 않거나 주소가 변경되었습니다."}],["$","$L2",null,{"href":"/","className":"dg-button dg-primary","children":"메인 페이지로 이동"}]]}]}]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"다한지리정보(주) | DahanGIS"}],["$","meta","1",{"name":"description","content":"정밀 정사영상, GIS 데이터 구축, 맞춤형 소프트웨어, 컨설팅 및 교육을 위한 다한지리정보의 공간정보 서비스"}],["$","link","2",{"rel":"canonical","href":"https://dahangis.co.kr/"}],["$","meta","3",{"property":"og:title","content":"다한지리정보(주) | DahanGIS"}],["$","meta","4",{"property":"og:description","content":"정밀 정사영상, GIS 데이터 구축, 맞춤형 소프트웨어, 컨설팅 및 교육을 위한 다한지리정보의 공간정보 서비스"}],["$","meta","5",{"property":"og:url","content":"https://dahangis.co.kr/"}],["$","meta","6",{"property":"og:site_name","content":"다한지리정보(주)"}],["$","meta","7",{"property":"og:locale","content":"ko_KR"}],["$","meta","8",{"property":"og:image","content":"https://dahangis.co.kr/images/DAHAN_logo_v01.png"}],["$","meta","9",{"property":"og:type","content":"website"}],["$","meta","10",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","11",{"name":"twitter:title","content":"다한지리정보(주) | DahanGIS"}],["$","meta","12",{"name":"twitter:description","content":"정밀 정사영상, GIS 데이터 구축, 맞춤형 소프트웨어, 컨설팅 및 교육을 위한 다한지리정보의 공간정보 서비스"}],["$","meta","13",{"name":"twitter:image","content":"https://dahangis.co.kr/images/DAHAN_logo_v01.png"}],["$","link","14",{"rel":"icon","href":"/images/DAHAN_logo_v01.png"}],["$","link","15",{"rel":"apple-touch-icon","href":"/images/DAHAN_logo_v01.png"}],["$","$La","16",{}]]}]}]}],null]}],"isPartial":"$@b","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@e","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/169fa355949a6f60.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/32300a44191f1a85.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/044bdd08059f44d6.css","precedence":"next"}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap","rel":"stylesheet"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var theme='dark';try{var saved=localStorage.getItem('dahangis-theme');if(saved==='dark'||saved==='light')theme=saved;}catch(e){}document.documentElement.setAttribute('data-theme',theme);})();"}}]]}],["$","body",null,{"children":[["$","a",null,{"href":"#main-content","className":"dg-skip-link","children":"본문 바로가기"}],["$","$L10",null,{"children":[["$","$L11",null,{}],["$","$L12",null,{}],["$","div",null,{"id":"main-content","className":"dg-content","tabIndex":-1,"children":["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}],"notFound":[["$","main",null,{"className":"dg-shell","children":["$","section",null,{"className":"dg-page-head","children":["$","div",null,{"className":"dg-wrap","children":[["$","p",null,{"className":"dg-eyebrow","children":"404 · Not found"}],["$","h1",null,{"className":"dg-page-title","children":"페이지를 찾을 수 없습니다."}],["$","p",null,{"className":"dg-lead","children":"요청하신 페이지가 존재하지 않거나 주소가 변경되었습니다."}],["$","$L2",null,{"href":"/","className":"dg-button dg-primary","children":"메인 페이지로 이동"}]]}]}]}],[]]}]}],"$L13"]}],"$L14"]}]]}]]}],"isPartial":"$@15","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@16","rootVaryParams":null,"needsRuntimeRequest":"$@17"}
-18:I[8437,["437","static/chunks/437-f052bc6d76e1efe1.js","500","static/chunks/500-721f8650806d0f40.js","696","static/chunks/696-b4d274e44d00e38c.js","974","static/chunks/app/page-6f3c9e2e7674a961.js"],"Image"]
-19:I[2593,["437","static/chunks/437-f052bc6d76e1efe1.js","500","static/chunks/500-721f8650806d0f40.js","177","static/chunks/app/layout-83bf757bef613912.js"],""]
-5:null
-13:["$","footer",null,{"className":"dg-footer","children":[["$","div",null,{"className":"dg-foot-grid","children":[["$","div",null,{"children":[["$","div",null,{"className":"dg-foot-brand","children":["$","span",null,{"className":"dg-logo-image-wrap","children":["$","$L18",null,{"className":"dg-logo-image","src":"/images/DAHAN_logo_v01.png","width":186,"height":44,"alt":"DahanGIS"}]}]}],["$","p",null,{"children":"다한지리정보(주) — 최첨단 GIS 기술로 미래를 그립니다."}]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Services"}],[["$","$L2","ortho",{"href":"/services#ortho","children":"정밀 정사영상 제작"}],["$","$L2","data",{"href":"/services#data","children":"GIS 데이터 구축"}],["$","$L2","consult",{"href":"/services#consult","children":"GIS 컨설팅"}],["$","$L2","software",{"href":"/services#software","children":"GIS 소프트웨어 개발"}],["$","$L2","edu",{"href":"/services#edu","children":"실무 중심 GIS 교육"}]]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Company"}],["$","$L2",null,{"href":"/#why","children":"강점"}],["$","$L2",null,{"href":"/#process","children":"프로세스"}],["$","$L2",null,{"href":"/contact","children":"문의"}]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Contact"}],["$","span",null,{"children":"경기 고양시 일산서구"}],["$","span",null,{"children":"킨텍스로 240"}],["$","span",null,{"children":"GIFC 오피스 2211호"}],null]}]]}],["$","div",null,{"className":"dg-foot-bottom","children":[["$","span",null,{"children":["© ",2026," Dahan Geo Information, Inc."]}],["$","span",null,{"children":"Spatial data, imagery, platform."}]]}]]}]
-14:["$","$L19",null,{"src":"/vendor/bootstrap.bundle.min.js","strategy":"afterInteractive"}]
-7:300
-17:true
-7:C
-16:0
-b:"$undefined"
-e:"$undefined"
-15:"$undefined"
-6:"$undefined"
+10:X
+13:X
+13:C
+14:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"className":"dg-shell","children":["$","section",null,{"className":"dg-page-head","children":["$","div",null,{"className":"dg-wrap","children":[["$","p",null,{"className":"dg-eyebrow","children":"404 · Not found"}],["$","h1",null,{"className":"dg-page-title","children":"페이지를 찾을 수 없습니다."}],["$","p",null,{"className":"dg-lead","children":"요청하신 페이지가 존재하지 않거나 주소가 변경되었습니다."}],["$","$Lc",null,{"href":"/","className":"dg-button dg-primary","children":"메인 페이지로 이동"}]]}]}]}],null,["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]]}],"p":"$@18","v":null,"s":"$10"}}]]
+11:[["children",{"s":"_not-found","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]]}],"p":"$@12","v":"$13","s":"$10"},"c":"$Q14"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/169fa355949a6f60.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/32300a44191f1a85.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/044bdd08059f44d6.css","precedence":"next"}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap","rel":"stylesheet"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var theme='dark';try{var saved=localStorage.getItem('dahangis-theme');if(saved==='dark'||saved==='light')theme=saved;}catch(e){}document.documentElement.setAttribute('data-theme',theme);})();"}}]]}],["$","body",null,{"children":[["$","a",null,{"href":"#main-content","className":"dg-skip-link","children":"본문 바로가기"}],["$","$L5",null,{"children":[["$","$L6",null,{}],["$","$L7",null,{}],["$","div",null,{"id":"main-content","className":"dg-content","tabIndex":-1,"children":["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}],"notFound":[["$","main",null,{"className":"dg-shell","children":["$","section",null,{"className":"dg-page-head","children":["$","div",null,{"className":"dg-wrap","children":[["$","p",null,{"className":"dg-eyebrow","children":"404 · Not found"}],["$","h1",null,{"className":"dg-page-title","children":"페이지를 찾을 수 없습니다."}],["$","p",null,{"className":"dg-lead","children":"요청하신 페이지가 존재하지 않거나 주소가 변경되었습니다."}],["$","$Lc",null,{"href":"/","className":"dg-button dg-primary","children":"메인 페이지로 이동"}]]}]}]}],[]]}]}],["$","footer",null,{"className":"dg-footer","children":[["$","div",null,{"className":"dg-foot-grid","children":[["$","div",null,{"children":[["$","div",null,{"className":"dg-foot-brand","children":["$","span",null,{"className":"dg-logo-image-wrap","children":["$","$Ld",null,{"className":"dg-logo-image","src":"/images/DAHAN_logo_v01.png","width":186,"height":44,"alt":"DahanGIS"}]}]}],["$","p",null,{"children":"다한지리정보(주) — 최첨단 GIS 기술로 미래를 그립니다."}]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Services"}],[["$","$Lc","ortho",{"href":"/services#ortho","children":"정밀 정사영상 제작"}],["$","$Lc","data",{"href":"/services#data","children":"GIS 데이터 구축"}],["$","$Lc","consult",{"href":"/services#consult","children":"GIS 컨설팅"}],["$","$Lc","software",{"href":"/services#software","children":"GIS 소프트웨어 개발"}],["$","$Lc","edu",{"href":"/services#edu","children":"실무 중심 GIS 교육"}]]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Company"}],["$","$Lc",null,{"href":"/#why","children":"강점"}],["$","$Lc",null,{"href":"/#process","children":"프로세스"}],["$","$Lc",null,{"href":"/contact","children":"문의"}]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Contact"}],["$","span",null,{"children":"경기 고양시 일산서구"}],["$","span",null,{"children":"킨텍스로 240"}],["$","span",null,{"children":"GIFC 오피스 2211호"}],null]}]]}],["$","div",null,{"className":"dg-foot-bottom","children":[["$","span",null,{"children":["© ",2026," Dahan Geo Information, Inc."]}],["$","span",null,{"children":"Spatial data, imagery, platform."}]]}]]}]]}],["$","$Le",null,{"src":"/vendor/bootstrap.bundle.min.js","strategy":"afterInteractive"}]]}]]}]]}],"p":"$@f","v":null,"s":"$10"},"c":"$Q11"},"h":{"r":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L1a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$16",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"페이지를 찾을 수 없습니다 | 다한지리정보(주)"}],["$","meta","1",{"name":"description","content":"요청하신 페이지가 존재하지 않거나 주소가 변경되었습니다. 다한지리정보(주) 홈에서 정사영상·GIS 서비스와 프로젝트 문의 안내를 확인하세요."}],["$","link","2",{"rel":"canonical","href":"https://dahangis.co.kr/"}],["$","meta","3",{"property":"og:title","content":"다한지리정보(주) | DahanGIS"}],["$","meta","4",{"property":"og:description","content":"정밀 정사영상, GIS 데이터 구축, 맞춤형 소프트웨어, 컨설팅 및 교육을 위한 다한지리정보의 공간정보 서비스"}],["$","meta","5",{"property":"og:url","content":"https://dahangis.co.kr/"}],["$","meta","6",{"property":"og:site_name","content":"다한지리정보(주)"}],["$","meta","7",{"property":"og:locale","content":"ko_KR"}],["$","meta","8",{"property":"og:image","content":"https://dahangis.co.kr/og-image.png"}],"$L1d","$L1e","$L1f","$L20","$L21","$L22","$L23","$L24","$L25","$L26","$L27","$L28","$L29","$L2a"]}]}],null]}],null]}],"p":"$@2b","v":null,"s":"$10"}},"a":"$@2c","u":"$@2d","b":"lPnW9TWU2YQOFg7-aXiZ5"}
+2e:I[6869,[],"IconMark"]
+17:null
+1d:["$","meta","9",{"property":"og:image:width","content":"1200"}]
+1e:["$","meta","10",{"property":"og:image:height","content":"630"}]
+1f:["$","meta","11",{"property":"og:image:alt","content":"다한지리정보(주) | DahanGIS"}]
+20:["$","meta","12",{"property":"og:type","content":"website"}]
+21:["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}]
+22:["$","meta","14",{"name":"twitter:title","content":"다한지리정보(주) | DahanGIS"}]
+23:["$","meta","15",{"name":"twitter:description","content":"정밀 정사영상, GIS 데이터 구축, 맞춤형 소프트웨어, 컨설팅 및 교육을 위한 다한지리정보의 공간정보 서비스"}]
+24:["$","meta","16",{"name":"twitter:image","content":"https://dahangis.co.kr/og-image.png"}]
+25:["$","meta","17",{"name":"twitter:image:alt","content":"다한지리정보(주) | DahanGIS"}]
+26:["$","meta","18",{"name":"twitter:image:width","content":"1200"}]
+27:["$","meta","19",{"name":"twitter:image:height","content":"630"}]
+28:["$","link","20",{"rel":"icon","href":"/favicon.ico","sizes":"16x16 32x32 48x48","type":"image/x-icon"}]
+29:["$","link","21",{"rel":"apple-touch-icon","href":"/apple-touch-icon.png"}]
+2a:["$","$L2e","22",{}]
+10:300
+2d:true
+10:C
+2c:0
+12:"$undefined"
+f:"$undefined"
+2b:"$undefined"
+18:"$undefined"
