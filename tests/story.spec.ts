@@ -20,12 +20,12 @@ test('all six chapters and the complete service catalogue are in one document', 
 });
 
 test('guided scroll is opt-in and Off survives reload as the default', async ({ page }) => {
-  await openStory(page); await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+  await openStory(page); await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
   const before = await page.evaluate(() => scrollY);
   await page.waitForTimeout(400);
   expect(await page.evaluate(() => scrollY)).toBe(before);
   await speed(page).click(); await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(before + 12);
-  await page.reload({ waitUntil: 'networkidle' }); await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+  await page.reload({ waitUntil: 'networkidle' }); await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
 });
 
 test('the three rates really move at different speeds and Off cancels movement', async ({ page }) => {
@@ -58,9 +58,9 @@ test('wheel, keyboard, touch, blur and hidden tabs stop without auto-resuming', 
         document.dispatchEvent(new Event('visibilitychange'));
       } else window.dispatchEvent(new Event(name));
     }, event);
-    await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+    await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
   }
-  await speed(page).click(); await page.keyboard.press('Escape'); await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+  await speed(page).click(); await page.keyboard.press('Escape'); await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
 });
 
 test('chapter links update active location and connector without leaving the page', async ({ page, isMobile }) => {
@@ -71,7 +71,7 @@ test('chapter links update active location and connector without leaving the pag
     await nav.locator(`a[href="#${id}"]`).click();
     await expect(page).toHaveURL(new RegExp(`/#${id}$`));
     await expect(page.locator(`.story-rail a[href="#${id}"]`)).toHaveAttribute('aria-current', 'location');
-    await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+    await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
   }
   if (!isMobile) await expect(page.locator('.story-connector path')).toHaveAttribute('d', /^M .+ H .+ L /);
 });
@@ -81,10 +81,11 @@ test('guided scroll stops exactly before the inquiry area', async ({ page }) => 
   const boundary = await page.locator('#contact').evaluate((element) => element.getBoundingClientRect().top + scrollY - innerHeight * .2);
   await page.evaluate((position) => scrollTo({ top: position - 35, behavior: 'instant' }), boundary);
   await speed(page, 2).click();
-  await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-auto-controls]')).toHaveAttribute('data-state', /^(paused|repeat-wait)$/);
+  await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
   expect(Math.abs(await page.evaluate(() => scrollY) - boundary)).toBeLessThan(3);
   await expect(page.locator('.story-auto-status')).toContainText('문의 내용을 편하게 작성');
-  await speed(page).click(); await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+  await speed(page).click(); await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
 });
 
 test('embedded inquiry submits successfully without sending a real email', async ({ page }) => {
@@ -108,7 +109,7 @@ test('reduced motion removes decorative displacement and never auto-starts', asy
   await page.emulateMedia({ reducedMotion: 'reduce' }); await openStory(page);
   await expect(page.locator('.story-tiles')).toHaveCSS('display', 'none');
   await expect(page.locator('.story-hero-image')).toHaveCSS('transform', 'none');
-  await expect(off(page)).toHaveAttribute('aria-pressed', 'true');
+  await expect(off(page)).toHaveAttribute('aria-pressed', 'false');
   await expect(page.locator('[data-reveal]').last()).toHaveCSS('opacity', '1');
 });
 
