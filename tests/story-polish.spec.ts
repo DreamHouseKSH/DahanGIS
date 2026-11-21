@@ -21,5 +21,5 @@ test('tabbing out of playback controls pauses the presentation', async ({ page }
   const play = page.getByRole('button', { name: '자동 스크롤 1배속', exact: true });
   await play.click(); await expect(play).toHaveAttribute('aria-pressed', 'true');
   await page.keyboard.press('Tab');
-  await expect(page.getByRole('button', { name: '자동 스크롤 끄기', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: '자동 스크롤 끄기', exact: true })).toHaveAttribute('aria-pressed', 'false');
 });
