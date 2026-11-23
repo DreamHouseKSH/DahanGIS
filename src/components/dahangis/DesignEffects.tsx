@@ -23,7 +23,7 @@ export default function DesignEffects() {
           observer?.unobserve(entry.target);
         }
       }),
-      { threshold: 0.05 }
+      { threshold: 0 }
     );
 
     const visit = (node: Node, callback: (element: HTMLElement) => void) => {
