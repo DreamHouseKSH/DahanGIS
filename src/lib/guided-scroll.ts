@@ -39,6 +39,8 @@ export function createGuidedScroll(onChange: (state: ScrollState) => void): Guid
   let destroyed = false;
   let timer = 0;
   let repeatTimer = 0;
+  let settleTimer = 0;
+  let waitingForScroll = false;
   let frame = 0;
   let previousTime: number | null = null;
   let position = window.scrollY;
@@ -76,7 +78,21 @@ export function createGuidedScroll(onChange: (state: ScrollState) => void): Guid
   function cancelRepeat() {
     window.clearTimeout(repeatTimer); repeatTimer = 0; repeatPending = false; repeatRemaining = 0;
   }
-  function stopFrames() { cancelAnimationFrame(frame); frame = 0; speed = 0; previousTime = null; }
+  function stopFrames() {
+    window.clearTimeout(settleTimer); settleTimer = 0; waitingForScroll = false;
+    cancelAnimationFrame(frame); frame = 0; speed = 0; previousTime = null;
+  }
+  function awaitScrollSettled() {
+    window.clearTimeout(settleTimer);
+    settleTimer = window.setTimeout(() => {
+      settleTimer = 0;
+      if (destroyed || !speed || !waitingForScroll) return;
+      waitingForScroll = false;
+      position = window.scrollY;
+      previousTime = null;
+      frame = requestAnimationFrame(tick);
+    }, 120);
+  }
   function writePosition(top: number) {
     // The final frame can dispatch scroll after speed becomes zero. Consume that
     // event once so it cannot cancel the repeat timer as if it were user input.
@@ -158,9 +174,14 @@ export function createGuidedScroll(onChange: (state: ScrollState) => void): Guid
     if (!automatic) focused = document.hasFocus();
     const reason = blocker(automatic);
     if (reason) { publish('paused', reason); return; }
-    speed = value; position = window.scrollY;
+    position = window.scrollY;
+    expectedScroll = null;
+    speed = value;
     publish('running', `자동 스크롤 · ${value}배속${automatic ? ' · 자동 재생' : ''}`);
-    frame = requestAnimationFrame(tick);
+    // Let native smooth navigation finish before our frames own the position.
+    // Direct input still calls activity(), which cancels this pending handover.
+    if (!automatic) { waitingForScroll = true; awaitScrollSettled(); }
+    else frame = requestAnimationFrame(tick);
   }
   function setRepeatEnabled(enabled: boolean) {
     if (destroyed || repeatEnabled === enabled) return;
@@ -202,6 +223,11 @@ export function createGuidedScroll(onChange: (state: ScrollState) => void): Guid
     queueMicrotask(() => { if (!destroyed && !speed) { lastActivity = performance.now(); armIdle(); } });
   });
   listen(window, 'scroll', () => {
+    if (waitingForScroll && speed) {
+      position = window.scrollY;
+      awaitScrollSettled();
+      return;
+    }
     if (expectedScroll !== null && Math.abs(window.scrollY - expectedScroll) <= 2) { expectedScroll = null; return; }
     expectedScroll = null;
     if (speed && Math.abs(window.scrollY - position) <= 2) return;

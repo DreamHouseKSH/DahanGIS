@@ -97,7 +97,8 @@ body:has(.story-root) { background:var(--s-bg,#091319) !important; }
 .story-catalogue .dg-detail-block { background:var(--s-panel); }
 .story-catalogue .dg-service-visual { align-self:start; min-width:0; }
 .story-catalogue .dg-service-visual-image { min-height:340px; }
-.story-catalogue .dg-service-visual-image img { max-height:480px; object-fit:cover; }
+.story-catalogue .dg-service-visual-image img { object-fit:cover; }
+.story-root .story-catalogue .dg-service-visual-image img { max-height:none; }
 .story-catalogue .dg-detail-table-wrap { overflow:auto; }
 .story-catalogue .dg-detail-block-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 .story-catalogue .dg-section-head { gap:24px; }

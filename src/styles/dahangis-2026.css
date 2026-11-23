@@ -947,6 +947,7 @@ html.dg-cursor-ready .dg-cursor-dot {
 }
 
 .dg-service-visual-image {
+  position: relative;
   flex: 1;
   min-height: 360px;
   border: 1px solid var(--dg-line);
@@ -955,6 +956,8 @@ html.dg-cursor-ready .dg-cursor-dot {
 }
 
 .dg-service-visual-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;

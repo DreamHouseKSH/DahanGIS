@@ -22,6 +22,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      {/* App Router의 RootLayout head는 모든 페이지 공통이므로 pages/_document 전용 규칙이 해당하지 않습니다. */}
+      {/* eslint-disable-next-line @next/next/no-page-custom-font */}
       <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       {/* Bootstrap CSS and icons are bundled locally once, without a CDN dependency. */}
       <script dangerouslySetInnerHTML={{ __html: `(function(){var theme='dark';try{var saved=localStorage.getItem('dahangis-theme');if(saved==='dark'||saved==='light')theme=saved;}catch(e){}document.documentElement.setAttribute('data-theme',theme);})();` }} />
