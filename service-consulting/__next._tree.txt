@@ -4,4 +4,4 @@
 :HL["https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"service-consulting","h":96,"c":"$Q2"}]]
-0:{"b":"j2-dKYDhZ5X_IKJ5Lel9Z","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"2ApPxY7Yhs7p1stguMi9M","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
