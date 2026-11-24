@@ -807,8 +807,11 @@ html.dg-cursor-ready .dg-cursor-dot {
   white-space: nowrap;
 }
 
+.dg-service-detail[id] {
+  scroll-margin-top: 117px;
+}
+
 .dg-service-detail {
-  scroll-margin-top: 150px;
   border-bottom: 1px solid var(--dg-line);
   padding-top: clamp(48px, 5vw, 76px);
   padding-bottom: clamp(70px, 8vw, 118px);
