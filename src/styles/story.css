@@ -40,6 +40,7 @@ body:has(.story-root) { background:var(--s-bg,#091319) !important; }
 .story-chapter-number { font:11px 'Geist Mono',monospace; margin-left:10px; }
 .story-rail small { display:block; font-size:10px; line-height:1.8; color:var(--s-soft); margin:18px 0 0 31px; max-width:125px; }
 .story-connector { position:fixed; inset:0; width:100%; height:100%; z-index:205; pointer-events:none; overflow:visible; }
+.story-connector:not([data-visible]) { opacity:0; }
 .story-connector path { fill:none; stroke:var(--s-accent); stroke-width:1; opacity:.65; }
 .story-connector circle { fill:var(--s-accent); }
 .story-mobile-menu,.story-mobile-chapter { display:none; }
