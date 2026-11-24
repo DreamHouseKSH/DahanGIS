@@ -95,3 +95,10 @@
   .story-root .story-auto button { flex-shrink:0; width:44px; min-height:44px; }
   .story-root .story-auto .story-repeat { width:44px; min-width:44px; flex-direction:column; gap:1px; font-size:10px; }
 }
+@media (max-width:339px) {
+  .story-header .story-brand { width:clamp(96px, calc(100vw - 208px), 132px); }
+}
+@media (width < 316px) {
+  .story-root .story-auto { gap:0; }
+  .story-root .story-auto .story-auto-label { width:46px; min-width:46px; }
+}
