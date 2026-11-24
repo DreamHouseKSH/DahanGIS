@@ -22,6 +22,7 @@ export default function StoryControls() {
   const { theme, toggleTheme } = useTheme();
   const railRef = useRef<HTMLElement>(null);
   const quickRef = useRef<HTMLElement>(null);
+  const connectorRef = useRef<SVGSVGElement>(null);
   const lineRef = useRef<SVGPathElement>(null);
   const pointRef = useRef<SVGCircleElement>(null);
   const progressRef = useRef<HTMLSpanElement>(null);
@@ -54,6 +55,7 @@ export default function StoryControls() {
     const root = document.querySelector<HTMLElement>('.story-root');
     if (!root) return;
     const rail = railRef.current;
+    const header = root.querySelector<HTMLElement>('.story-header');
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
     const update = () => {
@@ -81,22 +83,50 @@ export default function StoryControls() {
       for (const node of root.querySelectorAll<HTMLElement>('[data-story-step]')) node.dataset.current = String(node.getBoundingClientRect().top < height * 0.74);
       // In services, connect the active nested item to its own heading, not the overview.
       const target = sub || current;
-      const marker = rail?.querySelector<HTMLElement>(`a[href="#${target}"] > span:last-child`);
-      const destination = document.querySelector<HTMLElement>(`#${target} [data-story-target], #${target} h2`);
-      if (marker && destination && lineRef.current && pointRef.current) {
-        const from = marker.getBoundingClientRect(), to = destination.getBoundingClientRect();
-        const x1 = from.right + 14, y1 = from.top + from.height / 2;
-        const x2 = Math.max(x1 + 42, to.left - 18), y2 = Math.max(150, Math.min(height - 100, to.top + Math.min(to.height / 2, 44)));
-        lineRef.current.setAttribute('d', `M ${x1} ${y1} H ${x1 + 18} L ${x2 - 16} ${y2} H ${x2}`);
-        pointRef.current.setAttribute('cx', String(x2)); pointRef.current.setAttribute('cy', String(y2));
-      }
+      const connector = connectorRef.current;
+      const line = lineRef.current, point = pointRef.current;
+      if (!connector || !line || !point || !rail) return;
+      const hide = () => connector.removeAttribute('data-visible');
+      if (motion.matches || !rail.getClientRects().length) return hide();
+
+      const link = rail.querySelector<HTMLAnchorElement>(`a[href="#${target}"][aria-current]`);
+      const marker = link?.querySelector<HTMLElement>('span:last-child');
+      const destination = root.querySelector<HTMLElement>(`#${target} [data-story-target], #${target} h2`);
+      const content = destination?.closest('.story-inner');
+      if (!link || !marker || !destination || !content) return hide();
+
+      // Follow the submenu and heading while their CSS animations move the measured boxes.
+      const serviceMenu = link.closest('.story-service-menu');
+      if ([serviceMenu, destination].some((element) => element?.getAnimations().some(({ pending, playState }) => pending || playState === 'running'))) schedule();
+
+      const from = marker.getBoundingClientRect(), to = destination.getBoundingClientRect();
+      const visibleTop = Math.max(to.top, header?.getBoundingClientRect().bottom ?? 0);
+      const visibleBottom = Math.min(to.bottom, height);
+      const y1 = from.top + from.height / 2;
+      const railBox = rail.getBoundingClientRect();
+      if (!from.width || !from.height || y1 < railBox.top || y1 > railBox.bottom || visibleTop >= visibleBottom) return hide();
+
+      // Clear the painted link and keep both the path and dot in the shared content gutter.
+      const x1 = Math.max(from.right + 14, link.getBoundingClientRect().right + 1);
+      const x2 = content.getBoundingClientRect().left - 18;
+      if (x2 <= x1) return hide();
+      const elbow = Math.min(16, (x2 - x1) / 3);
+      const y2 = visibleTop + Math.min((visibleBottom - visibleTop) / 2, 44);
+      line.setAttribute('d', `M ${x1} ${y1} H ${x1 + elbow} L ${x2 - elbow} ${y2} H ${x2}`);
+      point.setAttribute('cx', String(x2));
+      point.setAttribute('cy', String(y2));
+      connector.setAttribute('data-visible', '');
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const trackHeading = (event: TransitionEvent) => {
+      if (event.propertyName === 'transform' && event.target instanceof HTMLElement && event.target.matches('[data-story-target], h2')) schedule();
+    };
     refreshRef.current = schedule;
     const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(schedule);
     observer?.observe(root);
     if (rail) observer?.observe(rail);
     rail?.addEventListener('scroll', schedule, { passive: true });
+    root.addEventListener('transitionrun', trackHeading);
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     motion.addEventListener('change', schedule);
@@ -104,6 +134,7 @@ export default function StoryControls() {
     return () => {
       refreshRef.current = () => {};
       cancelAnimationFrame(frame); observer?.disconnect(); rail?.removeEventListener('scroll', schedule);
+      root.removeEventListener('transitionrun', trackHeading);
       window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); motion.removeEventListener('change', schedule);
     };
   }, []);
@@ -157,7 +188,7 @@ export default function StoryControls() {
     <nav id="story-mobile-menu" className="story-mobile-menu" aria-label="모바일 구간 목차" hidden={!menuOpen}>{chapterLinks('story-mobile')}</nav>
     <nav ref={quickRef} className="story-mobile-services" aria-label="서비스 빠른 이동" hidden={!servicesOpen || menuOpen}><ul>{serviceLinks()}</ul></nav>
     <div className="story-mobile-chapter" data-services={servicesOpen} aria-hidden="true">{String(chapters.findIndex((chapter) => chapter.id === active) + 1).padStart(2, '0')} / 06 <span>{chapters.find((chapter) => chapter.id === active)?.label}</span></div>
-    <svg className="story-connector" aria-hidden="true"><path ref={lineRef} /><circle ref={pointRef} r="3" /></svg>
+    <svg ref={connectorRef} className="story-connector" aria-hidden="true"><path ref={lineRef} /><circle ref={pointRef} r="3" /></svg>
     <p id="story-auto-help" className="dg-sr-only">AUTO를 누르면 지금 0.5배속으로 시작합니다. 30초간 조작이 없어도 자동으로 시작합니다. 반복은 기본 켜짐이며 자동 스크롤 종료 후 5초 대기하고 맨 위에서 0.5배속으로 다시 재생합니다. 직접 조작하거나 입력하면 복귀를 취소합니다. Off는 자동 시작과 반복 이동을 모두 중단합니다. 수동으로 문의 구간에 도착한 경우에는 자동 복귀하지 않습니다.</p>
     <p className="story-auto-status dg-sr-only" role="status">{notice}</p>
   </>;
