@@ -100,18 +100,25 @@ export default function StoryControls() {
       if ([serviceMenu, destination].some((element) => element?.getAnimations().some(({ pending, playState }) => pending || playState === 'running'))) schedule();
 
       const from = marker.getBoundingClientRect(), to = destination.getBoundingClientRect();
-      const visibleTop = Math.max(to.top, header?.getBoundingClientRect().bottom ?? 0);
+      const section = root.querySelector<HTMLElement>(`#${target}`)?.getBoundingClientRect();
+      if (!section) return hide();
+      const headerBottom = header?.getBoundingClientRect().bottom ?? 0;
+      const sectionTop = Math.max(section.top, headerBottom);
+      const sectionBottom = Math.min(section.bottom, height);
+      const visibleTop = Math.max(to.top, headerBottom);
       const visibleBottom = Math.min(to.bottom, height);
       const y1 = from.top + from.height / 2;
       const railBox = rail.getBoundingClientRect();
-      if (!from.width || !from.height || y1 < railBox.top || y1 > railBox.bottom || visibleTop >= visibleBottom) return hide();
+      if (!from.width || !from.height || y1 < railBox.top || y1 > railBox.bottom || sectionTop >= sectionBottom) return hide();
 
       // Clear the painted link and keep both the path and dot in the shared content gutter.
       const x1 = Math.max(from.right + 14, link.getBoundingClientRect().right + 1);
       const x2 = content.getBoundingClientRect().left - 18;
       if (x2 <= x1) return hide();
       const elbow = Math.min(16, (x2 - x1) / 3);
-      const y2 = visibleTop + Math.min((visibleBottom - visibleTop) / 2, 44);
+      const y2 = visibleTop < visibleBottom
+        ? visibleTop + Math.min((visibleBottom - visibleTop) / 2, 44)
+        : sectionTop + Math.min((sectionBottom - sectionTop) / 2, 44);
       line.setAttribute('d', `M ${x1} ${y1} H ${x1 + elbow} L ${x2 - elbow} ${y2} H ${x2}`);
       point.setAttribute('cx', String(x2));
       point.setAttribute('cy', String(y2));
