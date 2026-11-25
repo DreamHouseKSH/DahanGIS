@@ -2,9 +2,9 @@ import { writeFileSync } from 'node:fs';
 import { test, expect, type Page } from '@playwright/test';
 import { isolateExternalServices } from './helpers';
 import { chapters, pillars } from '../src/components/story/content';
-import { IN_VIEW_MARGIN, measureConnector, settleConnector, summarize, sweepConnector, type ConnectorSample } from './connector-geometry';
+import { IN_VIEW_MARGIN, measureConnector, persistProblem, sectionVisible, settleConnector, summarize, sweepConnector, type ConnectorSample } from './connector-geometry';
 
-// 왼쪽 목차 연결선이 (1) 본문 위를 지나가지 않고 (2) 화면 밖 제목을 가리키지 않으며 (3) 활성 항목에 붙어 있는지 본다.
+// 왼쪽 목차 연결선이 (1) 본문 위를 지나가지 않고 (2) 화면 밖 구간을 가리키지 않으며 (3) 활성 항목에 붙어 있는지 본다.
 const WIDTHS = [981, 1024, 1200, 1280, 1440, 1920];
 const HEIGHT = 900;
 const ITEMS = [...chapters.map((chapter) => chapter.id), ...pillars.map((pillar) => pillar.id)];
@@ -50,11 +50,11 @@ for (const width of WIDTHS) {
     const worst = [...overlapped].sort((a, b) => b.overlapPx - a.overlapPx).slice(0, 8).map((sample) => `${where(sample)} → ${sample.overlapPx}px ${sample.overlapWith}`);
     expect.soft(worst, `겹침 없음: 본문과 겹친 표본 ${overlapped.length} / ${samples.length} (최악 8건)`).toEqual([]);
 
-    // (엉뚱한 곳 없음) 목적지 제목이 화면 밖이면 선과 점이 보이지 않는다.
-    const out = samples.filter((sample) => sample.destination === 'out');
+    // (엉뚱한 곳 없음) 활성 구간(#id)의 보이는 범위가 없으면 선과 점이 보이지 않는다. 제목만 지나간 것은 숨길 이유가 아니다.
+    const out = samples.filter((sample) => !(sectionVisible(sample) > 0));
     const stray = out.filter(shown);
-    expect.soft(stray.slice(0, 8).map((sample) => `${where(sample)} → 제목 y ${sample.destTop}~${sample.destBottom}, 선 끝 y ${sample.endY}`),
-      `엉뚱한 곳 없음: 제목이 화면 밖인데 선·점이 보인 표본 ${stray.length} / ${out.length} (앞 8건)`).toEqual([]);
+    expect.soft(stray.slice(0, 8).map((sample) => `${where(sample)} → 구간 y ${sample.secTop}~${sample.secBottom}, 선 끝 y ${sample.endY}`),
+      `엉뚱한 곳 없음: 구간이 화면 밖인데 선·점이 보인 표본 ${stray.length} / ${out.length} (앞 8건)`).toEqual([]);
 
     // (보존) 제목이 화면 안이면 선과 점이 보이고, 끝점 높이는 제목 상자의 위~아래 사이다.
     const inView = samples.filter((sample) => sample.destination === 'in');
@@ -79,7 +79,7 @@ for (const width of WIDTHS) {
 
 // 사용자 캡처의 두 위치를 그대로 고정한다: 01 정사영상 제목이 화면 위쪽에 보일 때 / 제목이 화면 위로 지나간 뒤.
 for (const width of [1280, 1440, 1920]) {
-  test(`01 정사영상 두 위치 (폭 ${width}): 제목이 보이면 라벨 높이에서 출발해 제목을 가리키고, 제목이 지나가면 선·점이 사라진다`, async ({ page }) => {
+  test(`01 정사영상 두 위치 (폭 ${width}): 제목이 보이면 라벨 높이에서 출발해 제목을 가리키고, 제목이 지나가도 구간이 보이는 동안 선·점이 남는다`, async ({ page }) => {
     await page.setViewportSize({ width, height: HEIGHT });
     await openStory(page);
     const place = async (titleTop: number) => {
@@ -100,7 +100,11 @@ for (const width of [1280, 1440, 1920]) {
     const passed = await place(-420);
     expect.soft(passed.item, '제목이 지나간 뒤에도 활성 항목은 정사영상').toBe('ortho');
     expect.soft(passed.destination, '제목은 화면 밖').toBe('out');
-    expect.soft({ line: passed.lineShown, dot: passed.dotShown }, `제목이 지나간 뒤 선·점 (선 끝 y ${passed.endY}, 보이는 시작점 차이 ${passed.visibleStartOffsetY}px)`).toEqual({ line: false, dot: false });
+    // 2026-11-25 사용자 요구로 뒤집힘: 구간이 화면에 있는 동안 선·점은 남고, 끝점은 헤더 아래 구간의 보이는 범위 위쪽에 있다.
+    expect.soft(sectionVisible(passed), '구간(#ortho)은 아직 화면 안').toBeGreaterThan(0);
+    expect.soft(persistProblem(passed), '제목이 지나간 뒤에도 선·점이 남고 끝점은 구간의 보이는 범위 위쪽').toBe('');
+    expect.soft(Math.abs(passed.visibleStartOffsetY), '제목이 지나간 뒤: 눈에 보이는 시작점 y − 라벨 글자 중심').toBeLessThanOrEqual(START_TOLERANCE);
+    expect.soft(passed.overlapPx, `제목이 지나간 뒤 본문 겹침 (${passed.overlapWith})`).toBeLessThanOrEqual(OVERLAP_TOLERANCE);
   });
 }
 

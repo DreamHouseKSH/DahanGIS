@@ -17,7 +17,34 @@ export type ConnectorSample = {
   /** marker 요소(span) 사각형의 세로 중심 − 글자 사각형의 세로 중심. */
   markerDeltaY: number;
   endY: number; dotY: number; destTop: number; destBottom: number;
+  /** 구간(#item) 상자의 위·아랫변, 고정 헤더 아랫변, 화면 높이. */
+  secTop: number; secBottom: number; headerBottom: number; viewHeight: number;
+  /** 끝점 x, 그 구간 .story-inner 왼쪽 − 18px(끝점이 있어야 할 x), svg 의 data-visible 유무와 opacity. */
+  endX: number; gutterX: number; marked: boolean; opacity: number;
 };
+
+/** 구간 상자에서 헤더 아랫변 아래이고 화면 아랫변 위인 부분("보이는 범위")의 높이. 없으면 0 이하. */
+export const sectionVisible = (sample: ConnectorSample) => Math.min(sample.secBottom, sample.viewHeight) - Math.max(sample.secTop, sample.headerBottom);
+
+/** 제목이 위로 지나간 뒤 끝점이 머물 "구간의 보이는 범위 위쪽" 띠의 높이(헤더 아랫변부터, px). */
+export const TOP_BAND = 120;
+
+/** 완료 정의 1(유지)·2(끝점 위치)를 한 표본에 대어 어긋난 점을 글로 돌려준다. 맞으면 ''. 구간의 보이는 범위가 없는 표본은 보지 않는다. */
+export function persistProblem(sample: ConnectorSample): string {
+  if (!sample.item || !(sectionVisible(sample) > 0)) return '';
+  const at = `${sample.item} · scrollY ${sample.scrollY} (구간 y ${sample.secTop}~${sample.secBottom}, 제목 y ${sample.destTop}~${sample.destBottom}, 헤더 ${sample.headerBottom})`;
+  if (!sample.lineShown || !sample.dotShown || !sample.marked || sample.opacity !== 1) return `${at} → 유지 안 됨: 선 ${sample.lineShown} 점 ${sample.dotShown} data-visible ${sample.marked} opacity ${sample.opacity}`;
+  const top = Math.max(sample.secTop, sample.headerBottom), bottom = Math.min(sample.secBottom, sample.viewHeight);
+  const titleTop = Math.max(sample.destTop, sample.headerBottom), titleBottom = Math.min(sample.destBottom, sample.viewHeight);
+  const faults: string[] = [];
+  if (Math.abs(sample.endX - sample.gutterX) > 1) faults.push(`끝점 x ${sample.endX} ≠ .story-inner 왼쪽 − 18 = ${sample.gutterX}`);
+  for (const [name, y] of [['끝점', sample.endY], ['점', sample.dotY]] as const) {
+    if (!(y >= top - 1 && y <= bottom + 1)) faults.push(`${name} y ${y} 가 구간의 보이는 범위 ${top}~${bottom} 밖`);
+    if (titleBottom - titleTop > 1 && Math.abs(y - (titleTop + Math.min((titleBottom - titleTop) / 2, 44))) > 1.5) faults.push(`${name} y ${y} 가 제목 기준 위치(보이는 제목 위 + min(절반, 44))와 다름`);
+    if (sample.destBottom <= sample.headerBottom && y > sample.headerBottom + TOP_BAND + 1) faults.push(`제목이 지나갔는데 ${name} y ${y} 가 헤더 아래 ${TOP_BAND}px 띠 밖`);
+  }
+  return faults.length ? `${at} → ${faults.join(' / ')}` : '';
+}
 
 /** 제목이 "확실히 화면 안"이라고 볼 위·아래 여유(px). 이 띠 밖의 부분 노출 구간에는 표시 여부를 강제하지 않는다. */
 export const IN_VIEW_MARGIN = { top: 150, bottom: 100 };
@@ -47,6 +74,8 @@ export async function measureConnector(page: Page): Promise<ConnectorSample> {
     const target = document.querySelector<HTMLElement>(`#${item} [data-story-target], #${item} h2`);
     const dest = target?.getBoundingClientRect();
     const headerBottom = document.querySelector('.story-header')?.getBoundingClientRect().bottom ?? 0;
+    const section = item ? document.getElementById(item)?.getBoundingClientRect() : undefined;
+    const gutter = target?.closest('.story-inner')?.getBoundingClientRect().left;
 
     const shown = (node: Element) => {
       for (let el: Element | null = node; el && el !== document.documentElement; el = el.parentElement) {
@@ -139,6 +168,9 @@ export async function measureConnector(page: Page): Promise<ConnectorSample> {
       markerDeltaY: round(middle(marker?.getBoundingClientRect()) - middle(label)),
       endY: round(end?.y), dotY: round(dotShown ? dotBox.top + dotBox.height / 2 : undefined),
       destTop: round(dest?.top), destBottom: round(dest?.bottom),
+      secTop: round(section?.top), secBottom: round(section?.bottom), headerBottom: round(headerBottom), viewHeight: innerHeight,
+      endX: round(end?.x), gutterX: round(gutter === undefined ? undefined : gutter - 18),
+      marked: svg.hasAttribute('data-visible'), opacity: Number(getComputedStyle(svg).opacity),
     } as const;
   }, { marginTop: IN_VIEW_MARGIN.top, marginBottom: IN_VIEW_MARGIN.bottom });
 }
